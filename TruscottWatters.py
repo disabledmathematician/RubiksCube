@@ -2,7 +2,7 @@
 # Thank you Harvard University and Massachusetts Institute of Technology
 # Charles Truscott Watters, Byron Bay Australia
 # Certified in Computational Thinking using Python from MITx
-
+# Work in progress, will finish this over the next few days
 class Unsolved_Rubiks:
 	def __init__(self, state, moves, how_many):
 		self.state = state.copy()
