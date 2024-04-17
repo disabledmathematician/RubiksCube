@@ -97,37 +97,13 @@ class Unsolved_Rubiks:
 		new_state = Unsolved_Rubiks(self.state.copy(), self.moves.copy())
 		return new_state
 	def F_inv(self):
-		tL = self.state[0]
-		tF = self.state[1]
-		tR = self.state[2]
-		tB = self.state[3]
-		tU = self.state[4]
-		tD = self.state[5]
-		
-		prev_L = tL.copy()
-		prev_R = tR.copy
-		prev_F = tF.copy()
-		prev_B = tB.copy()
-		prev_U = tU.copy()
-		prev_D = tD.copy()
-
-		pass
+		for n in range(0, 3):
+			new_state = self.F()
+		return new_state
 	def F2(self):
-		tL = self.state[0]
-		tF = self.state[1]
-		tR = self.state[2]
-		tB = self.state[3]
-		tU = self.state[4]
-		tD = self.state[5]
-		
-		prev_L = tL.copy()
-		prev_R = tR.copy
-		prev_F = tF.copy()
-		prev_B = tB.copy()
-		prev_U = tU.copy()
-		prev_D = tD.copy()
-
-		pass
+		for n in range(0, 2):
+			new_state = self.F()
+		return new_state
 	def B(self):
 		tL = self.state[0]
 		tF = self.state[1]
@@ -285,7 +261,7 @@ def Charles_Rubiks():
 #	for e in moved:
 #		print(e.state)
 	cube = Unsolved_Rubiks(unsolved_state, [])
-	yet_moves = [lambda cube: cube.F(), lambda cube: cube.R(), lambda cube: cube.L()]
+	yet_moves = [lambda cube: cube.F(), lambda cube: cube.F2(), lambda cube: cube.F(), lambda cube: cube.R(), lambda cube: cube.L()]
 	moved = []
 	moved.append(cube)
 	for l in yet_moves:
@@ -294,8 +270,17 @@ def Charles_Rubiks():
 		print("State: {} Moves: {}".format(n, n.moves))
 """
 State: Left: ['R', 'W', 'R', 'W'] Front: ['G', 'G', 'G', 'G'] Right: ['Y', 'O', 'Y', 'O'] Back: ['B', 'B', 'B', 'B'] Up: ['Y', 'Y', 'R', 'R'] Down: ['O', 'O', 'W', 'W'] Moves: ['F']
-State: Left: ['R', 'W', 'R', 'W'] Front: ['G', 'O', 'G', 'W'] Right: ['Y', 'Y', 'O', 'O'] Back: ['R', 'B', 'Y', 'B'] Up: ['Y', 'G', 'R', 'G'] Down: ['O', 'B', 'W', 'B'] Moves: ['F', 'R']
-State: Left: ['W', 'W', 'R', 'R'] Front: ['O', 'O', 'W', 'W'] Right: ['Y', 'Y', 'O', 'O'] Back: ['R', 'R', 'Y', 'Y'] Up: ['G', 'G', 'G', 'G'] Down: ['B', 'B', 'B', 'B'] Moves: ['F', 'R', 'L']
+State: Left: ['R', 'Y', 'R', 'Y'] Front: ['G', 'G', 'G', 'G'] Right: ['W', 'O', 'W', 'O'] Back: ['B', 'B', 'B', 'B'] Up: ['Y', 'Y', 'O', 'O'] Down: ['R', 'R', 'W', 'W'] Moves: ['F', 'F', 'F']
+State: Left: ['R', 'Y', 'R', 'Y'] Front: ['G', 'R', 'G', 'W'] Right: ['W', 'W', 'O', 'O'] Back: ['O', 'B', 'Y', 'B'] Up: ['Y', 'G', 'O', 'G'] Down: ['R', 'B', 'W', 'B'] Moves: ['F', 'F', 'F', 'R']
+State: Left: ['Y', 'Y', 'R', 'R'] Front: ['R', 'R', 'W', 'W'] Right: ['W', 'W', 'O', 'O'] Back: ['O', 'O', 'Y', 'Y'] Up: ['G', 'G', 'G', 'G'] Down: ['B', 'B', 'B', 'B'] Moves: ['F', 'F', 'F', 'R', 'L']
+
+[Program finished]
+
+State: Left: ['R', 'W', 'R', 'W'] Front: ['G', 'G', 'G', 'G'] Right: ['Y', 'O', 'Y', 'O'] Back: ['B', 'B', 'B', 'B'] Up: ['Y', 'Y', 'R', 'R'] Down: ['O', 'O', 'W', 'W'] Moves: ['F']
+State: Left: ['R', 'Y', 'R', 'Y'] Front: ['G', 'G', 'G', 'G'] Right: ['W', 'O', 'W', 'O'] Back: ['B', 'B', 'B', 'B'] Up: ['Y', 'Y', 'O', 'O'] Down: ['R', 'R', 'W', 'W'] Moves: ['F', 'F', 'F']
+State: Left: ['R', 'R', 'R', 'R'] Front: ['G', 'G', 'G', 'G'] Right: ['O', 'O', 'O', 'O'] Back: ['B', 'B', 'B', 'B'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['F', 'F', 'F', 'F']
+State: Left: ['R', 'R', 'R', 'R'] Front: ['G', 'W', 'G', 'W'] Right: ['O', 'O', 'O', 'O'] Back: ['Y', 'B', 'Y', 'B'] Up: ['Y', 'G', 'Y', 'G'] Down: ['W', 'B', 'W', 'B'] Moves: ['F', 'F', 'F', 'F', 'R']
+State: Left: ['R', 'R', 'R', 'R'] Front: ['W', 'W', 'W', 'W'] Right: ['O', 'O', 'O', 'O'] Back: ['Y', 'Y', 'Y', 'Y'] Up: ['G', 'G', 'G', 'G'] Down: ['B', 'B', 'B', 'B'] Moves: ['F', 'F', 'F', 'F', 'R', 'L']
 
 [Program finished]
 """
