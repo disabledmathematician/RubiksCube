@@ -14,54 +14,139 @@ class Unsolved_Rubiks:
 			return self.moves
 	def R(self):
 		tL = self.state[0]
+		tF = self.state[1]
+		tR = self.state[2]
+		tB = self.state[3]
+		tU = self.state[4]
+		tD = self.state[5]
 		pass
 	def R_inv(self):
 		tL = self.state[0]
+		tF = self.state[1]
+		tR = self.state[2]
+		tB = self.state[3]
+		tU = self.state[4]
+		tD = self.state[5]
 		pass
 	def R2(self):
 		tL = self.state[0]
+		tF = self.state[1]
+		tR = self.state[2]
+		tB = self.state[3]
+		tU = self.state[4]
+		tD = self.state[5]
 		pass
 	def L(self):
 		tL = self.state[0]
+		tF = self.state[1]
+		tR = self.state[2]
+		tB = self.state[3]
+		tU = self.state[4]
+		tD = self.state[5]
 		pass
 	def L_inv(self):
 		tL = self.state[0]
+		tF = self.state[1]
+		tR = self.state[2]
+		tB = self.state[3]
+		tU = self.state[4]
+		tD = self.state[5]
 		pass
 	def L2(self):
 		tL = self.state[0]
+		tF = self.state[1]
+		tR = self.state[2]
+		tB = self.state[3]
+		tU = self.state[4]
+		tD = self.state[5]
 		pass
 	def F(self):
 		tL = self.state[0]
+		tF = self.state[1]
+		tR = self.state[2]
+		tB = self.state[3]
+		tU = self.state[4]
+		tD = self.state[5]
 		pass
 	def F_inv(self):
 		tL = self.state[0]
+		tF = self.state[1]
+		tR = self.state[2]
+		tB = self.state[3]
+		tU = self.state[4]
+		tD = self.state[5]
 		pass
 	def F2(self):
 		tL = self.state[0]
+		tF = self.state[1]
+		tR = self.state[2]
+		tB = self.state[3]
+		tU = self.state[4]
+		tD = self.state[5]
 		pass
 	def B(self):
 		tL = self.state[0]
+		tF = self.state[1]
+		tR = self.state[2]
+		tB = self.state[3]
+		tU = self.state[4]
+		tD = self.state[5]
 		pass
 	def B_inv(self):
 		tL = self.state[0]
+		tF = self.state[1]
+		tR = self.state[2]
+		tB = self.state[3]
+		tU = self.state[4]
+		tD = self.state[5]
 		pass
 	def B2(self):
-		tL= self.state[0]
+		tL = self.state[0]
+		tF = self.state[1]
+		tR = self.state[2]
+		tB = self.state[3]
+		tU = self.state[4]
+		tD = self.state[5]
 		pass
 	def U(self):
 		tL = self.state[0]
+		tF = self.state[1]
+		tR = self.state[2]
+		tB = self.state[3]
+		tU = self.state[4]
+		tD = self.state[5]
 		pass
 	def U2(self):
 		tL = self.state[0]
+		tF = self.state[1]
+		tR = self.state[2]
+		tB = self.state[3]
+		tU = self.state[4]
+		tD = self.state[5]
 		pass
 	def U_inv(self):
 		tL = self.state[0]
+		tF = self.state[1]
+		tR = self.state[2]
+		tB = self.state[3]
+		tU = self.state[4]
+		tD = self.state[5]
 		pass
 	def D(self):
 		tL = self.state[0]
+		tF = self.state[1]
+		tR = self.state[2]
+		tB = self.state[3]
+		tU = self.state[4]
+		tD = self.state[5]
 		pass
 	def D_inv(self):
 		tL = self.state[0]
+		tF = self.state[1]
+		tR = self.state[2]
+		tB = self.state[3]
+		tU = self.state[4]
+		tD = self.state[5]
 		pass
 	def D2(self):
 		tL = self.state[0]
