@@ -3,6 +3,7 @@
 # Charles Truscott Watters, Byron Bay Australia
 # Certified in Computational Thinking using Python from MITx
 # Love you high rollin Dad, Mark William Watters
+# Until tommorrow
 class Unsolved_Rubiks:
 	def __init__(self, state, moves):
 		self.state = state.copy()
