@@ -18,8 +18,8 @@ class Unsolved_Rubiks:
 		tF = self.state[1]
 		tR = self.state[2]
 		tB = self.state[3]
-		tU = self.state[5]
-		tD = self.state[4]
+		tU = self.state[4]
+		tD = self.state[5]
 		
 		prev_L = tL.copy()
 		prev_R = tR.copy()
@@ -27,13 +27,11 @@ class Unsolved_Rubiks:
 		prev_B = tB.copy()
 		prev_U = tU.copy()
 		prev_D = tD.copy()
-		tU[0], tU[2] = prev_F[0], prev_F[2]
-		tB[3], tB[1] = prev_U[0], prev_U[1]
-		tD[0], tD[2] = prev_B[1], prev_B[3]
-		# Correction
-		tF[0], tF[2] = prev_D[0], prev_D[1]
-		print(tR, prev_R)
-		tR[0], tR[1], tR[2], tR[3] = prev_R[1], prev_R[3], prev_R[0], prev_R[2]
+		tR[0], tR[1], tR[2], tR[3] = prev_R[2], prev_R[0], prev_R[3], prev_R[1]
+		tU[1], tU[3] = prev_F[1], prev_F[3]
+		tF[1], tF[3] = prev_D[1], prev_D[3]
+		tD[1], tD[3] = prev_B[0], prev_B[1]
+		tB[0], tB[2] = prev_U[3], prev_U[1]
 		self.moves.append("R")
 		new_state = Unsolved_Rubiks(self.state.copy(), self.moves.copy())
 		return new_state
@@ -51,23 +49,8 @@ class Unsolved_Rubiks:
 		prev_B = tB.copy()
 		prev_U = tU.copy()
 		prev_D = tD.copy()
-
 		pass
 	def R2(self):
-		tL = self.state[0]
-		tF = self.state[1]
-		tR = self.state[2]
-		tB = self.state[3]
-		tU = self.state[4]
-		tD = self.state[5]
-		
-		prev_L = tL.copy()
-		prev_R = tR.copy
-		prev_F = tF.copy()
-		prev_B = tB.copy()
-		prev_U = tU.copy()
-		prev_D = tD.copy()
-
 		pass
 	def L(self):
 		tL = self.state[0]
@@ -326,9 +309,3 @@ def Charles_Rubiks():
 	print(cube.moves)
 	
 Charles_Rubiks()
-
-""" ['O', 'O', 'O', 'O'] ['O', 'O', 'O', 'O']
-[['R', 'R', 'R', 'R'], ['Y', 'G', 'Y', 'G'], ['O', 'O', 'O', 'O'], ['B', 'W', 'B', 'W'], ['B', 'Y', 'B', 'Y'], ['G', 'W', 'G', 'W']]
-['R']
-
-[Program finished] """
