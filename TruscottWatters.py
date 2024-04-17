@@ -4,9 +4,9 @@
 # Certified in Computational Thinking using Python from MITx
 # Love you high rollin Dad, Mark William Watters
 class Unsolved_Rubiks:
-	def __init__(self, state):
+	def __init__(self, state, moves):
 		self.state = state.copy()
-		self.moves = []
+		self.moves = moves
 	def is_solved(self):
 		pass
 		solved_state = [["R", "R", "R", "R"], ["G", "G", "G", "G"], ["O", "O", "O", "O"], ["B", "B", "B", "B"], ["Y", "Y", "Y", "Y"], ["W", "W", "W", "W"]]
@@ -27,14 +27,14 @@ class Unsolved_Rubiks:
 		prev_U = tU.copy()
 		prev_D = tD.copy()
 		tU[0], tU[2] = prev_F[0], prev_F[2]
-		tD[0], tD[2] = prev_B[1], prev_B[3]
 		tB[3], tB[1] = prev_U[0], prev_U[1]
+		tD[0], tD[2] = prev_B[1], prev_B[3]
+
 		tF[0], tF[1] = prev_D[0], prev_D[1]
 		print(tR, prev_R)
 		tR[0], tR[1], tR[2], tR[3] = prev_R[1], prev_R[3], prev_R[0], prev_R[2]
-		move = "R"
-		new_state = Unsolved_Rubiks(self.state.copy())
-		new_state.moves.append(move)
+		self.moves.append("R")
+		new_state = Unsolved_Rubiks(self.state.copy(), self.moves.copy())
 		return new_state
 	def R_inv(self):
 		tL = self.state[0]
@@ -320,8 +320,8 @@ def Charles_Rubiks():
 #	print(moved)
 #	for e in moved:
 #		print(e.state)
-	cube = Unsolved_Rubiks(unsolved_state)
-	print(cube.R(), cube.moves)
-		
+	cube = Unsolved_Rubiks(unsolved_state, [])
+	print(cube.R())
+	print(cube.moves)
 	
 Charles_Rubiks()
