@@ -1,3 +1,4 @@
+#pylint:disable=W0612
 # I love you, My father Mark William Watters
 # Thank you Harvard University and Massachusetts Institute of Technology
 # Charles Truscott Watters, Byron Bay Australia
@@ -7,7 +8,7 @@
 import sys
 class Unsolved_Rubiks:
 	def __init__(self, state, moves):
-		self.state = state.copy()
+		self.state = state
 		self.moves = moves
 	def is_solved(self):
 		solved_state = [["R", "R", "R", "R"], ["G", "G", "G", "G"], ["O", "O", "O", "O"], ["B", "B", "B", "B"], ["Y", "Y", "Y", "Y"], ["W", "W", "W", "W"]]
@@ -44,9 +45,7 @@ class Unsolved_Rubiks:
 			new_state = self.R()
 		return new_state
 	def R2(self):
-		pass
-		new_state.moves.append("R2")
-		return new_state
+		return
 	def L(self):
 		tL = self.state[0].copy()
 		tF = self.state[1].copy()
@@ -55,7 +54,7 @@ class Unsolved_Rubiks:
 		tU = self.state[4].copy()
 		tD = self.state[5].copy()
 		prev_L = tL.copy()
-		prev_R = tR.copy
+		prev_R = tR.copy()
 		prev_F = tF.copy()
 		prev_B = tB.copy()
 		prev_U = tU.copy()
@@ -69,7 +68,7 @@ class Unsolved_Rubiks:
 		n = self.moves.copy()
 		n.append("L")
 #		self.moves.append("L")
-		new_state = Unsolved_Rubiks(new_matrix, n)
+		new_state = Unsolved_Rubiks(new_matrix, [])
 		return new_state
 	def L_inv(self):
 		for n in range(0, 3, 1):
@@ -215,50 +214,13 @@ class Unsolved_Rubiks:
 
 def Charles_Rubiks():
 	solved_state = [["R", "R", "R", "R"], ["G", "G", "G", "G"], ["O", "O", "O", "O"], ["B", "B", "B", "B"], ["Y", "Y", "Y", "Y"], ["W", "W", "W", "W"]]
-	unsolved_state = [["Y", "R", "R", "R"], ["G", "Y", "G", "G"], ["G", "B", "O", "O"], ["R", "B", "B", "B"], ["O", "Y", "Y", "O"], ["W", "W", "W", "W"]]
-#	yet_moves = [lambda cube: cube.R(), lambda cube: cube.R2(), lambda cube: cube.R_inv(), lambda cube: cube.L(), lambda cube: cube.L2(), lambda cube: cube.L_inv(), lambda cube: cube.F(), lambda cube: cube.F2(), lambda cube: cube.F_inv(), lambda cube: cube.B(), lambda cube: cube.B2(), lambda cube: cube.B_inv(), lambda cube: cube.U(), lambda cube: cube.U2(), lambda cube: cube.U_inv(), lambda cube: cube.D(), lambda cube: cube.D2(), lambda cube: cube.D_inv()]
-	yet_moves = [lambda c: c.L(), lambda c: c.R(), lambda c: c.U(), lambda c: c.D(), lambda c: c.F(), lambda c: c.B()]
-#	moved = []
-#	moved.append(Unsolved_Rubiks(unsolved_state, []))
-#	print(moved[0])
-#	for l in yet_moves:
-#		moved.append(l(moved[0]))
-#	c = 1
-#	while c < len(yet_moves) ** 6:
-#		for l in yet_moves:
-#			temp = l(moved[c])
-#			moved.append(temp)
-#		print(c)
-#		c += 1
-#	for n in range(1, len(moved)):
-#		moved[n].is_solved()
-#		print("State: {}, moves: {}".format(moved[n], moved[n].moves))
-#	yet_moves = [lambda c: c.L(), lambda c: c.R(), lambda c: c.R2()]
-	moved = []
-	moved.append(Unsolved_Rubiks(unsolved_state, []))
+	unsolved_state = solved_state
+	state = Unsolved_Rubiks(unsolved_state, [])
+	yet_moves =[lambda c: c.L(), lambda c: c.R(), lambda c: c.U(), lambda c: c.D(), lambda c: c.F(), lambda c: c.B()]
+	States = []
+	States.append(state)
+	print(state.state, state.moves)
 	for l in yet_moves:
-		t = l(moved[0])
-		moved.append(t)
-		print("State: {}, Moves: {}".format(t, t.moves))
-	for c in range(1, len(yet_moves) ** 7):
-		for l in yet_moves:
-			t = l(moved[c])
-			print("State: {}, Moves: {}".format(t, t.moves))
-			if t.state == solved_state:
-				print("Solved by: ".format(t.moves))
-				sys.exit()
-			moved.append(t)
-		
+		n = l(state)
+		print(n, n.moves)
 Charles_Rubiks()
-
-"""
-
-
-
-"""
-# Thank you Byron Bay Woolworths and Australia Post, could not have a sanitized home or meals on wheels without you
-# Thank you Services Australia and NDIS
-# Disability Pension and National Disability Insurance Scheme
-# I love my country Australia
-# I love you Dad Mark William Watters, big bro Tai Truscott
-# Almost finished my algorithm ... major error can wait until tommorrow. all tL, tR, tF, tB, tU, tD, and so on need to be copies, updating the state, and a way to keep track of moves
