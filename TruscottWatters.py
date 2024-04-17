@@ -2,8 +2,7 @@
 # Thank you Harvard University and Massachusetts Institute of Technology
 # Charles Truscott Watters, Byron Bay Australia
 # Certified in Computational Thinking using Python from MITx
-# Work in progress, will finish this over the next few days
-# England is my favorite country on Earth though I am very thankful to the Schindler Americans that helped me heal and get better, like the National Cryptologic Museum staff
+# Love you high rollin Dad, Mark William Watters
 class Unsolved_Rubiks:
 	def __init__(self, state, moves, how_many):
 		self.state = state.copy()
@@ -14,40 +13,63 @@ class Unsolved_Rubiks:
 		if self.state == solved_state:
 			return self.moves
 	def R(self):
+		tL = self.state[0]
 		pass
 	def R_inv(self):
+		tL = self.state[0]
 		pass
 	def R2(self):
+		tL = self.state[0]
 		pass
 	def L(self):
+		tL = self.state[0]
 		pass
 	def L_inv(self):
+		tL = self.state[0]
 		pass
 	def L2(self):
+		tL = self.state[0]
 		pass
 	def F(self):
+		tL = self.state[0]
 		pass
 	def F_inv(self):
+		tL = self.state[0]
 		pass
 	def F2(self):
+		tL = self.state[0]
 		pass
 	def B(self):
+		tL = self.state[0]
 		pass
 	def B_inv(self):
+		tL = self.state[0]
 		pass
 	def B2(self):
+		tL= self.state[0]
 		pass
 	def U(self):
+		tL = self.state[0]
 		pass
 	def U2(self):
+		tL = self.state[0]
 		pass
 	def U_inv(self):
+		tL = self.state[0]
 		pass
 	def D(self):
+		tL = self.state[0]
 		pass
 	def D_inv(self):
+		tL = self.state[0]
 		pass
 	def D2(self):
+		tL = self.state[0]
+		tF = self.state[1]
+		tR = self.state[2]
+		tB = self.state[3]
+		tU = self.state[4]
+		tD = self.state[5]
 		pass
 		
 
