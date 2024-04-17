@@ -63,7 +63,7 @@ class Unsolved_Rubiks:
 		tB[1], tB[3] = prev_U[2], prev_U[0]
 		tU[0], tU[2] = prev_F[0], prev_F[2]
 		tD[0], tD[2] = prev_B[3], prev_B[1]
-#		self.moves.append("L")
+		self.moves.append("L")
 		new_state = Unsolved_Rubiks(self.state.copy(), self.moves.copy())
 		return new_state
 	def L_inv(self):
@@ -295,13 +295,13 @@ def Charles_Rubiks():
 """
 State: Left: ['R', 'W', 'R', 'W'] Front: ['G', 'G', 'G', 'G'] Right: ['Y', 'O', 'Y', 'O'] Back: ['B', 'B', 'B', 'B'] Up: ['Y', 'Y', 'R', 'R'] Down: ['O', 'O', 'W', 'W'] Moves: ['F']
 State: Left: ['R', 'W', 'R', 'W'] Front: ['G', 'O', 'G', 'W'] Right: ['Y', 'Y', 'O', 'O'] Back: ['R', 'B', 'Y', 'B'] Up: ['Y', 'G', 'R', 'G'] Down: ['O', 'B', 'W', 'B'] Moves: ['F', 'R']
-State: Left: ['W', 'W', 'R', 'R'] Front: ['O', 'O', 'W', 'W'] Right: ['Y', 'Y', 'O', 'O'] Back: ['R', 'R', 'Y', 'Y'] Up: ['G', 'G', 'G', 'G'] Down: ['B', 'B', 'B', 'B'] Moves: ['F', 'R']
+State: Left: ['W', 'W', 'R', 'R'] Front: ['O', 'O', 'W', 'W'] Right: ['Y', 'Y', 'O', 'O'] Back: ['R', 'R', 'Y', 'Y'] Up: ['G', 'G', 'G', 'G'] Down: ['B', 'B', 'B', 'B'] Moves: ['F', 'R', 'L']
 
 [Program finished]
 """
 Charles_Rubiks()
 
-# Thank you Byron Bay Woolworths and Australia Post, could not have sanitized home or meals on wheels without you
+# Thank you Byron Bay Woolworths and Australia Post, could not have a sanitized home or meals on wheels without you
 # Thank you Services Australia and NDIS
 # Thank you Byron Central Hospital Tuckeroo.
 # I have paranoid Schizophrenia, am blind, have a brain tumpur injury, varicose veins and a memory disorder
