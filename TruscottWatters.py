@@ -228,7 +228,7 @@ def Charles_Rubiks():
 	print(ns)
 	print(ns.R(), ns.L())
 	my_cube = [["B", "R", "B", "Y"], ["W", "B", "G", "G"], ["O", "O", "Y", "R"], ["G", "O", "W", "R"], ["Y", "W", "G", "W"], ["R", "O", "Y", "B"]]
-	state = Unsolved_Rubiks(my_cube, [])
+	state = Unsolved_Rubiks(ns.state, [])
 #	noviy = ns.state.copy()
 	yet_moves =[lambda c: c.L(), lambda c: c.R(), lambda c: c.U(), lambda c: c.D(), lambda c: c.F(), lambda c: c.B()]
 #	eF = [lambda cube: cube.F() for n in range(3)]
@@ -263,12 +263,32 @@ def Charles_Rubiks():
 				mov = l(f)
 				States.append(mov)
 				if mov.is_solved() == True:
-					print("{} Solved by {}".format(my_cube, mov.moves))
+					print("{} Solved by {}".format(ns.state, mov.moves))
 					t = True
 			x += 1
 #	for e in States:
 #		print(e, e.moves)
 """ I love you, my precious Father Mark William Watters. I love you unconditionally
-All thr credit for Tai as our carer
+All the credit for Tai as our carer
+
+ns
+Left: ['R', 'R', 'R', 'R'] Front: ['W', 'W', 'W', 'W'] Right: ['O', 'O', 'O', 'O'] Back: ['Y', 'Y', 'Y', 'Y'] Up: ['G', 'G', 'G', 'G'] Down: ['B', 'B', 'B', 'B']
+Left: ['R', 'R', 'R', 'R'] Front: ['W', 'B', 'W', 'B'] Right: ['O', 'O', 'O', 'O'] Back: ['G', 'Y', 'G', 'Y'] Up: ['G', 'W', 'G', 'W'] Down: ['B', 'Y', 'B', 'Y'] Left: ['R', 'R', 'R', 'R'] Front: ['B', 'W', 'B', 'W'] Right: ['O', 'O', 'O', 'O'] Back: ['Y', 'G', 'Y', 'G'] Up: ['W', 'G', 'W', 'G'] Down: ['Y', 'B', 'Y', 'B']
+[['R', 'R', 'R', 'R'], ['W', 'W', 'W', 'W'], ['O', 'O', 'O', 'O'], ['Y', 'Y', 'Y', 'Y'], ['G', 'G', 'G', 'G'], ['B', 'B', 'B', 'B']] []
+Left: ['R', 'R', 'R', 'R'] Front: ['B', 'W', 'B', 'W'] Right: ['O', 'O', 'O', 'O'] Back: ['Y', 'G', 'Y', 'G'] Up: ['W', 'G', 'W', 'G'] Down: ['Y', 'B', 'Y', 'B'] ['L']
+Left: ['R', 'R', 'R', 'R'] Front: ['W', 'B', 'W', 'B'] Right: ['O', 'O', 'O', 'O'] Back: ['G', 'Y', 'G', 'Y'] Up: ['G', 'W', 'G', 'W'] Down: ['B', 'Y', 'B', 'Y'] ['R']
+Left: ['W', 'W', 'R', 'R'] Front: ['O', 'O', 'W', 'W'] Right: ['Y', 'Y', 'O', 'O'] Back: ['R', 'R', 'Y', 'Y'] Up: ['G', 'G', 'G', 'G'] Down: ['B', 'B', 'B', 'B'] ['U']
+Left: ['R', 'R', 'Y', 'Y'] Front: ['W', 'W', 'R', 'R'] Right: ['O', 'O', 'W', 'W'] Back: ['Y', 'Y', 'O', 'O'] Up: ['G', 'G', 'G', 'G'] Down: ['B', 'B', 'B', 'B'] ['D']
+Left: ['R', 'B', 'R', 'B'] Front: ['W', 'W', 'W', 'W'] Right: ['G', 'O', 'G', 'O'] Back: ['Y', 'Y', 'Y', 'Y'] Up: ['G', 'G', 'R', 'R'] Down: ['O', 'O', 'B', 'B'] ['F']
+Left: ['B', 'R', 'B', 'R'] Front: ['W', 'W', 'W', 'W'] Right: ['O', 'G', 'O', 'G'] Back: ['Y', 'Y', 'Y', 'Y'] Up: ['R', 'R', 'G', 'G'] Down: ['B', 'B', 'O', 'O'] ['B']
+[<__main__.Unsolved_Rubiks object at 0x7125b54b10>, <__main__.Unsolved_Rubiks object at 0x7125b54a90>, <__main__.Unsolved_Rubiks object at 0x7125b54a10>, <__main__.Unsolved_Rubiks object at 0x7125b55190>, <__main__.Unsolved_Rubiks object at 0x7125b553d0>, <__main__.Unsolved_Rubiks object at 0x7125b55650>, <__main__.Unsolved_Rubiks object at 0x7125b55890>]
+State: [['R', 'R', 'R', 'R'], ['G', 'G', 'G', 'G'], ['O', 'O', 'O', 'O'], ['B', 'B', 'B', 'B'], ['Y', 'Y', 'Y', 'Y'], ['W', 'W', 'W', 'W']] Solved by: ['R', 'L', 'R', 'L', 'R', 'L']
+[['R', 'R', 'R', 'R'], ['W', 'W', 'W', 'W'], ['O', 'O', 'O', 'O'], ['Y', 'Y', 'Y', 'Y'], ['G', 'G', 'G', 'G'], ['B', 'B', 'B', 'B']] Solved by ['R', 'L', 'R', 'L', 'R', 'L']
+State: [['R', 'R', 'R', 'R'], ['G', 'G', 'G', 'G'], ['O', 'O', 'O', 'O'], ['B', 'B', 'B', 'B'], ['Y', 'Y', 'Y', 'Y'], ['W', 'W', 'W', 'W']] Solved by: ['R', 'L', 'R', 'L', 'B', 'R', 'L', 'D']
+[['R', 'R', 'R', 'R'], ['W', 'W', 'W', 'W'], ['O', 'O', 'O', 'O'], ['Y', 'Y', 'Y', 'Y'], ['G', 'G', 'G', 'G'], ['B', 'B', 'B', 'B']] Solved by ['R', 'L', 'R', 'L', 'B', 'R', 'L', 'D']
+State: [['R', 'R', 'R', 'R'], ['G', 'G', 'G', 'G'], ['O', 'O', 'O', 'O'], ['B', 'B', 'B', 'B'], ['Y', 'Y', 'Y', 'Y'], ['W', 'W', 'W', 'W']] Solved by: ['R', 'L', 'B', 'R', 'L', 'D', 'R', 'L']
+[['R', 'R', 'R', 'R'], ['W', 'W', 'W', 'W'], ['O', 'O', 'O', 'O'], ['Y', 'Y', 'Y', 'Y'], ['G', 'G', 'G', 'G'], ['B', 'B', 'B', 'B']] Solved by ['R', 'L', 'B', 'R', 'L', 'D', 'R', 'L']
+State: [['R', 'R', 'R', 'R'], ['G', 'G', 'G', 'G'], ['O', 'O', 'O', 'O'], ['B', 'B', 'B', 'B'], ['Y', 'Y', 'Y', 'Y'], ['W', 'W', 'W', 'W']] Solved by: ['B', 'R', 'L', 'D', 'R', 'L', 'R', 'L']
+[['R', 'R', 'R', 'R'], ['W', 'W', 'W', 'W'], ['O', 'O', 'O', 'O'], ['Y', 'Y', 'Y', 'Y'], ['G', 'G', 'G', 'G'], ['B', 'B', 'B', 'B']] Solved by ['B', 'R', 'L', 'D', 'R', 'L', 'R', 'L']
 """
 Charles_Rubiks()
