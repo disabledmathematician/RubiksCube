@@ -63,7 +63,7 @@ class Unsolved_Rubiks:
 		tB[1], tB[3] = prev_U[2], prev_U[0]
 		tU[0], tU[2] = prev_F[0], prev_F[2]
 		tD[0], tD[2] = prev_B[3], prev_B[1]
-		self.moves.append("L")
+#		self.moves.append("L")
 		new_state = Unsolved_Rubiks(self.state.copy(), self.moves.copy())
 		return new_state
 	def L_inv(self):
@@ -83,13 +83,19 @@ class Unsolved_Rubiks:
 		tD = self.state[5]
 		
 		prev_L = tL.copy()
-		prev_R = tR.copy
+		prev_R = tR.copy()
 		prev_F = tF.copy()
 		prev_B = tB.copy()
 		prev_U = tU.copy()
 		prev_D = tD.copy()
 		tF[0], tF[1], tF[2], tF[3] = prev_F[2], prev_F[0], prev_F[3], prev_F[1]
-		pass
+		tU[2], tU[3] = prev_L[3], prev_L[1]
+		tL[1], tL[3] = prev_D[0], prev_D[1]
+		tD[0], tD[1] = prev_R[2], prev_R[0]
+		tR[2], tR[0] = prev_U[3], prev_U[2]
+		self.moves.append("F")
+		new_state = Unsolved_Rubiks(self.state.copy(), self.moves.copy())
+		return new_state
 	def F_inv(self):
 		tL = self.state[0]
 		tF = self.state[1]
@@ -279,7 +285,7 @@ def Charles_Rubiks():
 #	for e in moved:
 #		print(e.state)
 	cube = Unsolved_Rubiks(unsolved_state, [])
-	yet_moves = [lambda cube: cube.R(), lambda cube: cube.L()]
+	yet_moves = [lambda cube: cube.F(), lambda cube: cube.R(), lambda cube: cube.L()]
 	moved = []
 	moved.append(cube)
 	for l in yet_moves:
@@ -287,9 +293,16 @@ def Charles_Rubiks():
 		
 		print("State: {} Moves: {}".format(n, n.moves))
 """
-State: Left: ['R', 'R', 'R', 'R'] Front: ['G', 'W', 'G', 'W'] Right: ['O', 'O', 'O', 'O'] Back: ['Y', 'B', 'Y', 'B'] Up: ['Y', 'G', 'Y', 'G'] Down: ['W', 'B', 'W', 'B'] Moves: ['R']
-State: Left: ['R', 'R', 'R', 'R'] Front: ['W', 'W', 'W', 'W'] Right: ['O', 'O', 'O', 'O'] Back: ['Y', 'Y', 'Y', 'Y'] Up: ['G', 'G', 'G', 'G'] Down: ['B', 'B', 'B', 'B'] Moves: ['R', 'L']
+State: Left: ['R', 'W', 'R', 'W'] Front: ['G', 'G', 'G', 'G'] Right: ['Y', 'O', 'Y', 'O'] Back: ['B', 'B', 'B', 'B'] Up: ['Y', 'Y', 'R', 'R'] Down: ['O', 'O', 'W', 'W'] Moves: ['F']
+State: Left: ['R', 'W', 'R', 'W'] Front: ['G', 'O', 'G', 'W'] Right: ['Y', 'Y', 'O', 'O'] Back: ['R', 'B', 'Y', 'B'] Up: ['Y', 'G', 'R', 'G'] Down: ['O', 'B', 'W', 'B'] Moves: ['F', 'R']
+State: Left: ['W', 'W', 'R', 'R'] Front: ['O', 'O', 'W', 'W'] Right: ['Y', 'Y', 'O', 'O'] Back: ['R', 'R', 'Y', 'Y'] Up: ['G', 'G', 'G', 'G'] Down: ['B', 'B', 'B', 'B'] Moves: ['F', 'R']
 
 [Program finished]
 """
 Charles_Rubiks()
+
+# Thank you Byron Bay Woolworths and Australia Post, could not have sanitized home or meals on wheels without you
+# Thank you Services Australia and NDIS
+# Thank you Byron Central Hospital Tuckeroo.
+# I have paranoid Schizophrenia, am blind, have a brain tumpur injury, varicose veins and a memory disorder
+# Clozapine working a miracle
