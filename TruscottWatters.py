@@ -224,3 +224,16 @@ def Charles_Rubiks():
 		n = l(state)
 		print(n, n.moves)
 Charles_Rubiks()
+
+"""
+[['R', 'R', 'R', 'R'], ['G', 'G', 'G', 'G'], ['O', 'O', 'O', 'O'], ['B', 'B', 'B', 'B'], ['Y', 'Y', 'Y', 'Y'], ['W', 'W', 'W', 'W']] []
+Left: ['R', 'R', 'R', 'R'] Front: ['W', 'G', 'W', 'G'] Right: ['O', 'O', 'O', 'O'] Back: ['B', 'Y', 'B', 'Y'] Up: ['G', 'Y', 'G', 'Y'] Down: ['B', 'W', 'B', 'W'] []
+Left: ['R', 'R', 'R', 'R'] Front: ['G', 'W', 'G', 'W'] Right: ['O', 'O', 'O', 'O'] Back: ['Y', 'B', 'Y', 'B'] Up: ['Y', 'G', 'Y', 'G'] Down: ['W', 'B', 'W', 'B'] ['R']
+Left: ['B', 'B', 'R', 'R'] Front: ['R', 'R', 'G', 'G'] Right: ['G', 'G', 'O', 'O'] Back: ['O', 'O', 'B', 'B'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] ['U']
+Left: ['R', 'R', 'B', 'B'] Front: ['G', 'G', 'R', 'R'] Right: ['O', 'O', 'G', 'G'] Back: ['B', 'B', 'O', 'O'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] ['D']
+Left: ['R', 'W', 'R', 'W'] Front: ['G', 'G', 'G', 'G'] Right: ['Y', 'O', 'Y', 'O'] Back: ['B', 'B', 'B', 'B'] Up: ['Y', 'Y', 'R', 'R'] Down: ['O', 'O', 'W', 'W'] ['F']
+Left: ['W', 'R', 'W', 'R'] Front: ['G', 'G', 'G', 'G'] Right: ['O', 'Y', 'O', 'Y'] Back: ['B', 'B', 'B', 'B'] Up: ['R', 'R', 'Y', 'Y'] Down: ['W', 'W', 'O', 'O'] ['B']
+
+[Program finished]
+
+"""
