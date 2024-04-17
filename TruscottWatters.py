@@ -313,7 +313,16 @@ def Charles_Rubiks():
 #	for e in moved:
 #		print(e.state)
 	cube = Unsolved_Rubiks(unsolved_state, [])
-	print(cube.L())
-	print(cube.moves)
-	
+	yet_moves = [lambda cube: cube.R(), lambda cube: cube.L()]
+	moved = []
+	moved.append(cube)
+	for l in yet_moves:
+		n = l(moved[0])
+		print("State: {} Moves: {}".format(n.state, n.moves))
+"""
+State: [['R', 'R', 'R', 'R'], ['G', 'W', 'G', 'W'], ['O', 'O', 'O', 'O'], ['Y', 'B', 'Y', 'B'], ['Y', 'G', 'Y', 'G'], ['W', 'B', 'W', 'B']] Moves: ['R']
+State: [['R', 'R', 'R', 'R'], ['W', 'W', 'W', 'W'], ['O', 'O', 'O', 'O'], ['Y', 'Y', 'Y', 'Y'], ['G', 'G', 'G', 'G'], ['B', 'B', 'B', 'B']] Moves: ['R', 'L']
+
+[Program finished]
+"""
 Charles_Rubiks()
