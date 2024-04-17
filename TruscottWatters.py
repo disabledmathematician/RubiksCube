@@ -3,6 +3,7 @@
 # Charles Truscott Watters, Byron Bay Australia
 # Certified in Computational Thinking using Python from MITx
 # Work in progress, will finish this over the next few days
+# England is my favorite country on Earth though I am very thankful to the Schindler Americans that helped me heal and get better, like the National Cryptologic Museum staff
 class Unsolved_Rubiks:
 	def __init__(self, state, moves, how_many):
 		self.state = state.copy()
