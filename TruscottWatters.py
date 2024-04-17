@@ -17,8 +17,8 @@ class Unsolved_Rubiks:
 		tF = self.state[1]
 		tR = self.state[2]
 		tB = self.state[3]
-		tU = self.state[4]
-		tD = self.state[5]
+		tU = self.state[5]
+		tD = self.state[4]
 		
 		prev_L = tL.copy()
 		prev_R = tR.copy()
@@ -29,7 +29,7 @@ class Unsolved_Rubiks:
 		tU[0], tU[2] = prev_F[0], prev_F[2]
 		tB[3], tB[1] = prev_U[0], prev_U[1]
 		tD[0], tD[2] = prev_B[1], prev_B[3]
-
+		# Correction: Up and down faces mixed up
 		tF[0], tF[1] = prev_D[0], prev_D[1]
 		print(tR, prev_R)
 		tR[0], tR[1], tR[2], tR[3] = prev_R[1], prev_R[3], prev_R[0], prev_R[2]
@@ -325,3 +325,9 @@ def Charles_Rubiks():
 	print(cube.moves)
 	
 Charles_Rubiks()
+
+""" ['O', 'O', 'O', 'O'] ['O', 'O', 'O', 'O']
+[['R', 'R', 'R', 'R'], ['Y', 'Y', 'G', 'G'], ['O', 'O', 'O', 'O'], ['B', 'W', 'B', 'W'], ['B', 'Y', 'B', 'Y'], ['G', 'W', 'G', 'W']]
+['R']
+
+[Program finished] """
