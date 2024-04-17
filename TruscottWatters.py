@@ -227,7 +227,9 @@ def Charles_Rubiks():
 	print("ns")
 	print(ns)
 	print(ns.R(), ns.L())
-	state = Unsolved_Rubiks(solved_state, [])
+	my_cube = [["B", "R", "B", "Y"], ["W", "B", "G", "G"], ["O", "O", "Y", "R"], ["G", "O", "W", "R"], ["Y", "W", "G", "W"], ["R", "O", "Y", "B"]]
+	state = Unsolved_Rubiks(my_cube, [])
+#	noviy = ns.state.copy()
 	yet_moves =[lambda c: c.L(), lambda c: c.R(), lambda c: c.U(), lambda c: c.D(), lambda c: c.F(), lambda c: c.B()]
 #	eF = [lambda cube: cube.F() for n in range(3)]
 #	eR = [lambda cube: cube.R() for n in range(3)]
@@ -253,15 +255,17 @@ def Charles_Rubiks():
 		States.append(n)
 	print(States)
 	t = False
+	x = 1
 	while t == False:
-		for x in range(1, len(States)):
+		while x <= len(States):
 			f = States[x]
 			for l in yet_moves:
 				mov = l(f)
 				States.append(mov)
 				if mov.is_solved() == True:
-					print("Solved by {}".format(mov.moves))
+					print("{} Solved by {}".format(my_cube, mov.moves))
 					t = True
+			x += 1
 #	for e in States:
 #		print(e, e.moves)
 """ I love you, my precious Father Mark William Watters. I love you unconditionally
