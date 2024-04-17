@@ -45,11 +45,17 @@ class Unsolved_Rubiks:
 		new_state = Unsolved_Rubiks(new_matrix, n)
 		return new_state
 	def R_inv(self):
-		for n in range(0, 3, 1):
-			new_state = self.R()
-		return new_state
+		raise NotImplementedError
+#		new_state = self.R()
+#		new_state = new_state.R()
+#		new_state = new_state.R()
+#		new_state.moves.pop()
+#		new_state.moves.pop()
+#		new_state.moves.pop()
+#		new_state.moves.append("R inverse")
+#		return new_state
 	def R2(self):
-		return
+		raise NotImplementedError
 	def L(self):
 		tL = self.state[0].copy()
 		tF = self.state[1].copy()
@@ -75,13 +81,9 @@ class Unsolved_Rubiks:
 		new_state = Unsolved_Rubiks(new_matrix, n)
 		return new_state
 	def L_inv(self):
-		for n in range(0, 3, 1):
-			new_state = self.L()
-		return new_state
+		raise NotImplementedError
 	def L2(self):
-		for n in range(0, 2):
-			new_state = self.L()
-		return new_state
+		raise NotImplementedError
 	def F(self):
 		tL = self.state[0].copy()
 		tF = self.state[1].copy()
@@ -108,13 +110,9 @@ class Unsolved_Rubiks:
 		new_state = Unsolved_Rubiks(new_matrix, n)
 		return new_state
 	def F_inv(self):
-		for n in range(0, 3):
-			new_state = self.F()
-		return new_state
+		raise NotImplementedError
 	def F2(self):
-		for n in range(0, 2):
-			new_state = self.F()
-		return new_state
+		raise NotImplementedError
 	def B(self):
 		tL = self.state[0].copy()
 		tF = self.state[1].copy()
@@ -141,13 +139,9 @@ class Unsolved_Rubiks:
 		new_state = Unsolved_Rubiks(new_matrix, n)
 		return new_state
 	def B_inv(self):
-		for n in range(0, 3, 1):
-			new_state = self.B()
-		return new_state
+		raise NotImplementedError
 	def B2(self):
-		for n in range(0, 2):
-			new_state = self.B()
-		return new_state
+		raise NotImplementedError
 	def U(self):
 		tL = self.state[0].copy()
 		tF = self.state[1].copy()
@@ -174,13 +168,9 @@ class Unsolved_Rubiks:
 		new_state = Unsolved_Rubiks(new_matrix, n)
 		return new_state
 	def U2(self):
-		for n in range(0, 2):
-			new_state = self.U()
-		return new_state
+		raise NotImplementedError
 	def U_inv(self):
-		for n in range(0, 3, 1):
-			new_state = self.U()
-		return new_state
+		raise NotImplementedError
 	def D(self):
 		tL = self.state[0].copy()
 		tF = self.state[1].copy()
@@ -207,13 +197,9 @@ class Unsolved_Rubiks:
 		new_state = Unsolved_Rubiks(new_matrix, n)
 		return new_state
 	def D_inv(self):
-		for n in range(0, 3, 1):
-			new_state = self.D()
-		return new_state
+		raise NotImplementedError
 	def D2(self):
-		for n in range(0, 2):
-			new_state = self.D()
-		return new_state
+		raise NotImplementedError
 	def __str__(self):
 		return str("Left: {} Front: {} Right: {} Back: {} Up: {} Down: {}".format(self.state[0], self.state[1], self.state[2], self.state[3], self.state[4], self.state[5]))
 
@@ -228,24 +214,10 @@ def Charles_Rubiks():
 	print(ns)
 	print(ns.R(), ns.L())
 	my_cube = [["B", "R", "B", "Y"], ["W", "B", "G", "G"], ["O", "O", "Y", "R"], ["G", "O", "W", "R"], ["Y", "W", "G", "W"], ["R", "O", "Y", "B"]]
-	state = Unsolved_Rubiks(ns.state, [])
+	state = Unsolved_Rubiks(my_cube, [])
 #	noviy = ns.state.copy()
 	yet_moves =[lambda c: c.L(), lambda c: c.R(), lambda c: c.U(), lambda c: c.D(), lambda c: c.F(), lambda c: c.B()]
-#	eF = [lambda cube: cube.F() for n in range(3)]
-#	eR = [lambda cube: cube.R() for n in range(3)]
-#	eD = [lambda cube: cube.D() for n in range(3)]
-#	eU = [lambda cube: cube.U() for n in range(3)]
-#	for e in eU:
-#		ns = e(state)
-#	for e in eD:
-#		ns = e(ns)
-#	for e in eR:
-#		ns = e(ns)
-#	for e in eF:
-#		ns = e(ns)
-#	print("ns state: ")
-#	print(ns.state)
-#	ns.is_solved()
+#	Can't solve my cube just as of yet
 	States = []
 	States.append(state)
 	print(state.state, state.moves)
@@ -266,29 +238,13 @@ def Charles_Rubiks():
 					print("{} Solved by {}".format(ns.state, mov.moves))
 					t = True
 			x += 1
+	try:
+		Unsolved_Rubiks([["R", "R", "R", "R"], ["G", "G", "G", "G"], ["O", "O", "O", "O"], ["B", "B", "B", "B"], ["Y", "Y", "Y", "Y"], ["W", "W", "W", "W"]], [])
+	except NotImplementedError as e:
+		print(e)
 #	for e in States:
 #		print(e, e.moves)
 """ I love you, my precious Father Mark William Watters. I love you unconditionally
 All the credit for Tai as our carer
-
-ns
-Left: ['R', 'R', 'R', 'R'] Front: ['W', 'W', 'W', 'W'] Right: ['O', 'O', 'O', 'O'] Back: ['Y', 'Y', 'Y', 'Y'] Up: ['G', 'G', 'G', 'G'] Down: ['B', 'B', 'B', 'B']
-Left: ['R', 'R', 'R', 'R'] Front: ['W', 'B', 'W', 'B'] Right: ['O', 'O', 'O', 'O'] Back: ['G', 'Y', 'G', 'Y'] Up: ['G', 'W', 'G', 'W'] Down: ['B', 'Y', 'B', 'Y'] Left: ['R', 'R', 'R', 'R'] Front: ['B', 'W', 'B', 'W'] Right: ['O', 'O', 'O', 'O'] Back: ['Y', 'G', 'Y', 'G'] Up: ['W', 'G', 'W', 'G'] Down: ['Y', 'B', 'Y', 'B']
-[['R', 'R', 'R', 'R'], ['W', 'W', 'W', 'W'], ['O', 'O', 'O', 'O'], ['Y', 'Y', 'Y', 'Y'], ['G', 'G', 'G', 'G'], ['B', 'B', 'B', 'B']] []
-Left: ['R', 'R', 'R', 'R'] Front: ['B', 'W', 'B', 'W'] Right: ['O', 'O', 'O', 'O'] Back: ['Y', 'G', 'Y', 'G'] Up: ['W', 'G', 'W', 'G'] Down: ['Y', 'B', 'Y', 'B'] ['L']
-Left: ['R', 'R', 'R', 'R'] Front: ['W', 'B', 'W', 'B'] Right: ['O', 'O', 'O', 'O'] Back: ['G', 'Y', 'G', 'Y'] Up: ['G', 'W', 'G', 'W'] Down: ['B', 'Y', 'B', 'Y'] ['R']
-Left: ['W', 'W', 'R', 'R'] Front: ['O', 'O', 'W', 'W'] Right: ['Y', 'Y', 'O', 'O'] Back: ['R', 'R', 'Y', 'Y'] Up: ['G', 'G', 'G', 'G'] Down: ['B', 'B', 'B', 'B'] ['U']
-Left: ['R', 'R', 'Y', 'Y'] Front: ['W', 'W', 'R', 'R'] Right: ['O', 'O', 'W', 'W'] Back: ['Y', 'Y', 'O', 'O'] Up: ['G', 'G', 'G', 'G'] Down: ['B', 'B', 'B', 'B'] ['D']
-Left: ['R', 'B', 'R', 'B'] Front: ['W', 'W', 'W', 'W'] Right: ['G', 'O', 'G', 'O'] Back: ['Y', 'Y', 'Y', 'Y'] Up: ['G', 'G', 'R', 'R'] Down: ['O', 'O', 'B', 'B'] ['F']
-Left: ['B', 'R', 'B', 'R'] Front: ['W', 'W', 'W', 'W'] Right: ['O', 'G', 'O', 'G'] Back: ['Y', 'Y', 'Y', 'Y'] Up: ['R', 'R', 'G', 'G'] Down: ['B', 'B', 'O', 'O'] ['B']
-[<__main__.Unsolved_Rubiks object at 0x7125b54b10>, <__main__.Unsolved_Rubiks object at 0x7125b54a90>, <__main__.Unsolved_Rubiks object at 0x7125b54a10>, <__main__.Unsolved_Rubiks object at 0x7125b55190>, <__main__.Unsolved_Rubiks object at 0x7125b553d0>, <__main__.Unsolved_Rubiks object at 0x7125b55650>, <__main__.Unsolved_Rubiks object at 0x7125b55890>]
-State: [['R', 'R', 'R', 'R'], ['G', 'G', 'G', 'G'], ['O', 'O', 'O', 'O'], ['B', 'B', 'B', 'B'], ['Y', 'Y', 'Y', 'Y'], ['W', 'W', 'W', 'W']] Solved by: ['R', 'L', 'R', 'L', 'R', 'L']
-[['R', 'R', 'R', 'R'], ['W', 'W', 'W', 'W'], ['O', 'O', 'O', 'O'], ['Y', 'Y', 'Y', 'Y'], ['G', 'G', 'G', 'G'], ['B', 'B', 'B', 'B']] Solved by ['R', 'L', 'R', 'L', 'R', 'L']
-State: [['R', 'R', 'R', 'R'], ['G', 'G', 'G', 'G'], ['O', 'O', 'O', 'O'], ['B', 'B', 'B', 'B'], ['Y', 'Y', 'Y', 'Y'], ['W', 'W', 'W', 'W']] Solved by: ['R', 'L', 'R', 'L', 'B', 'R', 'L', 'D']
-[['R', 'R', 'R', 'R'], ['W', 'W', 'W', 'W'], ['O', 'O', 'O', 'O'], ['Y', 'Y', 'Y', 'Y'], ['G', 'G', 'G', 'G'], ['B', 'B', 'B', 'B']] Solved by ['R', 'L', 'R', 'L', 'B', 'R', 'L', 'D']
-State: [['R', 'R', 'R', 'R'], ['G', 'G', 'G', 'G'], ['O', 'O', 'O', 'O'], ['B', 'B', 'B', 'B'], ['Y', 'Y', 'Y', 'Y'], ['W', 'W', 'W', 'W']] Solved by: ['R', 'L', 'B', 'R', 'L', 'D', 'R', 'L']
-[['R', 'R', 'R', 'R'], ['W', 'W', 'W', 'W'], ['O', 'O', 'O', 'O'], ['Y', 'Y', 'Y', 'Y'], ['G', 'G', 'G', 'G'], ['B', 'B', 'B', 'B']] Solved by ['R', 'L', 'B', 'R', 'L', 'D', 'R', 'L']
-State: [['R', 'R', 'R', 'R'], ['G', 'G', 'G', 'G'], ['O', 'O', 'O', 'O'], ['B', 'B', 'B', 'B'], ['Y', 'Y', 'Y', 'Y'], ['W', 'W', 'W', 'W']] Solved by: ['B', 'R', 'L', 'D', 'R', 'L', 'R', 'L']
-[['R', 'R', 'R', 'R'], ['W', 'W', 'W', 'W'], ['O', 'O', 'O', 'O'], ['Y', 'Y', 'Y', 'Y'], ['G', 'G', 'G', 'G'], ['B', 'B', 'B', 'B']] Solved by ['B', 'R', 'L', 'D', 'R', 'L', 'R', 'L']
-"""
+""" 
 Charles_Rubiks()
