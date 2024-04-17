@@ -6,6 +6,8 @@
 # Certified in Data Science in Using Python for Research PH556 (Harvard Centre for Continuing Education, Harvard Extension School)
 # Love you high rollin Dad, Mark William Watters
 # Not finished yet. Need to get off my phone, pesky stalkerware malware, Android c&C
+# Gamma 6 for all possible states, will stochastically and combinatorially allow for 6! possible face directions, but that is implausible as faces are arranged in opposite 
+settings
 import sys
 class Unsolved_Rubiks:
 	def __init__(self, state, moves):
