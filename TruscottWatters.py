@@ -304,5 +304,5 @@ Charles_Rubiks()
 # Thank you Byron Bay Woolworths and Australia Post, could not have a sanitized home or meals on wheels without you
 # Thank you Services Australia and NDIS
 # Thank you Byron Central Hospital Tuckeroo.
-# I have paranoid Schizophrenia, am blind, have a brain tumpur injury, varicose veins and a memory disorder
+# I have paranoid Schizophrenia, am blind, have a brain tumour injury, varicose veins and a memory disorder
 # Clozapine working a miracle
