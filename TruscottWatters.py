@@ -4,23 +4,25 @@
 # Certified in Computational Thinking using Python from MITx
 # Certified in Data Science in Using Python for Research PH556 (Harvard Centre for Continuing Education, Harvard Extension School)
 # Love you high rollin Dad, Mark William Watters
-# Until tommorrow
+import sys
 class Unsolved_Rubiks:
 	def __init__(self, state, moves):
 		self.state = state.copy()
 		self.moves = moves
+		self.moves = []
 	def is_solved(self):
 		solved_state = [["R", "R", "R", "R"], ["G", "G", "G", "G"], ["O", "O", "O", "O"], ["B", "B", "B", "B"], ["Y", "Y", "Y", "Y"], ["W", "W", "W", "W"]]
 		if self.state == solved_state:
 			print("Solved by: {}".format(self.moves))
-			return self.moves
+			sys.exit()
+			
 	def R(self):
-		tL = self.state[0]
-		tF = self.state[1]
-		tR = self.state[2]
-		tB = self.state[3]
-		tU = self.state[4]
-		tD = self.state[5]
+		tL = self.state[0].copy()
+		tF = self.state[1].copy()
+		tR = self.state[2].copy()
+		tB = self.state[3].copy()
+		tU = self.state[4].copy()
+		tD = self.state[5].copy()
 		
 		prev_L = tL.copy()
 		prev_R = tR.copy()
@@ -33,8 +35,9 @@ class Unsolved_Rubiks:
 		tF[1], tF[3] = prev_D[1], prev_D[3]
 		tD[1], tD[3] = prev_B[0], prev_B[1]
 		tB[0], tB[2] = prev_U[3], prev_U[1]
-		self.moves.append("R")
-		new_state = Unsolved_Rubiks(self.state.copy(), self.moves.copy())
+		new_matrix = [tL, tF, tR, tB, tU, tD]
+#		self.moves.append("R")
+		new_state = Unsolved_Rubiks(new_matrix, self.moves.copy())
 		return new_state
 	def R_inv(self):
 		for n in range(0, 3, 1):
@@ -45,13 +48,12 @@ class Unsolved_Rubiks:
 			new_state = self.R()
 		return new_state
 	def L(self):
-		tL = self.state[0]
-		tF = self.state[1]
-		tR = self.state[2]
-		tB = self.state[3]
-		tU = self.state[4]
-		tD = self.state[5]
-		
+		tL = self.state[0].copy()
+		tF = self.state[1].copy()
+		tR = self.state[2].copy()
+		tB = self.state[3].copy()
+		tU = self.state[4].copy()
+		tD = self.state[5].copy()
 		prev_L = tL.copy()
 		prev_R = tR.copy
 		prev_F = tF.copy()
@@ -63,8 +65,9 @@ class Unsolved_Rubiks:
 		tB[1], tB[3] = prev_U[2], prev_U[0]
 		tU[0], tU[2] = prev_F[0], prev_F[2]
 		tD[0], tD[2] = prev_B[3], prev_B[1]
-		self.moves.append("L")
-		new_state = Unsolved_Rubiks(self.state.copy(), self.moves.copy())
+		new_matrix = [tL, tF, tR, tB, tU, tD]
+#		self.moves.append("L")
+		new_state = Unsolved_Rubiks(new_matrix, self.moves.copy())
 		return new_state
 	def L_inv(self):
 		for n in range(0, 3, 1):
@@ -75,12 +78,12 @@ class Unsolved_Rubiks:
 			new_state = self.L()
 		return new_state
 	def F(self):
-		tL = self.state[0]
-		tF = self.state[1]
-		tR = self.state[2]
-		tB = self.state[3]
-		tU = self.state[4]
-		tD = self.state[5]
+		tL = self.state[0].copy()
+		tF = self.state[1].copy()
+		tR = self.state[2].copy()
+		tB = self.state[3].copy()
+		tU = self.state[4].copy()
+		tD = self.state[5].copy()
 		
 		prev_L = tL.copy()
 		prev_R = tR.copy()
@@ -93,8 +96,9 @@ class Unsolved_Rubiks:
 		tL[1], tL[3] = prev_D[0], prev_D[1]
 		tD[0], tD[1] = prev_R[2], prev_R[0]
 		tR[2], tR[0] = prev_U[3], prev_U[2]
-		self.moves.append("F")
-		new_state = Unsolved_Rubiks(self.state.copy(), self.moves.copy())
+		new_matrix = [tL, tF, tR, tB, tU, tD]
+#		self.moves.append("F")
+		new_state = Unsolved_Rubiks(new_matrix, self.moves.copy())
 		return new_state
 	def F_inv(self):
 		for n in range(0, 3):
@@ -105,12 +109,12 @@ class Unsolved_Rubiks:
 			new_state = self.F()
 		return new_state
 	def B(self):
-		tL = self.state[0]
-		tF = self.state[1]
-		tR = self.state[2]
-		tB = self.state[3]
-		tU = self.state[4]
-		tD = self.state[5]
+		tL = self.state[0].copy()
+		tF = self.state[1].copy()
+		tR = self.state[2].copy()
+		tB = self.state[3].copy()
+		tU = self.state[4].copy()
+		tD = self.state[5].copy()
 	
 		prev_L = tL.copy()
 		prev_R = tR.copy()
@@ -123,8 +127,9 @@ class Unsolved_Rubiks:
 		tL[0], tL[2] = prev_D[2], prev_D[3]
 		tD[2], tD[3] = prev_R[3], prev_R[1]
 		tR[1], tR[3] = prev_U[0], prev_U[1]
-		self.moves.append("B")
-		new_state = Unsolved_Rubiks(self.state.copy(), self.moves.copy())
+		new_matrix = [tL, tF, tR, tB, tU, tD]
+#		self.moves.append("B")
+		new_state = Unsolved_Rubiks(new_matrix, self.moves.copy())
 		return new_state
 	def B_inv(self):
 		for n in range(0, 3, 1):
@@ -135,12 +140,12 @@ class Unsolved_Rubiks:
 			new_state = self.B()
 		return new_state
 	def U(self):
-		tL = self.state[0]
-		tF = self.state[1]
-		tR = self.state[2]
-		tB = self.state[3]
-		tU = self.state[4]
-		tD = self.state[5]
+		tL = self.state[0].copy()
+		tF = self.state[1].copy()
+		tR = self.state[2].copy()
+		tB = self.state[3].copy()
+		tU = self.state[4].copy()
+		tD = self.state[5].copy()
 		
 		prev_L = tL.copy()
 		prev_R = tR.copy()
@@ -153,8 +158,9 @@ class Unsolved_Rubiks:
 		tB[0], tB[1] = prev_R[0], prev_R[1]
 		tR[0], tR[1] = prev_F[0], prev_F[1]
 		tF[0], tF[1] = prev_L[0], prev_L[1]
-		self.moves.append("U")
-		new_state = Unsolved_Rubiks(self.state.copy(), self.moves.copy())
+		new_matrix = [tL, tF, tR, tB, tU, tD]
+#		self.moves.append("U")
+		new_state = Unsolved_Rubiks(new_matrix, self.moves.copy())
 		return new_state
 	def U2(self):
 		for n in range(0, 2):
@@ -165,12 +171,12 @@ class Unsolved_Rubiks:
 			new_state = self.U()
 		return new_state
 	def D(self):
-		tL = self.state[0]
-		tF = self.state[1]
-		tR = self.state[2]
-		tB = self.state[3]
-		tU = self.state[4]
-		tD = self.state[5]
+		tL = self.state[0].copy()
+		tF = self.state[1].copy()
+		tR = self.state[2].copy()
+		tB = self.state[3].copy()
+		tU = self.state[4].copy()
+		tD = self.state[5].copy()
 		
 		prev_L = tL.copy()
 		prev_R = tR.copy()
@@ -183,8 +189,9 @@ class Unsolved_Rubiks:
 		tB[2], tB[3] = prev_R[2], prev_R[3]
 		tR[2], tR[3] = prev_F[2], prev_F[3]
 		tF[2], tF[3] = prev_L[2], prev_L[3]
-		self.moves.append("D")
-		new_state = Unsolved_Rubiks(self.state.copy(), self.moves.copy())
+		new_matrix = [tL, tF, tR, tB, tU, tD]
+#		self.moves.append("D")
+		new_state = Unsolved_Rubiks(new_matrix, self.moves.copy())
 		return new_state
 	def D_inv(self):
 		for n in range(0, 3, 1):
@@ -199,470 +206,21 @@ class Unsolved_Rubiks:
 
 def Charles_Rubiks():
 	unsolved_state = [["R", "R", "R", "R"], ["G", "G", "G", "G"], ["O", "O", "O", "O"], ["B", "B", "B", "B"], ["Y", "Y", "Y", "Y"], ["W", "W", "W", "W"]]
-#	moves = [lambda C: C.R(), lambda C: C.R_inv(), lambda C: C.R2(), lambda C: C.L(), lambda C: C.L_inv(), lambda C: C.L2(), lambda C: C.F(), lambda C: C.F_inv(), lambda C: C.F2(), lambda C: C.B(), lambda C: C.B_inv(), lambda C: C.B2(), lambda C: C.U(), lambda C: C.U_inv(), lambda C: C.U2(), lambda C:C.D(), lambda C: C.D_inv(), lambda C: C.D2()]
-#	moved = []
-#	moved.append(Unsolved_Rubiks(unsolved_state, {}, 0))
-#	for n in range(len(moves)):
-#		moved.append(moves[n](moved[0]))
-#	print(moved)
-#	for e in moved:
-#		print(e.state)
-	cube = Unsolved_Rubiks(unsolved_state, [])
-#	yet_moves = [lambda cube: cube.F(), lambda cube: cube.F2(), lambda cube: cube.F(), lambda cube: cube.R(), lambda cube: cube.L()]
-#	yet_moves = [lambda cube: cube.B(), lambda cube: cube.F()]
-	yet_moves = [lambda cube: cube.U(), lambda cube: cube.D()]
+
+	yet_moves = [lambda cube: cube.R(), lambda cube: cube.R2(), lambda cube: cube.R_inv(), lambda cube: cube.L(), lambda cube: cube.L2(), lambda cube: cube.L_inv(), lambda cube: cube.F(), lambda cube: cube.F2(), lambda cube: cube.F_inv(), lambda cube: cube.B(), lambda cube: cube.B2(), lambda cube: cube.B_inv(), lambda cube: cube.U(), lambda cube: cube.U2(), lambda cube: cube.U_inv(), lambda cube: cube.D(), lambda cube: cube.D2(), lambda cube: cube.D_inv()]
 	moved = []
-	moved.append(cube)
-	c = 0
-	while c <= 18 ** 2:
-		for l in yet_moves:
-			n = l(moved[c])
-			moved.append(n)
-			n.is_solved()
-#		print(moved)
-		c += 1
-		
-		print("State: {} Moves: {}".format(n, n.moves))
-"""
-State: Left: ['R', 'W', 'R', 'W'] Front: ['G', 'G', 'G', 'G'] Right: ['Y', 'O', 'Y', 'O'] Back: ['B', 'B', 'B', 'B'] Up: ['Y', 'Y', 'R', 'R'] Down: ['O', 'O', 'W', 'W'] Moves: ['F']
-State: Left: ['R', 'Y', 'R', 'Y'] Front: ['G', 'G', 'G', 'G'] Right: ['W', 'O', 'W', 'O'] Back: ['B', 'B', 'B', 'B'] Up: ['Y', 'Y', 'O', 'O'] Down: ['R', 'R', 'W', 'W'] Moves: ['F', 'F', 'F']
-State: Left: ['R', 'Y', 'R', 'Y'] Front: ['G', 'R', 'G', 'W'] Right: ['W', 'W', 'O', 'O'] Back: ['O', 'B', 'Y', 'B'] Up: ['Y', 'G', 'O', 'G'] Down: ['R', 'B', 'W', 'B'] Moves: ['F', 'F', 'F', 'R']
-State: Left: ['Y', 'Y', 'R', 'R'] Front: ['R', 'R', 'W', 'W'] Right: ['W', 'W', 'O', 'O'] Back: ['O', 'O', 'Y', 'Y'] Up: ['G', 'G', 'G', 'G'] Down: ['B', 'B', 'B', 'B'] Moves: ['F', 'F', 'F', 'R', 'L']
+	moved.append(Unsolved_Rubiks(unsolved_state, []))
+	print(moved[0])
+	L = []
+	for l in yet_moves:
+		moved.append(l(moved[0]))
+	import sys
+	for e in moved:
+		if e.is_solved() == True:
+			break
+		print("State: {}, moves: {}".format(e, e.moves))
+	
 
-[Program finished]
-
-State: Left: ['R', 'W', 'R', 'W'] Front: ['G', 'G', 'G', 'G'] Right: ['Y', 'O', 'Y', 'O'] Back: ['B', 'B', 'B', 'B'] Up: ['Y', 'Y', 'R', 'R'] Down: ['O', 'O', 'W', 'W'] Moves: ['F']
-State: Left: ['R', 'Y', 'R', 'Y'] Front: ['G', 'G', 'G', 'G'] Right: ['W', 'O', 'W', 'O'] Back: ['B', 'B', 'B', 'B'] Up: ['Y', 'Y', 'O', 'O'] Down: ['R', 'R', 'W', 'W'] Moves: ['F', 'F', 'F']
-State: Left: ['R', 'R', 'R', 'R'] Front: ['G', 'G', 'G', 'G'] Right: ['O', 'O', 'O', 'O'] Back: ['B', 'B', 'B', 'B'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['F', 'F', 'F', 'F']
-State: Left: ['R', 'R', 'R', 'R'] Front: ['G', 'W', 'G', 'W'] Right: ['O', 'O', 'O', 'O'] Back: ['Y', 'B', 'Y', 'B'] Up: ['Y', 'G', 'Y', 'G'] Down: ['W', 'B', 'W', 'B'] Moves: ['F', 'F', 'F', 'F', 'R']
-State: Left: ['R', 'R', 'R', 'R'] Front: ['W', 'W', 'W', 'W'] Right: ['O', 'O', 'O', 'O'] Back: ['Y', 'Y', 'Y', 'Y'] Up: ['G', 'G', 'G', 'G'] Down: ['B', 'B', 'B', 'B'] Moves: ['F', 'F', 'F', 'F', 'R', 'L']
-
-[Program finished]
-State: Left: ['W', 'R', 'W', 'R'] Front: ['G', 'G', 'G', 'G'] Right: ['O', 'Y', 'O', 'Y'] Back: ['B', 'B', 'B', 'B'] Up: ['R', 'R', 'Y', 'Y'] Down: ['W', 'W', 'O', 'O'] Moves: ['B']
-State: Left: ['W', 'W', 'W', 'W'] Front: ['G', 'G', 'G', 'G'] Right: ['Y', 'Y', 'Y', 'Y'] Back: ['B', 'B', 'B', 'B'] Up: ['R', 'R', 'R', 'R'] Down: ['O', 'O', 'O', 'O'] Moves: ['B', 'F']
-
-[Program finished]
-
-State: Left: ['B', 'B', 'R', 'R'] Front: ['R', 'R', 'G', 'G'] Right: ['G', 'G', 'O', 'O'] Back: ['O', 'O', 'B', 'B'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U']
-State: Left: ['G', 'G', 'R', 'R'] Front: ['O', 'O', 'G', 'G'] Right: ['B', 'B', 'O', 'O'] Back: ['R', 'R', 'B', 'B'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'U']
-State: Left: ['R', 'R', 'R', 'R'] Front: ['G', 'G', 'G', 'G'] Right: ['O', 'O', 'O', 'O'] Back: ['B', 'B', 'B', 'B'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'U', 'U']
-
-[Program finished]
-
-State: Left: ['B', 'B', 'R', 'R'] Front: ['R', 'R', 'G', 'G'] Right: ['G', 'G', 'O', 'O'] Back: ['O', 'O', 'B', 'B'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U']
-State: Left: ['B', 'B', 'B', 'B'] Front: ['R', 'R', 'R', 'R'] Right: ['G', 'G', 'G', 'G'] Back: ['O', 'O', 'O', 'O'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'D']
-
-[Program finished]
-
-State: Left: ['B', 'B', 'B', 'B'] Front: ['R', 'R', 'R', 'R'] Right: ['G', 'G', 'G', 'G'] Back: ['O', 'O', 'O', 'O'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'D']
-State: Left: ['O', 'O', 'O', 'O'] Front: ['B', 'B', 'B', 'B'] Right: ['R', 'R', 'R', 'R'] Back: ['G', 'G', 'G', 'G'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'D']
-State: Left: ['G', 'G', 'G', 'G'] Front: ['O', 'O', 'O', 'O'] Right: ['B', 'B', 'B', 'B'] Back: ['R', 'R', 'R', 'R'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'D', 'U', 'D']
-Solved by: ['U', 'U', 'U', 'D']
-State: Left: ['R', 'R', 'R', 'R'] Front: ['G', 'G', 'G', 'G'] Right: ['O', 'O', 'O', 'O'] Back: ['B', 'B', 'B', 'B'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'U', 'D']
-State: Left: ['B', 'B', 'B', 'B'] Front: ['R', 'R', 'R', 'R'] Right: ['G', 'G', 'G', 'G'] Back: ['O', 'O', 'O', 'O'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'D', 'U', 'D']
-State: Left: ['O', 'O', 'O', 'O'] Front: ['B', 'B', 'B', 'B'] Right: ['R', 'R', 'R', 'R'] Back: ['G', 'G', 'G', 'G'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'D', 'U', 'U', 'D']
-State: Left: ['G', 'G', 'G', 'G'] Front: ['O', 'O', 'O', 'O'] Right: ['B', 'B', 'B', 'B'] Back: ['R', 'R', 'R', 'R'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'D', 'U', 'D', 'U', 'D']
-Solved by: ['U', 'U', 'U', 'U', 'D']
-State: Left: ['R', 'R', 'R', 'R'] Front: ['G', 'G', 'G', 'G'] Right: ['O', 'O', 'O', 'O'] Back: ['B', 'B', 'B', 'B'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'U', 'U', 'D']
-State: Left: ['B', 'B', 'B', 'B'] Front: ['R', 'R', 'R', 'R'] Right: ['G', 'G', 'G', 'G'] Back: ['O', 'O', 'O', 'O'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'U', 'D', 'U', 'D']
-State: Left: ['O', 'O', 'O', 'O'] Front: ['B', 'B', 'B', 'B'] Right: ['R', 'R', 'R', 'R'] Back: ['G', 'G', 'G', 'G'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'D', 'U', 'U', 'D']
-State: Left: ['G', 'G', 'G', 'G'] Front: ['O', 'O', 'O', 'O'] Right: ['B', 'B', 'B', 'B'] Back: ['R', 'R', 'R', 'R'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'D', 'U', 'D', 'U', 'D']
-Solved by: ['U', 'D', 'U', 'U', 'U', 'D']
-State: Left: ['R', 'R', 'R', 'R'] Front: ['G', 'G', 'G', 'G'] Right: ['O', 'O', 'O', 'O'] Back: ['B', 'B', 'B', 'B'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'D', 'U', 'U', 'U', 'D']
-State: Left: ['B', 'B', 'B', 'B'] Front: ['R', 'R', 'R', 'R'] Right: ['G', 'G', 'G', 'G'] Back: ['O', 'O', 'O', 'O'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'D', 'U', 'U', 'D', 'U', 'D']
-State: Left: ['O', 'O', 'O', 'O'] Front: ['B', 'B', 'B', 'B'] Right: ['R', 'R', 'R', 'R'] Back: ['G', 'G', 'G', 'G'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'D', 'U', 'D', 'U', 'U', 'D']
-State: Left: ['G', 'G', 'G', 'G'] Front: ['O', 'O', 'O', 'O'] Right: ['B', 'B', 'B', 'B'] Back: ['R', 'R', 'R', 'R'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'D', 'U', 'D', 'U', 'D', 'U', 'D']
-Solved by: ['U', 'U', 'U', 'U', 'U', 'D']
-State: Left: ['R', 'R', 'R', 'R'] Front: ['G', 'G', 'G', 'G'] Right: ['O', 'O', 'O', 'O'] Back: ['B', 'B', 'B', 'B'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'U', 'U', 'U', 'D']
-State: Left: ['B', 'B', 'B', 'B'] Front: ['R', 'R', 'R', 'R'] Right: ['G', 'G', 'G', 'G'] Back: ['O', 'O', 'O', 'O'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'U', 'U', 'D', 'U', 'D']
-State: Left: ['O', 'O', 'O', 'O'] Front: ['B', 'B', 'B', 'B'] Right: ['R', 'R', 'R', 'R'] Back: ['G', 'G', 'G', 'G'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'U', 'D', 'U', 'U', 'D']
-State: Left: ['G', 'G', 'G', 'G'] Front: ['O', 'O', 'O', 'O'] Right: ['B', 'B', 'B', 'B'] Back: ['R', 'R', 'R', 'R'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'U', 'D', 'U', 'D', 'U', 'D']
-Solved by: ['U', 'U', 'D', 'U', 'U', 'U', 'D']
-State: Left: ['R', 'R', 'R', 'R'] Front: ['G', 'G', 'G', 'G'] Right: ['O', 'O', 'O', 'O'] Back: ['B', 'B', 'B', 'B'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'D', 'U', 'U', 'U', 'D']
-State: Left: ['B', 'B', 'B', 'B'] Front: ['R', 'R', 'R', 'R'] Right: ['G', 'G', 'G', 'G'] Back: ['O', 'O', 'O', 'O'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'D', 'U', 'U', 'D', 'U', 'D']
-State: Left: ['O', 'O', 'O', 'O'] Front: ['B', 'B', 'B', 'B'] Right: ['R', 'R', 'R', 'R'] Back: ['G', 'G', 'G', 'G'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'D', 'U', 'D', 'U', 'U', 'D']
-State: Left: ['G', 'G', 'G', 'G'] Front: ['O', 'O', 'O', 'O'] Right: ['B', 'B', 'B', 'B'] Back: ['R', 'R', 'R', 'R'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'D', 'U', 'D', 'U', 'D', 'U', 'D']
-Solved by: ['U', 'D', 'U', 'U', 'U', 'U', 'D']
-State: Left: ['R', 'R', 'R', 'R'] Front: ['G', 'G', 'G', 'G'] Right: ['O', 'O', 'O', 'O'] Back: ['B', 'B', 'B', 'B'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'D', 'U', 'U', 'U', 'U', 'D']
-State: Left: ['B', 'B', 'B', 'B'] Front: ['R', 'R', 'R', 'R'] Right: ['G', 'G', 'G', 'G'] Back: ['O', 'O', 'O', 'O'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'D', 'U', 'U', 'U', 'D', 'U', 'D']
-State: Left: ['O', 'O', 'O', 'O'] Front: ['B', 'B', 'B', 'B'] Right: ['R', 'R', 'R', 'R'] Back: ['G', 'G', 'G', 'G'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'D', 'U', 'U', 'D', 'U', 'U', 'D']
-State: Left: ['G', 'G', 'G', 'G'] Front: ['O', 'O', 'O', 'O'] Right: ['B', 'B', 'B', 'B'] Back: ['R', 'R', 'R', 'R'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'D', 'U', 'U', 'D', 'U', 'D', 'U', 'D']
-Solved by: ['U', 'D', 'U', 'D', 'U', 'U', 'U', 'D']
-State: Left: ['R', 'R', 'R', 'R'] Front: ['G', 'G', 'G', 'G'] Right: ['O', 'O', 'O', 'O'] Back: ['B', 'B', 'B', 'B'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'D', 'U', 'D', 'U', 'U', 'U', 'D']
-State: Left: ['B', 'B', 'B', 'B'] Front: ['R', 'R', 'R', 'R'] Right: ['G', 'G', 'G', 'G'] Back: ['O', 'O', 'O', 'O'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'D', 'U', 'D', 'U', 'U', 'D', 'U', 'D']
-State: Left: ['O', 'O', 'O', 'O'] Front: ['B', 'B', 'B', 'B'] Right: ['R', 'R', 'R', 'R'] Back: ['G', 'G', 'G', 'G'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'D', 'U', 'D', 'U', 'D', 'U', 'U', 'D']
-State: Left: ['G', 'G', 'G', 'G'] Front: ['O', 'O', 'O', 'O'] Right: ['B', 'B', 'B', 'B'] Back: ['R', 'R', 'R', 'R'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'D', 'U', 'D', 'U', 'D', 'U', 'D', 'U', 'D']
-Solved by: ['U', 'U', 'U', 'U', 'U', 'U', 'D']
-State: Left: ['R', 'R', 'R', 'R'] Front: ['G', 'G', 'G', 'G'] Right: ['O', 'O', 'O', 'O'] Back: ['B', 'B', 'B', 'B'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'U', 'U', 'U', 'U', 'D']
-State: Left: ['B', 'B', 'B', 'B'] Front: ['R', 'R', 'R', 'R'] Right: ['G', 'G', 'G', 'G'] Back: ['O', 'O', 'O', 'O'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'U', 'U', 'U', 'D', 'U', 'D']
-State: Left: ['O', 'O', 'O', 'O'] Front: ['B', 'B', 'B', 'B'] Right: ['R', 'R', 'R', 'R'] Back: ['G', 'G', 'G', 'G'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'U', 'U', 'D', 'U', 'U', 'D']
-State: Left: ['G', 'G', 'G', 'G'] Front: ['O', 'O', 'O', 'O'] Right: ['B', 'B', 'B', 'B'] Back: ['R', 'R', 'R', 'R'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'U', 'U', 'D', 'U', 'D', 'U', 'D']
-Solved by: ['U', 'U', 'U', 'D', 'U', 'U', 'U', 'D']
-State: Left: ['R', 'R', 'R', 'R'] Front: ['G', 'G', 'G', 'G'] Right: ['O', 'O', 'O', 'O'] Back: ['B', 'B', 'B', 'B'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'U', 'D', 'U', 'U', 'U', 'D']
-State: Left: ['B', 'B', 'B', 'B'] Front: ['R', 'R', 'R', 'R'] Right: ['G', 'G', 'G', 'G'] Back: ['O', 'O', 'O', 'O'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'U', 'D', 'U', 'U', 'D', 'U', 'D']
-State: Left: ['O', 'O', 'O', 'O'] Front: ['B', 'B', 'B', 'B'] Right: ['R', 'R', 'R', 'R'] Back: ['G', 'G', 'G', 'G'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'U', 'D', 'U', 'D', 'U', 'U', 'D']
-State: Left: ['G', 'G', 'G', 'G'] Front: ['O', 'O', 'O', 'O'] Right: ['B', 'B', 'B', 'B'] Back: ['R', 'R', 'R', 'R'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'U', 'D', 'U', 'D', 'U', 'D', 'U', 'D']
-Solved by: ['U', 'U', 'D', 'U', 'U', 'U', 'U', 'D']
-State: Left: ['R', 'R', 'R', 'R'] Front: ['G', 'G', 'G', 'G'] Right: ['O', 'O', 'O', 'O'] Back: ['B', 'B', 'B', 'B'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'D', 'U', 'U', 'U', 'U', 'D']
-State: Left: ['B', 'B', 'B', 'B'] Front: ['R', 'R', 'R', 'R'] Right: ['G', 'G', 'G', 'G'] Back: ['O', 'O', 'O', 'O'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'D', 'U', 'U', 'U', 'D', 'U', 'D']
-State: Left: ['O', 'O', 'O', 'O'] Front: ['B', 'B', 'B', 'B'] Right: ['R', 'R', 'R', 'R'] Back: ['G', 'G', 'G', 'G'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'D', 'U', 'U', 'D', 'U', 'U', 'D']
-State: Left: ['G', 'G', 'G', 'G'] Front: ['O', 'O', 'O', 'O'] Right: ['B', 'B', 'B', 'B'] Back: ['R', 'R', 'R', 'R'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'D', 'U', 'U', 'D', 'U', 'D', 'U', 'D']
-Solved by: ['U', 'U', 'D', 'U', 'D', 'U', 'U', 'U', 'D']
-State: Left: ['R', 'R', 'R', 'R'] Front: ['G', 'G', 'G', 'G'] Right: ['O', 'O', 'O', 'O'] Back: ['B', 'B', 'B', 'B'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'D', 'U', 'D', 'U', 'U', 'U', 'D']
-State: Left: ['B', 'B', 'B', 'B'] Front: ['R', 'R', 'R', 'R'] Right: ['G', 'G', 'G', 'G'] Back: ['O', 'O', 'O', 'O'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'D', 'U', 'D', 'U', 'U', 'D', 'U', 'D']
-State: Left: ['O', 'O', 'O', 'O'] Front: ['B', 'B', 'B', 'B'] Right: ['R', 'R', 'R', 'R'] Back: ['G', 'G', 'G', 'G'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'D', 'U', 'D', 'U', 'D', 'U', 'U', 'D']
-State: Left: ['G', 'G', 'G', 'G'] Front: ['O', 'O', 'O', 'O'] Right: ['B', 'B', 'B', 'B'] Back: ['R', 'R', 'R', 'R'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'D', 'U', 'D', 'U', 'D', 'U', 'D', 'U', 'D']
-Solved by: ['U', 'D', 'U', 'U', 'U', 'U', 'U', 'D']
-State: Left: ['R', 'R', 'R', 'R'] Front: ['G', 'G', 'G', 'G'] Right: ['O', 'O', 'O', 'O'] Back: ['B', 'B', 'B', 'B'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'D', 'U', 'U', 'U', 'U', 'U', 'D']
-State: Left: ['B', 'B', 'B', 'B'] Front: ['R', 'R', 'R', 'R'] Right: ['G', 'G', 'G', 'G'] Back: ['O', 'O', 'O', 'O'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'D', 'U', 'U', 'U', 'U', 'D', 'U', 'D']
-State: Left: ['O', 'O', 'O', 'O'] Front: ['B', 'B', 'B', 'B'] Right: ['R', 'R', 'R', 'R'] Back: ['G', 'G', 'G', 'G'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'D', 'U', 'U', 'U', 'D', 'U', 'U', 'D']
-State: Left: ['G', 'G', 'G', 'G'] Front: ['O', 'O', 'O', 'O'] Right: ['B', 'B', 'B', 'B'] Back: ['R', 'R', 'R', 'R'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'D', 'U', 'U', 'U', 'D', 'U', 'D', 'U', 'D']
-Solved by: ['U', 'D', 'U', 'U', 'D', 'U', 'U', 'U', 'D']
-State: Left: ['R', 'R', 'R', 'R'] Front: ['G', 'G', 'G', 'G'] Right: ['O', 'O', 'O', 'O'] Back: ['B', 'B', 'B', 'B'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'D', 'U', 'U', 'D', 'U', 'U', 'U', 'D']
-State: Left: ['B', 'B', 'B', 'B'] Front: ['R', 'R', 'R', 'R'] Right: ['G', 'G', 'G', 'G'] Back: ['O', 'O', 'O', 'O'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'D', 'U', 'U', 'D', 'U', 'U', 'D', 'U', 'D']
-State: Left: ['O', 'O', 'O', 'O'] Front: ['B', 'B', 'B', 'B'] Right: ['R', 'R', 'R', 'R'] Back: ['G', 'G', 'G', 'G'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'D', 'U', 'U', 'D', 'U', 'D', 'U', 'U', 'D']
-State: Left: ['G', 'G', 'G', 'G'] Front: ['O', 'O', 'O', 'O'] Right: ['B', 'B', 'B', 'B'] Back: ['R', 'R', 'R', 'R'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'D', 'U', 'U', 'D', 'U', 'D', 'U', 'D', 'U', 'D']
-Solved by: ['U', 'D', 'U', 'D', 'U', 'U', 'U', 'U', 'D']
-State: Left: ['R', 'R', 'R', 'R'] Front: ['G', 'G', 'G', 'G'] Right: ['O', 'O', 'O', 'O'] Back: ['B', 'B', 'B', 'B'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'D', 'U', 'D', 'U', 'U', 'U', 'U', 'D']
-State: Left: ['B', 'B', 'B', 'B'] Front: ['R', 'R', 'R', 'R'] Right: ['G', 'G', 'G', 'G'] Back: ['O', 'O', 'O', 'O'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'D', 'U', 'D', 'U', 'U', 'U', 'D', 'U', 'D']
-State: Left: ['O', 'O', 'O', 'O'] Front: ['B', 'B', 'B', 'B'] Right: ['R', 'R', 'R', 'R'] Back: ['G', 'G', 'G', 'G'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'D', 'U', 'D', 'U', 'U', 'D', 'U', 'U', 'D']
-State: Left: ['G', 'G', 'G', 'G'] Front: ['O', 'O', 'O', 'O'] Right: ['B', 'B', 'B', 'B'] Back: ['R', 'R', 'R', 'R'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'D', 'U', 'D', 'U', 'U', 'D', 'U', 'D', 'U', 'D']
-Solved by: ['U', 'D', 'U', 'D', 'U', 'D', 'U', 'U', 'U', 'D']
-State: Left: ['R', 'R', 'R', 'R'] Front: ['G', 'G', 'G', 'G'] Right: ['O', 'O', 'O', 'O'] Back: ['B', 'B', 'B', 'B'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'D', 'U', 'D', 'U', 'D', 'U', 'U', 'U', 'D']
-State: Left: ['B', 'B', 'B', 'B'] Front: ['R', 'R', 'R', 'R'] Right: ['G', 'G', 'G', 'G'] Back: ['O', 'O', 'O', 'O'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'D', 'U', 'D', 'U', 'D', 'U', 'U', 'D', 'U', 'D']
-State: Left: ['O', 'O', 'O', 'O'] Front: ['B', 'B', 'B', 'B'] Right: ['R', 'R', 'R', 'R'] Back: ['G', 'G', 'G', 'G'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'D', 'U', 'D', 'U', 'D', 'U', 'D', 'U', 'U', 'D']
-State: Left: ['G', 'G', 'G', 'G'] Front: ['O', 'O', 'O', 'O'] Right: ['B', 'B', 'B', 'B'] Back: ['R', 'R', 'R', 'R'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'D', 'U', 'D', 'U', 'D', 'U', 'D', 'U', 'D', 'U', 'D']
-Solved by: ['U', 'U', 'U', 'U', 'U', 'U', 'U', 'D']
-State: Left: ['R', 'R', 'R', 'R'] Front: ['G', 'G', 'G', 'G'] Right: ['O', 'O', 'O', 'O'] Back: ['B', 'B', 'B', 'B'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'U', 'U', 'U', 'U', 'U', 'D']
-State: Left: ['B', 'B', 'B', 'B'] Front: ['R', 'R', 'R', 'R'] Right: ['G', 'G', 'G', 'G'] Back: ['O', 'O', 'O', 'O'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'U', 'U', 'U', 'U', 'D', 'U', 'D']
-State: Left: ['O', 'O', 'O', 'O'] Front: ['B', 'B', 'B', 'B'] Right: ['R', 'R', 'R', 'R'] Back: ['G', 'G', 'G', 'G'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'U', 'U', 'U', 'D', 'U', 'U', 'D']
-State: Left: ['G', 'G', 'G', 'G'] Front: ['O', 'O', 'O', 'O'] Right: ['B', 'B', 'B', 'B'] Back: ['R', 'R', 'R', 'R'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'U', 'U', 'U', 'D', 'U', 'D', 'U', 'D']
-Solved by: ['U', 'U', 'U', 'U', 'D', 'U', 'U', 'U', 'D']
-State: Left: ['R', 'R', 'R', 'R'] Front: ['G', 'G', 'G', 'G'] Right: ['O', 'O', 'O', 'O'] Back: ['B', 'B', 'B', 'B'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'U', 'U', 'D', 'U', 'U', 'U', 'D']
-State: Left: ['B', 'B', 'B', 'B'] Front: ['R', 'R', 'R', 'R'] Right: ['G', 'G', 'G', 'G'] Back: ['O', 'O', 'O', 'O'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'U', 'U', 'D', 'U', 'U', 'D', 'U', 'D']
-State: Left: ['O', 'O', 'O', 'O'] Front: ['B', 'B', 'B', 'B'] Right: ['R', 'R', 'R', 'R'] Back: ['G', 'G', 'G', 'G'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'U', 'U', 'D', 'U', 'D', 'U', 'U', 'D']
-State: Left: ['G', 'G', 'G', 'G'] Front: ['O', 'O', 'O', 'O'] Right: ['B', 'B', 'B', 'B'] Back: ['R', 'R', 'R', 'R'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'U', 'U', 'D', 'U', 'D', 'U', 'D', 'U', 'D']
-Solved by: ['U', 'U', 'U', 'D', 'U', 'U', 'U', 'U', 'D']
-State: Left: ['R', 'R', 'R', 'R'] Front: ['G', 'G', 'G', 'G'] Right: ['O', 'O', 'O', 'O'] Back: ['B', 'B', 'B', 'B'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'U', 'D', 'U', 'U', 'U', 'U', 'D']
-State: Left: ['B', 'B', 'B', 'B'] Front: ['R', 'R', 'R', 'R'] Right: ['G', 'G', 'G', 'G'] Back: ['O', 'O', 'O', 'O'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'U', 'D', 'U', 'U', 'U', 'D', 'U', 'D']
-State: Left: ['O', 'O', 'O', 'O'] Front: ['B', 'B', 'B', 'B'] Right: ['R', 'R', 'R', 'R'] Back: ['G', 'G', 'G', 'G'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'U', 'D', 'U', 'U', 'D', 'U', 'U', 'D']
-State: Left: ['G', 'G', 'G', 'G'] Front: ['O', 'O', 'O', 'O'] Right: ['B', 'B', 'B', 'B'] Back: ['R', 'R', 'R', 'R'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'U', 'D', 'U', 'U', 'D', 'U', 'D', 'U', 'D']
-Solved by: ['U', 'U', 'U', 'D', 'U', 'D', 'U', 'U', 'U', 'D']
-State: Left: ['R', 'R', 'R', 'R'] Front: ['G', 'G', 'G', 'G'] Right: ['O', 'O', 'O', 'O'] Back: ['B', 'B', 'B', 'B'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'U', 'D', 'U', 'D', 'U', 'U', 'U', 'D']
-State: Left: ['B', 'B', 'B', 'B'] Front: ['R', 'R', 'R', 'R'] Right: ['G', 'G', 'G', 'G'] Back: ['O', 'O', 'O', 'O'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'U', 'D', 'U', 'D', 'U', 'U', 'D', 'U', 'D']
-State: Left: ['O', 'O', 'O', 'O'] Front: ['B', 'B', 'B', 'B'] Right: ['R', 'R', 'R', 'R'] Back: ['G', 'G', 'G', 'G'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'U', 'D', 'U', 'D', 'U', 'D', 'U', 'U', 'D']
-State: Left: ['G', 'G', 'G', 'G'] Front: ['O', 'O', 'O', 'O'] Right: ['B', 'B', 'B', 'B'] Back: ['R', 'R', 'R', 'R'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'U', 'D', 'U', 'D', 'U', 'D', 'U', 'D', 'U', 'D']
-Solved by: ['U', 'U', 'D', 'U', 'U', 'U', 'U', 'U', 'D']
-State: Left: ['R', 'R', 'R', 'R'] Front: ['G', 'G', 'G', 'G'] Right: ['O', 'O', 'O', 'O'] Back: ['B', 'B', 'B', 'B'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'D', 'U', 'U', 'U', 'U', 'U', 'D']
-State: Left: ['B', 'B', 'B', 'B'] Front: ['R', 'R', 'R', 'R'] Right: ['G', 'G', 'G', 'G'] Back: ['O', 'O', 'O', 'O'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'D', 'U', 'U', 'U', 'U', 'D', 'U', 'D']
-State: Left: ['O', 'O', 'O', 'O'] Front: ['B', 'B', 'B', 'B'] Right: ['R', 'R', 'R', 'R'] Back: ['G', 'G', 'G', 'G'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'D', 'U', 'U', 'U', 'D', 'U', 'U', 'D']
-State: Left: ['G', 'G', 'G', 'G'] Front: ['O', 'O', 'O', 'O'] Right: ['B', 'B', 'B', 'B'] Back: ['R', 'R', 'R', 'R'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'D', 'U', 'U', 'U', 'D', 'U', 'D', 'U', 'D']
-Solved by: ['U', 'U', 'D', 'U', 'U', 'D', 'U', 'U', 'U', 'D']
-State: Left: ['R', 'R', 'R', 'R'] Front: ['G', 'G', 'G', 'G'] Right: ['O', 'O', 'O', 'O'] Back: ['B', 'B', 'B', 'B'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'D', 'U', 'U', 'D', 'U', 'U', 'U', 'D']
-State: Left: ['B', 'B', 'B', 'B'] Front: ['R', 'R', 'R', 'R'] Right: ['G', 'G', 'G', 'G'] Back: ['O', 'O', 'O', 'O'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'D', 'U', 'U', 'D', 'U', 'U', 'D', 'U', 'D']
-State: Left: ['O', 'O', 'O', 'O'] Front: ['B', 'B', 'B', 'B'] Right: ['R', 'R', 'R', 'R'] Back: ['G', 'G', 'G', 'G'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'D', 'U', 'U', 'D', 'U', 'D', 'U', 'U', 'D']
-State: Left: ['G', 'G', 'G', 'G'] Front: ['O', 'O', 'O', 'O'] Right: ['B', 'B', 'B', 'B'] Back: ['R', 'R', 'R', 'R'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'D', 'U', 'U', 'D', 'U', 'D', 'U', 'D', 'U', 'D']
-Solved by: ['U', 'U', 'D', 'U', 'D', 'U', 'U', 'U', 'U', 'D']
-State: Left: ['R', 'R', 'R', 'R'] Front: ['G', 'G', 'G', 'G'] Right: ['O', 'O', 'O', 'O'] Back: ['B', 'B', 'B', 'B'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'D', 'U', 'D', 'U', 'U', 'U', 'U', 'D']
-State: Left: ['B', 'B', 'B', 'B'] Front: ['R', 'R', 'R', 'R'] Right: ['G', 'G', 'G', 'G'] Back: ['O', 'O', 'O', 'O'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'D', 'U', 'D', 'U', 'U', 'U', 'D', 'U', 'D']
-State: Left: ['O', 'O', 'O', 'O'] Front: ['B', 'B', 'B', 'B'] Right: ['R', 'R', 'R', 'R'] Back: ['G', 'G', 'G', 'G'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'D', 'U', 'D', 'U', 'U', 'D', 'U', 'U', 'D']
-State: Left: ['G', 'G', 'G', 'G'] Front: ['O', 'O', 'O', 'O'] Right: ['B', 'B', 'B', 'B'] Back: ['R', 'R', 'R', 'R'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'D', 'U', 'D', 'U', 'U', 'D', 'U', 'D', 'U', 'D']
-Solved by: ['U', 'U', 'D', 'U', 'D', 'U', 'D', 'U', 'U', 'U', 'D']
-State: Left: ['R', 'R', 'R', 'R'] Front: ['G', 'G', 'G', 'G'] Right: ['O', 'O', 'O', 'O'] Back: ['B', 'B', 'B', 'B'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'D', 'U', 'D', 'U', 'D', 'U', 'U', 'U', 'D']
-State: Left: ['B', 'B', 'B', 'B'] Front: ['R', 'R', 'R', 'R'] Right: ['G', 'G', 'G', 'G'] Back: ['O', 'O', 'O', 'O'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'D', 'U', 'D', 'U', 'D', 'U', 'U', 'D', 'U', 'D']
-State: Left: ['O', 'O', 'O', 'O'] Front: ['B', 'B', 'B', 'B'] Right: ['R', 'R', 'R', 'R'] Back: ['G', 'G', 'G', 'G'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'D', 'U', 'D', 'U', 'D', 'U', 'D', 'U', 'U', 'D']
-State: Left: ['G', 'G', 'G', 'G'] Front: ['O', 'O', 'O', 'O'] Right: ['B', 'B', 'B', 'B'] Back: ['R', 'R', 'R', 'R'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'D', 'U', 'D', 'U', 'D', 'U', 'D', 'U', 'D', 'U', 'D']
-Solved by: ['U', 'D', 'U', 'U', 'U', 'U', 'U', 'U', 'D']
-State: Left: ['R', 'R', 'R', 'R'] Front: ['G', 'G', 'G', 'G'] Right: ['O', 'O', 'O', 'O'] Back: ['B', 'B', 'B', 'B'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'D', 'U', 'U', 'U', 'U', 'U', 'U', 'D']
-State: Left: ['B', 'B', 'B', 'B'] Front: ['R', 'R', 'R', 'R'] Right: ['G', 'G', 'G', 'G'] Back: ['O', 'O', 'O', 'O'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'D', 'U', 'U', 'U', 'U', 'U', 'D', 'U', 'D']
-State: Left: ['O', 'O', 'O', 'O'] Front: ['B', 'B', 'B', 'B'] Right: ['R', 'R', 'R', 'R'] Back: ['G', 'G', 'G', 'G'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'D', 'U', 'U', 'U', 'U', 'D', 'U', 'U', 'D']
-State: Left: ['G', 'G', 'G', 'G'] Front: ['O', 'O', 'O', 'O'] Right: ['B', 'B', 'B', 'B'] Back: ['R', 'R', 'R', 'R'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'D', 'U', 'U', 'U', 'U', 'D', 'U', 'D', 'U', 'D']
-Solved by: ['U', 'D', 'U', 'U', 'U', 'D', 'U', 'U', 'U', 'D']
-State: Left: ['R', 'R', 'R', 'R'] Front: ['G', 'G', 'G', 'G'] Right: ['O', 'O', 'O', 'O'] Back: ['B', 'B', 'B', 'B'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'D', 'U', 'U', 'U', 'D', 'U', 'U', 'U', 'D']
-State: Left: ['B', 'B', 'B', 'B'] Front: ['R', 'R', 'R', 'R'] Right: ['G', 'G', 'G', 'G'] Back: ['O', 'O', 'O', 'O'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'D', 'U', 'U', 'U', 'D', 'U', 'U', 'D', 'U', 'D']
-State: Left: ['O', 'O', 'O', 'O'] Front: ['B', 'B', 'B', 'B'] Right: ['R', 'R', 'R', 'R'] Back: ['G', 'G', 'G', 'G'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'D', 'U', 'U', 'U', 'D', 'U', 'D', 'U', 'U', 'D']
-State: Left: ['G', 'G', 'G', 'G'] Front: ['O', 'O', 'O', 'O'] Right: ['B', 'B', 'B', 'B'] Back: ['R', 'R', 'R', 'R'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'D', 'U', 'U', 'U', 'D', 'U', 'D', 'U', 'D', 'U', 'D']
-Solved by: ['U', 'D', 'U', 'U', 'D', 'U', 'U', 'U', 'U', 'D']
-State: Left: ['R', 'R', 'R', 'R'] Front: ['G', 'G', 'G', 'G'] Right: ['O', 'O', 'O', 'O'] Back: ['B', 'B', 'B', 'B'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'D', 'U', 'U', 'D', 'U', 'U', 'U', 'U', 'D']
-State: Left: ['B', 'B', 'B', 'B'] Front: ['R', 'R', 'R', 'R'] Right: ['G', 'G', 'G', 'G'] Back: ['O', 'O', 'O', 'O'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'D', 'U', 'U', 'D', 'U', 'U', 'U', 'D', 'U', 'D']
-State: Left: ['O', 'O', 'O', 'O'] Front: ['B', 'B', 'B', 'B'] Right: ['R', 'R', 'R', 'R'] Back: ['G', 'G', 'G', 'G'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'D', 'U', 'U', 'D', 'U', 'U', 'D', 'U', 'U', 'D']
-State: Left: ['G', 'G', 'G', 'G'] Front: ['O', 'O', 'O', 'O'] Right: ['B', 'B', 'B', 'B'] Back: ['R', 'R', 'R', 'R'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'D', 'U', 'U', 'D', 'U', 'U', 'D', 'U', 'D', 'U', 'D']
-Solved by: ['U', 'D', 'U', 'U', 'D', 'U', 'D', 'U', 'U', 'U', 'D']
-State: Left: ['R', 'R', 'R', 'R'] Front: ['G', 'G', 'G', 'G'] Right: ['O', 'O', 'O', 'O'] Back: ['B', 'B', 'B', 'B'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'D', 'U', 'U', 'D', 'U', 'D', 'U', 'U', 'U', 'D']
-State: Left: ['B', 'B', 'B', 'B'] Front: ['R', 'R', 'R', 'R'] Right: ['G', 'G', 'G', 'G'] Back: ['O', 'O', 'O', 'O'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'D', 'U', 'U', 'D', 'U', 'D', 'U', 'U', 'D', 'U', 'D']
-State: Left: ['O', 'O', 'O', 'O'] Front: ['B', 'B', 'B', 'B'] Right: ['R', 'R', 'R', 'R'] Back: ['G', 'G', 'G', 'G'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'D', 'U', 'U', 'D', 'U', 'D', 'U', 'D', 'U', 'U', 'D']
-State: Left: ['G', 'G', 'G', 'G'] Front: ['O', 'O', 'O', 'O'] Right: ['B', 'B', 'B', 'B'] Back: ['R', 'R', 'R', 'R'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'D', 'U', 'U', 'D', 'U', 'D', 'U', 'D', 'U', 'D', 'U', 'D']
-Solved by: ['U', 'D', 'U', 'D', 'U', 'U', 'U', 'U', 'U', 'D']
-State: Left: ['R', 'R', 'R', 'R'] Front: ['G', 'G', 'G', 'G'] Right: ['O', 'O', 'O', 'O'] Back: ['B', 'B', 'B', 'B'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'D', 'U', 'D', 'U', 'U', 'U', 'U', 'U', 'D']
-State: Left: ['B', 'B', 'B', 'B'] Front: ['R', 'R', 'R', 'R'] Right: ['G', 'G', 'G', 'G'] Back: ['O', 'O', 'O', 'O'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'D', 'U', 'D', 'U', 'U', 'U', 'U', 'D', 'U', 'D']
-State: Left: ['O', 'O', 'O', 'O'] Front: ['B', 'B', 'B', 'B'] Right: ['R', 'R', 'R', 'R'] Back: ['G', 'G', 'G', 'G'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'D', 'U', 'D', 'U', 'U', 'U', 'D', 'U', 'U', 'D']
-State: Left: ['G', 'G', 'G', 'G'] Front: ['O', 'O', 'O', 'O'] Right: ['B', 'B', 'B', 'B'] Back: ['R', 'R', 'R', 'R'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'D', 'U', 'D', 'U', 'U', 'U', 'D', 'U', 'D', 'U', 'D']
-Solved by: ['U', 'D', 'U', 'D', 'U', 'U', 'D', 'U', 'U', 'U', 'D']
-State: Left: ['R', 'R', 'R', 'R'] Front: ['G', 'G', 'G', 'G'] Right: ['O', 'O', 'O', 'O'] Back: ['B', 'B', 'B', 'B'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'D', 'U', 'D', 'U', 'U', 'D', 'U', 'U', 'U', 'D']
-State: Left: ['B', 'B', 'B', 'B'] Front: ['R', 'R', 'R', 'R'] Right: ['G', 'G', 'G', 'G'] Back: ['O', 'O', 'O', 'O'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'D', 'U', 'D', 'U', 'U', 'D', 'U', 'U', 'D', 'U', 'D']
-State: Left: ['O', 'O', 'O', 'O'] Front: ['B', 'B', 'B', 'B'] Right: ['R', 'R', 'R', 'R'] Back: ['G', 'G', 'G', 'G'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'D', 'U', 'D', 'U', 'U', 'D', 'U', 'D', 'U', 'U', 'D']
-State: Left: ['G', 'G', 'G', 'G'] Front: ['O', 'O', 'O', 'O'] Right: ['B', 'B', 'B', 'B'] Back: ['R', 'R', 'R', 'R'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'D', 'U', 'D', 'U', 'U', 'D', 'U', 'D', 'U', 'D', 'U', 'D']
-Solved by: ['U', 'D', 'U', 'D', 'U', 'D', 'U', 'U', 'U', 'U', 'D']
-State: Left: ['R', 'R', 'R', 'R'] Front: ['G', 'G', 'G', 'G'] Right: ['O', 'O', 'O', 'O'] Back: ['B', 'B', 'B', 'B'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'D', 'U', 'D', 'U', 'D', 'U', 'U', 'U', 'U', 'D']
-State: Left: ['B', 'B', 'B', 'B'] Front: ['R', 'R', 'R', 'R'] Right: ['G', 'G', 'G', 'G'] Back: ['O', 'O', 'O', 'O'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'D', 'U', 'D', 'U', 'D', 'U', 'U', 'U', 'D', 'U', 'D']
-State: Left: ['O', 'O', 'O', 'O'] Front: ['B', 'B', 'B', 'B'] Right: ['R', 'R', 'R', 'R'] Back: ['G', 'G', 'G', 'G'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'D', 'U', 'D', 'U', 'D', 'U', 'U', 'D', 'U', 'U', 'D']
-State: Left: ['G', 'G', 'G', 'G'] Front: ['O', 'O', 'O', 'O'] Right: ['B', 'B', 'B', 'B'] Back: ['R', 'R', 'R', 'R'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'D', 'U', 'D', 'U', 'D', 'U', 'U', 'D', 'U', 'D', 'U', 'D']
-Solved by: ['U', 'D', 'U', 'D', 'U', 'D', 'U', 'D', 'U', 'U', 'U', 'D']
-State: Left: ['R', 'R', 'R', 'R'] Front: ['G', 'G', 'G', 'G'] Right: ['O', 'O', 'O', 'O'] Back: ['B', 'B', 'B', 'B'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'D', 'U', 'D', 'U', 'D', 'U', 'D', 'U', 'U', 'U', 'D']
-State: Left: ['B', 'B', 'B', 'B'] Front: ['R', 'R', 'R', 'R'] Right: ['G', 'G', 'G', 'G'] Back: ['O', 'O', 'O', 'O'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'D', 'U', 'D', 'U', 'D', 'U', 'D', 'U', 'U', 'D', 'U', 'D']
-State: Left: ['O', 'O', 'O', 'O'] Front: ['B', 'B', 'B', 'B'] Right: ['R', 'R', 'R', 'R'] Back: ['G', 'G', 'G', 'G'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'D', 'U', 'D', 'U', 'D', 'U', 'D', 'U', 'D', 'U', 'U', 'D']
-State: Left: ['G', 'G', 'G', 'G'] Front: ['O', 'O', 'O', 'O'] Right: ['B', 'B', 'B', 'B'] Back: ['R', 'R', 'R', 'R'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'D', 'U', 'D', 'U', 'D', 'U', 'D', 'U', 'D', 'U', 'D', 'U', 'D']
-Solved by: ['U', 'U', 'U', 'U', 'U', 'U', 'U', 'U', 'D']
-State: Left: ['R', 'R', 'R', 'R'] Front: ['G', 'G', 'G', 'G'] Right: ['O', 'O', 'O', 'O'] Back: ['B', 'B', 'B', 'B'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'U', 'U', 'U', 'U', 'U', 'U', 'D']
-State: Left: ['B', 'B', 'B', 'B'] Front: ['R', 'R', 'R', 'R'] Right: ['G', 'G', 'G', 'G'] Back: ['O', 'O', 'O', 'O'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'U', 'U', 'U', 'U', 'U', 'D', 'U', 'D']
-State: Left: ['O', 'O', 'O', 'O'] Front: ['B', 'B', 'B', 'B'] Right: ['R', 'R', 'R', 'R'] Back: ['G', 'G', 'G', 'G'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'U', 'U', 'U', 'U', 'D', 'U', 'U', 'D']
-State: Left: ['G', 'G', 'G', 'G'] Front: ['O', 'O', 'O', 'O'] Right: ['B', 'B', 'B', 'B'] Back: ['R', 'R', 'R', 'R'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'U', 'U', 'U', 'U', 'D', 'U', 'D', 'U', 'D']
-Solved by: ['U', 'U', 'U', 'U', 'U', 'D', 'U', 'U', 'U', 'D']
-State: Left: ['R', 'R', 'R', 'R'] Front: ['G', 'G', 'G', 'G'] Right: ['O', 'O', 'O', 'O'] Back: ['B', 'B', 'B', 'B'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'U', 'U', 'U', 'D', 'U', 'U', 'U', 'D']
-State: Left: ['B', 'B', 'B', 'B'] Front: ['R', 'R', 'R', 'R'] Right: ['G', 'G', 'G', 'G'] Back: ['O', 'O', 'O', 'O'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'U', 'U', 'U', 'D', 'U', 'U', 'D', 'U', 'D']
-State: Left: ['O', 'O', 'O', 'O'] Front: ['B', 'B', 'B', 'B'] Right: ['R', 'R', 'R', 'R'] Back: ['G', 'G', 'G', 'G'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'U', 'U', 'U', 'D', 'U', 'D', 'U', 'U', 'D']
-State: Left: ['G', 'G', 'G', 'G'] Front: ['O', 'O', 'O', 'O'] Right: ['B', 'B', 'B', 'B'] Back: ['R', 'R', 'R', 'R'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'U', 'U', 'U', 'D', 'U', 'D', 'U', 'D', 'U', 'D']
-Solved by: ['U', 'U', 'U', 'U', 'D', 'U', 'U', 'U', 'U', 'D']
-State: Left: ['R', 'R', 'R', 'R'] Front: ['G', 'G', 'G', 'G'] Right: ['O', 'O', 'O', 'O'] Back: ['B', 'B', 'B', 'B'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'U', 'U', 'D', 'U', 'U', 'U', 'U', 'D']
-State: Left: ['B', 'B', 'B', 'B'] Front: ['R', 'R', 'R', 'R'] Right: ['G', 'G', 'G', 'G'] Back: ['O', 'O', 'O', 'O'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'U', 'U', 'D', 'U', 'U', 'U', 'D', 'U', 'D']
-State: Left: ['O', 'O', 'O', 'O'] Front: ['B', 'B', 'B', 'B'] Right: ['R', 'R', 'R', 'R'] Back: ['G', 'G', 'G', 'G'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'U', 'U', 'D', 'U', 'U', 'D', 'U', 'U', 'D']
-State: Left: ['G', 'G', 'G', 'G'] Front: ['O', 'O', 'O', 'O'] Right: ['B', 'B', 'B', 'B'] Back: ['R', 'R', 'R', 'R'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'U', 'U', 'D', 'U', 'U', 'D', 'U', 'D', 'U', 'D']
-Solved by: ['U', 'U', 'U', 'U', 'D', 'U', 'D', 'U', 'U', 'U', 'D']
-State: Left: ['R', 'R', 'R', 'R'] Front: ['G', 'G', 'G', 'G'] Right: ['O', 'O', 'O', 'O'] Back: ['B', 'B', 'B', 'B'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'U', 'U', 'D', 'U', 'D', 'U', 'U', 'U', 'D']
-State: Left: ['B', 'B', 'B', 'B'] Front: ['R', 'R', 'R', 'R'] Right: ['G', 'G', 'G', 'G'] Back: ['O', 'O', 'O', 'O'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'U', 'U', 'D', 'U', 'D', 'U', 'U', 'D', 'U', 'D']
-State: Left: ['O', 'O', 'O', 'O'] Front: ['B', 'B', 'B', 'B'] Right: ['R', 'R', 'R', 'R'] Back: ['G', 'G', 'G', 'G'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'U', 'U', 'D', 'U', 'D', 'U', 'D', 'U', 'U', 'D']
-State: Left: ['G', 'G', 'G', 'G'] Front: ['O', 'O', 'O', 'O'] Right: ['B', 'B', 'B', 'B'] Back: ['R', 'R', 'R', 'R'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'U', 'U', 'D', 'U', 'D', 'U', 'D', 'U', 'D', 'U', 'D']
-Solved by: ['U', 'U', 'U', 'D', 'U', 'U', 'U', 'U', 'U', 'D']
-State: Left: ['R', 'R', 'R', 'R'] Front: ['G', 'G', 'G', 'G'] Right: ['O', 'O', 'O', 'O'] Back: ['B', 'B', 'B', 'B'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'U', 'D', 'U', 'U', 'U', 'U', 'U', 'D']
-State: Left: ['B', 'B', 'B', 'B'] Front: ['R', 'R', 'R', 'R'] Right: ['G', 'G', 'G', 'G'] Back: ['O', 'O', 'O', 'O'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'U', 'D', 'U', 'U', 'U', 'U', 'D', 'U', 'D']
-State: Left: ['O', 'O', 'O', 'O'] Front: ['B', 'B', 'B', 'B'] Right: ['R', 'R', 'R', 'R'] Back: ['G', 'G', 'G', 'G'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'U', 'D', 'U', 'U', 'U', 'D', 'U', 'U', 'D']
-State: Left: ['G', 'G', 'G', 'G'] Front: ['O', 'O', 'O', 'O'] Right: ['B', 'B', 'B', 'B'] Back: ['R', 'R', 'R', 'R'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'U', 'D', 'U', 'U', 'U', 'D', 'U', 'D', 'U', 'D']
-Solved by: ['U', 'U', 'U', 'D', 'U', 'U', 'D', 'U', 'U', 'U', 'D']
-State: Left: ['R', 'R', 'R', 'R'] Front: ['G', 'G', 'G', 'G'] Right: ['O', 'O', 'O', 'O'] Back: ['B', 'B', 'B', 'B'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'U', 'D', 'U', 'U', 'D', 'U', 'U', 'U', 'D']
-State: Left: ['B', 'B', 'B', 'B'] Front: ['R', 'R', 'R', 'R'] Right: ['G', 'G', 'G', 'G'] Back: ['O', 'O', 'O', 'O'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'U', 'D', 'U', 'U', 'D', 'U', 'U', 'D', 'U', 'D']
-State: Left: ['O', 'O', 'O', 'O'] Front: ['B', 'B', 'B', 'B'] Right: ['R', 'R', 'R', 'R'] Back: ['G', 'G', 'G', 'G'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'U', 'D', 'U', 'U', 'D', 'U', 'D', 'U', 'U', 'D']
-State: Left: ['G', 'G', 'G', 'G'] Front: ['O', 'O', 'O', 'O'] Right: ['B', 'B', 'B', 'B'] Back: ['R', 'R', 'R', 'R'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'U', 'D', 'U', 'U', 'D', 'U', 'D', 'U', 'D', 'U', 'D']
-Solved by: ['U', 'U', 'U', 'D', 'U', 'D', 'U', 'U', 'U', 'U', 'D']
-State: Left: ['R', 'R', 'R', 'R'] Front: ['G', 'G', 'G', 'G'] Right: ['O', 'O', 'O', 'O'] Back: ['B', 'B', 'B', 'B'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'U', 'D', 'U', 'D', 'U', 'U', 'U', 'U', 'D']
-State: Left: ['B', 'B', 'B', 'B'] Front: ['R', 'R', 'R', 'R'] Right: ['G', 'G', 'G', 'G'] Back: ['O', 'O', 'O', 'O'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'U', 'D', 'U', 'D', 'U', 'U', 'U', 'D', 'U', 'D']
-State: Left: ['O', 'O', 'O', 'O'] Front: ['B', 'B', 'B', 'B'] Right: ['R', 'R', 'R', 'R'] Back: ['G', 'G', 'G', 'G'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'U', 'D', 'U', 'D', 'U', 'U', 'D', 'U', 'U', 'D']
-State: Left: ['G', 'G', 'G', 'G'] Front: ['O', 'O', 'O', 'O'] Right: ['B', 'B', 'B', 'B'] Back: ['R', 'R', 'R', 'R'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'U', 'D', 'U', 'D', 'U', 'U', 'D', 'U', 'D', 'U', 'D']
-Solved by: ['U', 'U', 'U', 'D', 'U', 'D', 'U', 'D', 'U', 'U', 'U', 'D']
-State: Left: ['R', 'R', 'R', 'R'] Front: ['G', 'G', 'G', 'G'] Right: ['O', 'O', 'O', 'O'] Back: ['B', 'B', 'B', 'B'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'U', 'D', 'U', 'D', 'U', 'D', 'U', 'U', 'U', 'D']
-State: Left: ['B', 'B', 'B', 'B'] Front: ['R', 'R', 'R', 'R'] Right: ['G', 'G', 'G', 'G'] Back: ['O', 'O', 'O', 'O'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'U', 'D', 'U', 'D', 'U', 'D', 'U', 'U', 'D', 'U', 'D']
-State: Left: ['O', 'O', 'O', 'O'] Front: ['B', 'B', 'B', 'B'] Right: ['R', 'R', 'R', 'R'] Back: ['G', 'G', 'G', 'G'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'U', 'D', 'U', 'D', 'U', 'D', 'U', 'D', 'U', 'U', 'D']
-State: Left: ['G', 'G', 'G', 'G'] Front: ['O', 'O', 'O', 'O'] Right: ['B', 'B', 'B', 'B'] Back: ['R', 'R', 'R', 'R'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'U', 'D', 'U', 'D', 'U', 'D', 'U', 'D', 'U', 'D', 'U', 'D']
-Solved by: ['U', 'U', 'D', 'U', 'U', 'U', 'U', 'U', 'U', 'D']
-State: Left: ['R', 'R', 'R', 'R'] Front: ['G', 'G', 'G', 'G'] Right: ['O', 'O', 'O', 'O'] Back: ['B', 'B', 'B', 'B'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'D', 'U', 'U', 'U', 'U', 'U', 'U', 'D']
-State: Left: ['B', 'B', 'B', 'B'] Front: ['R', 'R', 'R', 'R'] Right: ['G', 'G', 'G', 'G'] Back: ['O', 'O', 'O', 'O'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'D', 'U', 'U', 'U', 'U', 'U', 'D', 'U', 'D']
-State: Left: ['O', 'O', 'O', 'O'] Front: ['B', 'B', 'B', 'B'] Right: ['R', 'R', 'R', 'R'] Back: ['G', 'G', 'G', 'G'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'D', 'U', 'U', 'U', 'U', 'D', 'U', 'U', 'D']
-State: Left: ['G', 'G', 'G', 'G'] Front: ['O', 'O', 'O', 'O'] Right: ['B', 'B', 'B', 'B'] Back: ['R', 'R', 'R', 'R'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'D', 'U', 'U', 'U', 'U', 'D', 'U', 'D', 'U', 'D']
-Solved by: ['U', 'U', 'D', 'U', 'U', 'U', 'D', 'U', 'U', 'U', 'D']
-State: Left: ['R', 'R', 'R', 'R'] Front: ['G', 'G', 'G', 'G'] Right: ['O', 'O', 'O', 'O'] Back: ['B', 'B', 'B', 'B'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'D', 'U', 'U', 'U', 'D', 'U', 'U', 'U', 'D']
-State: Left: ['B', 'B', 'B', 'B'] Front: ['R', 'R', 'R', 'R'] Right: ['G', 'G', 'G', 'G'] Back: ['O', 'O', 'O', 'O'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'D', 'U', 'U', 'U', 'D', 'U', 'U', 'D', 'U', 'D']
-State: Left: ['O', 'O', 'O', 'O'] Front: ['B', 'B', 'B', 'B'] Right: ['R', 'R', 'R', 'R'] Back: ['G', 'G', 'G', 'G'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'D', 'U', 'U', 'U', 'D', 'U', 'D', 'U', 'U', 'D']
-State: Left: ['G', 'G', 'G', 'G'] Front: ['O', 'O', 'O', 'O'] Right: ['B', 'B', 'B', 'B'] Back: ['R', 'R', 'R', 'R'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'D', 'U', 'U', 'U', 'D', 'U', 'D', 'U', 'D', 'U', 'D']
-Solved by: ['U', 'U', 'D', 'U', 'U', 'D', 'U', 'U', 'U', 'U', 'D']
-State: Left: ['R', 'R', 'R', 'R'] Front: ['G', 'G', 'G', 'G'] Right: ['O', 'O', 'O', 'O'] Back: ['B', 'B', 'B', 'B'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'D', 'U', 'U', 'D', 'U', 'U', 'U', 'U', 'D']
-State: Left: ['B', 'B', 'B', 'B'] Front: ['R', 'R', 'R', 'R'] Right: ['G', 'G', 'G', 'G'] Back: ['O', 'O', 'O', 'O'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'D', 'U', 'U', 'D', 'U', 'U', 'U', 'D', 'U', 'D']
-State: Left: ['O', 'O', 'O', 'O'] Front: ['B', 'B', 'B', 'B'] Right: ['R', 'R', 'R', 'R'] Back: ['G', 'G', 'G', 'G'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'D', 'U', 'U', 'D', 'U', 'U', 'D', 'U', 'U', 'D']
-State: Left: ['G', 'G', 'G', 'G'] Front: ['O', 'O', 'O', 'O'] Right: ['B', 'B', 'B', 'B'] Back: ['R', 'R', 'R', 'R'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'D', 'U', 'U', 'D', 'U', 'U', 'D', 'U', 'D', 'U', 'D']
-Solved by: ['U', 'U', 'D', 'U', 'U', 'D', 'U', 'D', 'U', 'U', 'U', 'D']
-State: Left: ['R', 'R', 'R', 'R'] Front: ['G', 'G', 'G', 'G'] Right: ['O', 'O', 'O', 'O'] Back: ['B', 'B', 'B', 'B'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'D', 'U', 'U', 'D', 'U', 'D', 'U', 'U', 'U', 'D']
-State: Left: ['B', 'B', 'B', 'B'] Front: ['R', 'R', 'R', 'R'] Right: ['G', 'G', 'G', 'G'] Back: ['O', 'O', 'O', 'O'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'D', 'U', 'U', 'D', 'U', 'D', 'U', 'U', 'D', 'U', 'D']
-State: Left: ['O', 'O', 'O', 'O'] Front: ['B', 'B', 'B', 'B'] Right: ['R', 'R', 'R', 'R'] Back: ['G', 'G', 'G', 'G'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'D', 'U', 'U', 'D', 'U', 'D', 'U', 'D', 'U', 'U', 'D']
-State: Left: ['G', 'G', 'G', 'G'] Front: ['O', 'O', 'O', 'O'] Right: ['B', 'B', 'B', 'B'] Back: ['R', 'R', 'R', 'R'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'D', 'U', 'U', 'D', 'U', 'D', 'U', 'D', 'U', 'D', 'U', 'D']
-Solved by: ['U', 'U', 'D', 'U', 'D', 'U', 'U', 'U', 'U', 'U', 'D']
-State: Left: ['R', 'R', 'R', 'R'] Front: ['G', 'G', 'G', 'G'] Right: ['O', 'O', 'O', 'O'] Back: ['B', 'B', 'B', 'B'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'D', 'U', 'D', 'U', 'U', 'U', 'U', 'U', 'D']
-State: Left: ['B', 'B', 'B', 'B'] Front: ['R', 'R', 'R', 'R'] Right: ['G', 'G', 'G', 'G'] Back: ['O', 'O', 'O', 'O'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'D', 'U', 'D', 'U', 'U', 'U', 'U', 'D', 'U', 'D']
-State: Left: ['O', 'O', 'O', 'O'] Front: ['B', 'B', 'B', 'B'] Right: ['R', 'R', 'R', 'R'] Back: ['G', 'G', 'G', 'G'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'D', 'U', 'D', 'U', 'U', 'U', 'D', 'U', 'U', 'D']
-State: Left: ['G', 'G', 'G', 'G'] Front: ['O', 'O', 'O', 'O'] Right: ['B', 'B', 'B', 'B'] Back: ['R', 'R', 'R', 'R'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'D', 'U', 'D', 'U', 'U', 'U', 'D', 'U', 'D', 'U', 'D']
-Solved by: ['U', 'U', 'D', 'U', 'D', 'U', 'U', 'D', 'U', 'U', 'U', 'D']
-State: Left: ['R', 'R', 'R', 'R'] Front: ['G', 'G', 'G', 'G'] Right: ['O', 'O', 'O', 'O'] Back: ['B', 'B', 'B', 'B'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'D', 'U', 'D', 'U', 'U', 'D', 'U', 'U', 'U', 'D']
-State: Left: ['B', 'B', 'B', 'B'] Front: ['R', 'R', 'R', 'R'] Right: ['G', 'G', 'G', 'G'] Back: ['O', 'O', 'O', 'O'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'D', 'U', 'D', 'U', 'U', 'D', 'U', 'U', 'D', 'U', 'D']
-State: Left: ['O', 'O', 'O', 'O'] Front: ['B', 'B', 'B', 'B'] Right: ['R', 'R', 'R', 'R'] Back: ['G', 'G', 'G', 'G'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'D', 'U', 'D', 'U', 'U', 'D', 'U', 'D', 'U', 'U', 'D']
-State: Left: ['G', 'G', 'G', 'G'] Front: ['O', 'O', 'O', 'O'] Right: ['B', 'B', 'B', 'B'] Back: ['R', 'R', 'R', 'R'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'D', 'U', 'D', 'U', 'U', 'D', 'U', 'D', 'U', 'D', 'U', 'D']
-Solved by: ['U', 'U', 'D', 'U', 'D', 'U', 'D', 'U', 'U', 'U', 'U', 'D']
-State: Left: ['R', 'R', 'R', 'R'] Front: ['G', 'G', 'G', 'G'] Right: ['O', 'O', 'O', 'O'] Back: ['B', 'B', 'B', 'B'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'D', 'U', 'D', 'U', 'D', 'U', 'U', 'U', 'U', 'D']
-State: Left: ['B', 'B', 'B', 'B'] Front: ['R', 'R', 'R', 'R'] Right: ['G', 'G', 'G', 'G'] Back: ['O', 'O', 'O', 'O'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'D', 'U', 'D', 'U', 'D', 'U', 'U', 'U', 'D', 'U', 'D']
-State: Left: ['O', 'O', 'O', 'O'] Front: ['B', 'B', 'B', 'B'] Right: ['R', 'R', 'R', 'R'] Back: ['G', 'G', 'G', 'G'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'D', 'U', 'D', 'U', 'D', 'U', 'U', 'D', 'U', 'U', 'D']
-State: Left: ['G', 'G', 'G', 'G'] Front: ['O', 'O', 'O', 'O'] Right: ['B', 'B', 'B', 'B'] Back: ['R', 'R', 'R', 'R'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'D', 'U', 'D', 'U', 'D', 'U', 'U', 'D', 'U', 'D', 'U', 'D']
-Solved by: ['U', 'U', 'D', 'U', 'D', 'U', 'D', 'U', 'D', 'U', 'U', 'U', 'D']
-State: Left: ['R', 'R', 'R', 'R'] Front: ['G', 'G', 'G', 'G'] Right: ['O', 'O', 'O', 'O'] Back: ['B', 'B', 'B', 'B'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'D', 'U', 'D', 'U', 'D', 'U', 'D', 'U', 'U', 'U', 'D']
-State: Left: ['B', 'B', 'B', 'B'] Front: ['R', 'R', 'R', 'R'] Right: ['G', 'G', 'G', 'G'] Back: ['O', 'O', 'O', 'O'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'D', 'U', 'D', 'U', 'D', 'U', 'D', 'U', 'U', 'D', 'U', 'D']
-State: Left: ['O', 'O', 'O', 'O'] Front: ['B', 'B', 'B', 'B'] Right: ['R', 'R', 'R', 'R'] Back: ['G', 'G', 'G', 'G'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'D', 'U', 'D', 'U', 'D', 'U', 'D', 'U', 'D', 'U', 'U', 'D']
-State: Left: ['G', 'G', 'G', 'G'] Front: ['O', 'O', 'O', 'O'] Right: ['B', 'B', 'B', 'B'] Back: ['R', 'R', 'R', 'R'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'D', 'U', 'D', 'U', 'D', 'U', 'D', 'U', 'D', 'U', 'D', 'U', 'D']
-Solved by: ['U', 'D', 'U', 'U', 'U', 'U', 'U', 'U', 'U', 'D']
-State: Left: ['R', 'R', 'R', 'R'] Front: ['G', 'G', 'G', 'G'] Right: ['O', 'O', 'O', 'O'] Back: ['B', 'B', 'B', 'B'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'D', 'U', 'U', 'U', 'U', 'U', 'U', 'U', 'D']
-State: Left: ['B', 'B', 'B', 'B'] Front: ['R', 'R', 'R', 'R'] Right: ['G', 'G', 'G', 'G'] Back: ['O', 'O', 'O', 'O'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'D', 'U', 'U', 'U', 'U', 'U', 'U', 'D', 'U', 'D']
-State: Left: ['O', 'O', 'O', 'O'] Front: ['B', 'B', 'B', 'B'] Right: ['R', 'R', 'R', 'R'] Back: ['G', 'G', 'G', 'G'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'D', 'U', 'U', 'U', 'U', 'U', 'D', 'U', 'U', 'D']
-State: Left: ['G', 'G', 'G', 'G'] Front: ['O', 'O', 'O', 'O'] Right: ['B', 'B', 'B', 'B'] Back: ['R', 'R', 'R', 'R'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'D', 'U', 'U', 'U', 'U', 'U', 'D', 'U', 'D', 'U', 'D']
-Solved by: ['U', 'D', 'U', 'U', 'U', 'U', 'D', 'U', 'U', 'U', 'D']
-State: Left: ['R', 'R', 'R', 'R'] Front: ['G', 'G', 'G', 'G'] Right: ['O', 'O', 'O', 'O'] Back: ['B', 'B', 'B', 'B'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'D', 'U', 'U', 'U', 'U', 'D', 'U', 'U', 'U', 'D']
-State: Left: ['B', 'B', 'B', 'B'] Front: ['R', 'R', 'R', 'R'] Right: ['G', 'G', 'G', 'G'] Back: ['O', 'O', 'O', 'O'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'D', 'U', 'U', 'U', 'U', 'D', 'U', 'U', 'D', 'U', 'D']
-State: Left: ['O', 'O', 'O', 'O'] Front: ['B', 'B', 'B', 'B'] Right: ['R', 'R', 'R', 'R'] Back: ['G', 'G', 'G', 'G'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'D', 'U', 'U', 'U', 'U', 'D', 'U', 'D', 'U', 'U', 'D']
-State: Left: ['G', 'G', 'G', 'G'] Front: ['O', 'O', 'O', 'O'] Right: ['B', 'B', 'B', 'B'] Back: ['R', 'R', 'R', 'R'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'D', 'U', 'U', 'U', 'U', 'D', 'U', 'D', 'U', 'D', 'U', 'D']
-Solved by: ['U', 'D', 'U', 'U', 'U', 'D', 'U', 'U', 'U', 'U', 'D']
-State: Left: ['R', 'R', 'R', 'R'] Front: ['G', 'G', 'G', 'G'] Right: ['O', 'O', 'O', 'O'] Back: ['B', 'B', 'B', 'B'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'D', 'U', 'U', 'U', 'D', 'U', 'U', 'U', 'U', 'D']
-State: Left: ['B', 'B', 'B', 'B'] Front: ['R', 'R', 'R', 'R'] Right: ['G', 'G', 'G', 'G'] Back: ['O', 'O', 'O', 'O'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'D', 'U', 'U', 'U', 'D', 'U', 'U', 'U', 'D', 'U', 'D']
-State: Left: ['O', 'O', 'O', 'O'] Front: ['B', 'B', 'B', 'B'] Right: ['R', 'R', 'R', 'R'] Back: ['G', 'G', 'G', 'G'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'D', 'U', 'U', 'U', 'D', 'U', 'U', 'D', 'U', 'U', 'D']
-State: Left: ['G', 'G', 'G', 'G'] Front: ['O', 'O', 'O', 'O'] Right: ['B', 'B', 'B', 'B'] Back: ['R', 'R', 'R', 'R'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'D', 'U', 'U', 'U', 'D', 'U', 'U', 'D', 'U', 'D', 'U', 'D']
-Solved by: ['U', 'D', 'U', 'U', 'U', 'D', 'U', 'D', 'U', 'U', 'U', 'D']
-State: Left: ['R', 'R', 'R', 'R'] Front: ['G', 'G', 'G', 'G'] Right: ['O', 'O', 'O', 'O'] Back: ['B', 'B', 'B', 'B'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'D', 'U', 'U', 'U', 'D', 'U', 'D', 'U', 'U', 'U', 'D']
-State: Left: ['B', 'B', 'B', 'B'] Front: ['R', 'R', 'R', 'R'] Right: ['G', 'G', 'G', 'G'] Back: ['O', 'O', 'O', 'O'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'D', 'U', 'U', 'U', 'D', 'U', 'D', 'U', 'U', 'D', 'U', 'D']
-State: Left: ['O', 'O', 'O', 'O'] Front: ['B', 'B', 'B', 'B'] Right: ['R', 'R', 'R', 'R'] Back: ['G', 'G', 'G', 'G'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'D', 'U', 'U', 'U', 'D', 'U', 'D', 'U', 'D', 'U', 'U', 'D']
-State: Left: ['G', 'G', 'G', 'G'] Front: ['O', 'O', 'O', 'O'] Right: ['B', 'B', 'B', 'B'] Back: ['R', 'R', 'R', 'R'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'D', 'U', 'U', 'U', 'D', 'U', 'D', 'U', 'D', 'U', 'D', 'U', 'D']
-Solved by: ['U', 'D', 'U', 'U', 'D', 'U', 'U', 'U', 'U', 'U', 'D']
-State: Left: ['R', 'R', 'R', 'R'] Front: ['G', 'G', 'G', 'G'] Right: ['O', 'O', 'O', 'O'] Back: ['B', 'B', 'B', 'B'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'D', 'U', 'U', 'D', 'U', 'U', 'U', 'U', 'U', 'D']
-State: Left: ['B', 'B', 'B', 'B'] Front: ['R', 'R', 'R', 'R'] Right: ['G', 'G', 'G', 'G'] Back: ['O', 'O', 'O', 'O'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'D', 'U', 'U', 'D', 'U', 'U', 'U', 'U', 'D', 'U', 'D']
-State: Left: ['O', 'O', 'O', 'O'] Front: ['B', 'B', 'B', 'B'] Right: ['R', 'R', 'R', 'R'] Back: ['G', 'G', 'G', 'G'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'D', 'U', 'U', 'D', 'U', 'U', 'U', 'D', 'U', 'U', 'D']
-State: Left: ['G', 'G', 'G', 'G'] Front: ['O', 'O', 'O', 'O'] Right: ['B', 'B', 'B', 'B'] Back: ['R', 'R', 'R', 'R'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'D', 'U', 'U', 'D', 'U', 'U', 'U', 'D', 'U', 'D', 'U', 'D']
-Solved by: ['U', 'D', 'U', 'U', 'D', 'U', 'U', 'D', 'U', 'U', 'U', 'D']
-State: Left: ['R', 'R', 'R', 'R'] Front: ['G', 'G', 'G', 'G'] Right: ['O', 'O', 'O', 'O'] Back: ['B', 'B', 'B', 'B'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'D', 'U', 'U', 'D', 'U', 'U', 'D', 'U', 'U', 'U', 'D']
-State: Left: ['B', 'B', 'B', 'B'] Front: ['R', 'R', 'R', 'R'] Right: ['G', 'G', 'G', 'G'] Back: ['O', 'O', 'O', 'O'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'D', 'U', 'U', 'D', 'U', 'U', 'D', 'U', 'U', 'D', 'U', 'D']
-State: Left: ['O', 'O', 'O', 'O'] Front: ['B', 'B', 'B', 'B'] Right: ['R', 'R', 'R', 'R'] Back: ['G', 'G', 'G', 'G'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'D', 'U', 'U', 'D', 'U', 'U', 'D', 'U', 'D', 'U', 'U', 'D']
-State: Left: ['G', 'G', 'G', 'G'] Front: ['O', 'O', 'O', 'O'] Right: ['B', 'B', 'B', 'B'] Back: ['R', 'R', 'R', 'R'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'D', 'U', 'U', 'D', 'U', 'U', 'D', 'U', 'D', 'U', 'D', 'U', 'D']
-Solved by: ['U', 'D', 'U', 'U', 'D', 'U', 'D', 'U', 'U', 'U', 'U', 'D']
-State: Left: ['R', 'R', 'R', 'R'] Front: ['G', 'G', 'G', 'G'] Right: ['O', 'O', 'O', 'O'] Back: ['B', 'B', 'B', 'B'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'D', 'U', 'U', 'D', 'U', 'D', 'U', 'U', 'U', 'U', 'D']
-State: Left: ['B', 'B', 'B', 'B'] Front: ['R', 'R', 'R', 'R'] Right: ['G', 'G', 'G', 'G'] Back: ['O', 'O', 'O', 'O'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'D', 'U', 'U', 'D', 'U', 'D', 'U', 'U', 'U', 'D', 'U', 'D']
-State: Left: ['O', 'O', 'O', 'O'] Front: ['B', 'B', 'B', 'B'] Right: ['R', 'R', 'R', 'R'] Back: ['G', 'G', 'G', 'G'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'D', 'U', 'U', 'D', 'U', 'D', 'U', 'U', 'D', 'U', 'U', 'D']
-State: Left: ['G', 'G', 'G', 'G'] Front: ['O', 'O', 'O', 'O'] Right: ['B', 'B', 'B', 'B'] Back: ['R', 'R', 'R', 'R'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'D', 'U', 'U', 'D', 'U', 'D', 'U', 'U', 'D', 'U', 'D', 'U', 'D']
-Solved by: ['U', 'D', 'U', 'U', 'D', 'U', 'D', 'U', 'D', 'U', 'U', 'U', 'D']
-State: Left: ['R', 'R', 'R', 'R'] Front: ['G', 'G', 'G', 'G'] Right: ['O', 'O', 'O', 'O'] Back: ['B', 'B', 'B', 'B'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'D', 'U', 'U', 'D', 'U', 'D', 'U', 'D', 'U', 'U', 'U', 'D']
-State: Left: ['B', 'B', 'B', 'B'] Front: ['R', 'R', 'R', 'R'] Right: ['G', 'G', 'G', 'G'] Back: ['O', 'O', 'O', 'O'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'D', 'U', 'U', 'D', 'U', 'D', 'U', 'D', 'U', 'U', 'D', 'U', 'D']
-State: Left: ['O', 'O', 'O', 'O'] Front: ['B', 'B', 'B', 'B'] Right: ['R', 'R', 'R', 'R'] Back: ['G', 'G', 'G', 'G'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'D', 'U', 'U', 'D', 'U', 'D', 'U', 'D', 'U', 'D', 'U', 'U', 'D']
-State: Left: ['G', 'G', 'G', 'G'] Front: ['O', 'O', 'O', 'O'] Right: ['B', 'B', 'B', 'B'] Back: ['R', 'R', 'R', 'R'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'D', 'U', 'U', 'D', 'U', 'D', 'U', 'D', 'U', 'D', 'U', 'D', 'U', 'D']
-Solved by: ['U', 'D', 'U', 'D', 'U', 'U', 'U', 'U', 'U', 'U', 'D']
-State: Left: ['R', 'R', 'R', 'R'] Front: ['G', 'G', 'G', 'G'] Right: ['O', 'O', 'O', 'O'] Back: ['B', 'B', 'B', 'B'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'D', 'U', 'D', 'U', 'U', 'U', 'U', 'U', 'U', 'D']
-State: Left: ['B', 'B', 'B', 'B'] Front: ['R', 'R', 'R', 'R'] Right: ['G', 'G', 'G', 'G'] Back: ['O', 'O', 'O', 'O'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'D', 'U', 'D', 'U', 'U', 'U', 'U', 'U', 'D', 'U', 'D']
-State: Left: ['O', 'O', 'O', 'O'] Front: ['B', 'B', 'B', 'B'] Right: ['R', 'R', 'R', 'R'] Back: ['G', 'G', 'G', 'G'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'D', 'U', 'D', 'U', 'U', 'U', 'U', 'D', 'U', 'U', 'D']
-State: Left: ['G', 'G', 'G', 'G'] Front: ['O', 'O', 'O', 'O'] Right: ['B', 'B', 'B', 'B'] Back: ['R', 'R', 'R', 'R'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'D', 'U', 'D', 'U', 'U', 'U', 'U', 'D', 'U', 'D', 'U', 'D']
-Solved by: ['U', 'D', 'U', 'D', 'U', 'U', 'U', 'D', 'U', 'U', 'U', 'D']
-State: Left: ['R', 'R', 'R', 'R'] Front: ['G', 'G', 'G', 'G'] Right: ['O', 'O', 'O', 'O'] Back: ['B', 'B', 'B', 'B'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'D', 'U', 'D', 'U', 'U', 'U', 'D', 'U', 'U', 'U', 'D']
-State: Left: ['B', 'B', 'B', 'B'] Front: ['R', 'R', 'R', 'R'] Right: ['G', 'G', 'G', 'G'] Back: ['O', 'O', 'O', 'O'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'D', 'U', 'D', 'U', 'U', 'U', 'D', 'U', 'U', 'D', 'U', 'D']
-State: Left: ['O', 'O', 'O', 'O'] Front: ['B', 'B', 'B', 'B'] Right: ['R', 'R', 'R', 'R'] Back: ['G', 'G', 'G', 'G'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'D', 'U', 'D', 'U', 'U', 'U', 'D', 'U', 'D', 'U', 'U', 'D']
-State: Left: ['G', 'G', 'G', 'G'] Front: ['O', 'O', 'O', 'O'] Right: ['B', 'B', 'B', 'B'] Back: ['R', 'R', 'R', 'R'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'D', 'U', 'D', 'U', 'U', 'U', 'D', 'U', 'D', 'U', 'D', 'U', 'D']
-Solved by: ['U', 'D', 'U', 'D', 'U', 'U', 'D', 'U', 'U', 'U', 'U', 'D']
-State: Left: ['R', 'R', 'R', 'R'] Front: ['G', 'G', 'G', 'G'] Right: ['O', 'O', 'O', 'O'] Back: ['B', 'B', 'B', 'B'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'D', 'U', 'D', 'U', 'U', 'D', 'U', 'U', 'U', 'U', 'D']
-State: Left: ['B', 'B', 'B', 'B'] Front: ['R', 'R', 'R', 'R'] Right: ['G', 'G', 'G', 'G'] Back: ['O', 'O', 'O', 'O'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'D', 'U', 'D', 'U', 'U', 'D', 'U', 'U', 'U', 'D', 'U', 'D']
-State: Left: ['O', 'O', 'O', 'O'] Front: ['B', 'B', 'B', 'B'] Right: ['R', 'R', 'R', 'R'] Back: ['G', 'G', 'G', 'G'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'D', 'U', 'D', 'U', 'U', 'D', 'U', 'U', 'D', 'U', 'U', 'D']
-State: Left: ['G', 'G', 'G', 'G'] Front: ['O', 'O', 'O', 'O'] Right: ['B', 'B', 'B', 'B'] Back: ['R', 'R', 'R', 'R'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'D', 'U', 'D', 'U', 'U', 'D', 'U', 'U', 'D', 'U', 'D', 'U', 'D']
-Solved by: ['U', 'D', 'U', 'D', 'U', 'U', 'D', 'U', 'D', 'U', 'U', 'U', 'D']
-State: Left: ['R', 'R', 'R', 'R'] Front: ['G', 'G', 'G', 'G'] Right: ['O', 'O', 'O', 'O'] Back: ['B', 'B', 'B', 'B'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'D', 'U', 'D', 'U', 'U', 'D', 'U', 'D', 'U', 'U', 'U', 'D']
-State: Left: ['B', 'B', 'B', 'B'] Front: ['R', 'R', 'R', 'R'] Right: ['G', 'G', 'G', 'G'] Back: ['O', 'O', 'O', 'O'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'D', 'U', 'D', 'U', 'U', 'D', 'U', 'D', 'U', 'U', 'D', 'U', 'D']
-State: Left: ['O', 'O', 'O', 'O'] Front: ['B', 'B', 'B', 'B'] Right: ['R', 'R', 'R', 'R'] Back: ['G', 'G', 'G', 'G'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'D', 'U', 'D', 'U', 'U', 'D', 'U', 'D', 'U', 'D', 'U', 'U', 'D']
-State: Left: ['G', 'G', 'G', 'G'] Front: ['O', 'O', 'O', 'O'] Right: ['B', 'B', 'B', 'B'] Back: ['R', 'R', 'R', 'R'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'D', 'U', 'D', 'U', 'U', 'D', 'U', 'D', 'U', 'D', 'U', 'D', 'U', 'D']
-Solved by: ['U', 'D', 'U', 'D', 'U', 'D', 'U', 'U', 'U', 'U', 'U', 'D']
-State: Left: ['R', 'R', 'R', 'R'] Front: ['G', 'G', 'G', 'G'] Right: ['O', 'O', 'O', 'O'] Back: ['B', 'B', 'B', 'B'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'D', 'U', 'D', 'U', 'D', 'U', 'U', 'U', 'U', 'U', 'D']
-State: Left: ['B', 'B', 'B', 'B'] Front: ['R', 'R', 'R', 'R'] Right: ['G', 'G', 'G', 'G'] Back: ['O', 'O', 'O', 'O'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'D', 'U', 'D', 'U', 'D', 'U', 'U', 'U', 'U', 'D', 'U', 'D']
-State: Left: ['O', 'O', 'O', 'O'] Front: ['B', 'B', 'B', 'B'] Right: ['R', 'R', 'R', 'R'] Back: ['G', 'G', 'G', 'G'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'D', 'U', 'D', 'U', 'D', 'U', 'U', 'U', 'D', 'U', 'U', 'D']
-State: Left: ['G', 'G', 'G', 'G'] Front: ['O', 'O', 'O', 'O'] Right: ['B', 'B', 'B', 'B'] Back: ['R', 'R', 'R', 'R'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'D', 'U', 'D', 'U', 'D', 'U', 'U', 'U', 'D', 'U', 'D', 'U', 'D']
-Solved by: ['U', 'D', 'U', 'D', 'U', 'D', 'U', 'U', 'D', 'U', 'U', 'U', 'D']
-State: Left: ['R', 'R', 'R', 'R'] Front: ['G', 'G', 'G', 'G'] Right: ['O', 'O', 'O', 'O'] Back: ['B', 'B', 'B', 'B'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'D', 'U', 'D', 'U', 'D', 'U', 'U', 'D', 'U', 'U', 'U', 'D']
-State: Left: ['B', 'B', 'B', 'B'] Front: ['R', 'R', 'R', 'R'] Right: ['G', 'G', 'G', 'G'] Back: ['O', 'O', 'O', 'O'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'D', 'U', 'D', 'U', 'D', 'U', 'U', 'D', 'U', 'U', 'D', 'U', 'D']
-State: Left: ['O', 'O', 'O', 'O'] Front: ['B', 'B', 'B', 'B'] Right: ['R', 'R', 'R', 'R'] Back: ['G', 'G', 'G', 'G'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'D', 'U', 'D', 'U', 'D', 'U', 'U', 'D', 'U', 'D', 'U', 'U', 'D']
-State: Left: ['G', 'G', 'G', 'G'] Front: ['O', 'O', 'O', 'O'] Right: ['B', 'B', 'B', 'B'] Back: ['R', 'R', 'R', 'R'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'D', 'U', 'D', 'U', 'D', 'U', 'U', 'D', 'U', 'D', 'U', 'D', 'U', 'D']
-Solved by: ['U', 'D', 'U', 'D', 'U', 'D', 'U', 'D', 'U', 'U', 'U', 'U', 'D']
-State: Left: ['R', 'R', 'R', 'R'] Front: ['G', 'G', 'G', 'G'] Right: ['O', 'O', 'O', 'O'] Back: ['B', 'B', 'B', 'B'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'D', 'U', 'D', 'U', 'D', 'U', 'D', 'U', 'U', 'U', 'U', 'D']
-State: Left: ['B', 'B', 'B', 'B'] Front: ['R', 'R', 'R', 'R'] Right: ['G', 'G', 'G', 'G'] Back: ['O', 'O', 'O', 'O'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'D', 'U', 'D', 'U', 'D', 'U', 'D', 'U', 'U', 'U', 'D', 'U', 'D']
-State: Left: ['O', 'O', 'O', 'O'] Front: ['B', 'B', 'B', 'B'] Right: ['R', 'R', 'R', 'R'] Back: ['G', 'G', 'G', 'G'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'D', 'U', 'D', 'U', 'D', 'U', 'D', 'U', 'U', 'D', 'U', 'U', 'D']
-State: Left: ['G', 'G', 'G', 'G'] Front: ['O', 'O', 'O', 'O'] Right: ['B', 'B', 'B', 'B'] Back: ['R', 'R', 'R', 'R'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'D', 'U', 'D', 'U', 'D', 'U', 'D', 'U', 'U', 'D', 'U', 'D', 'U', 'D']
-Solved by: ['U', 'D', 'U', 'D', 'U', 'D', 'U', 'D', 'U', 'D', 'U', 'U', 'U', 'D']
-State: Left: ['R', 'R', 'R', 'R'] Front: ['G', 'G', 'G', 'G'] Right: ['O', 'O', 'O', 'O'] Back: ['B', 'B', 'B', 'B'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'D', 'U', 'D', 'U', 'D', 'U', 'D', 'U', 'D', 'U', 'U', 'U', 'D']
-State: Left: ['B', 'B', 'B', 'B'] Front: ['R', 'R', 'R', 'R'] Right: ['G', 'G', 'G', 'G'] Back: ['O', 'O', 'O', 'O'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'D', 'U', 'D', 'U', 'D', 'U', 'D', 'U', 'D', 'U', 'U', 'D', 'U', 'D']
-State: Left: ['O', 'O', 'O', 'O'] Front: ['B', 'B', 'B', 'B'] Right: ['R', 'R', 'R', 'R'] Back: ['G', 'G', 'G', 'G'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'D', 'U', 'D', 'U', 'D', 'U', 'D', 'U', 'D', 'U', 'D', 'U', 'U', 'D']
-State: Left: ['G', 'G', 'G', 'G'] Front: ['O', 'O', 'O', 'O'] Right: ['B', 'B', 'B', 'B'] Back: ['R', 'R', 'R', 'R'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'D', 'U', 'D', 'U', 'D', 'U', 'D', 'U', 'D', 'U', 'D', 'U', 'D', 'U', 'D']
-Solved by: ['U', 'U', 'U', 'U', 'U', 'U', 'U', 'U', 'U', 'D']
-State: Left: ['R', 'R', 'R', 'R'] Front: ['G', 'G', 'G', 'G'] Right: ['O', 'O', 'O', 'O'] Back: ['B', 'B', 'B', 'B'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'U', 'U', 'U', 'U', 'U', 'U', 'U', 'D']
-State: Left: ['B', 'B', 'B', 'B'] Front: ['R', 'R', 'R', 'R'] Right: ['G', 'G', 'G', 'G'] Back: ['O', 'O', 'O', 'O'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'U', 'U', 'U', 'U', 'U', 'U', 'D', 'U', 'D']
-State: Left: ['O', 'O', 'O', 'O'] Front: ['B', 'B', 'B', 'B'] Right: ['R', 'R', 'R', 'R'] Back: ['G', 'G', 'G', 'G'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'U', 'U', 'U', 'U', 'U', 'D', 'U', 'U', 'D']
-State: Left: ['G', 'G', 'G', 'G'] Front: ['O', 'O', 'O', 'O'] Right: ['B', 'B', 'B', 'B'] Back: ['R', 'R', 'R', 'R'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'U', 'U', 'U', 'U', 'U', 'D', 'U', 'D', 'U', 'D']
-Solved by: ['U', 'U', 'U', 'U', 'U', 'U', 'D', 'U', 'U', 'U', 'D']
-State: Left: ['R', 'R', 'R', 'R'] Front: ['G', 'G', 'G', 'G'] Right: ['O', 'O', 'O', 'O'] Back: ['B', 'B', 'B', 'B'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'U', 'U', 'U', 'U', 'D', 'U', 'U', 'U', 'D']
-State: Left: ['B', 'B', 'B', 'B'] Front: ['R', 'R', 'R', 'R'] Right: ['G', 'G', 'G', 'G'] Back: ['O', 'O', 'O', 'O'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'U', 'U', 'U', 'U', 'D', 'U', 'U', 'D', 'U', 'D']
-State: Left: ['O', 'O', 'O', 'O'] Front: ['B', 'B', 'B', 'B'] Right: ['R', 'R', 'R', 'R'] Back: ['G', 'G', 'G', 'G'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'U', 'U', 'U', 'U', 'D', 'U', 'D', 'U', 'U', 'D']
-State: Left: ['G', 'G', 'G', 'G'] Front: ['O', 'O', 'O', 'O'] Right: ['B', 'B', 'B', 'B'] Back: ['R', 'R', 'R', 'R'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'U', 'U', 'U', 'U', 'D', 'U', 'D', 'U', 'D', 'U', 'D']
-Solved by: ['U', 'U', 'U', 'U', 'U', 'D', 'U', 'U', 'U', 'U', 'D']
-State: Left: ['R', 'R', 'R', 'R'] Front: ['G', 'G', 'G', 'G'] Right: ['O', 'O', 'O', 'O'] Back: ['B', 'B', 'B', 'B'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'U', 'U', 'U', 'D', 'U', 'U', 'U', 'U', 'D']
-State: Left: ['B', 'B', 'B', 'B'] Front: ['R', 'R', 'R', 'R'] Right: ['G', 'G', 'G', 'G'] Back: ['O', 'O', 'O', 'O'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'U', 'U', 'U', 'D', 'U', 'U', 'U', 'D', 'U', 'D']
-State: Left: ['O', 'O', 'O', 'O'] Front: ['B', 'B', 'B', 'B'] Right: ['R', 'R', 'R', 'R'] Back: ['G', 'G', 'G', 'G'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'U', 'U', 'U', 'D', 'U', 'U', 'D', 'U', 'U', 'D']
-State: Left: ['G', 'G', 'G', 'G'] Front: ['O', 'O', 'O', 'O'] Right: ['B', 'B', 'B', 'B'] Back: ['R', 'R', 'R', 'R'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'U', 'U', 'U', 'D', 'U', 'U', 'D', 'U', 'D', 'U', 'D']
-Solved by: ['U', 'U', 'U', 'U', 'U', 'D', 'U', 'D', 'U', 'U', 'U', 'D']
-State: Left: ['R', 'R', 'R', 'R'] Front: ['G', 'G', 'G', 'G'] Right: ['O', 'O', 'O', 'O'] Back: ['B', 'B', 'B', 'B'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'U', 'U', 'U', 'D', 'U', 'D', 'U', 'U', 'U', 'D']
-State: Left: ['B', 'B', 'B', 'B'] Front: ['R', 'R', 'R', 'R'] Right: ['G', 'G', 'G', 'G'] Back: ['O', 'O', 'O', 'O'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'U', 'U', 'U', 'D', 'U', 'D', 'U', 'U', 'D', 'U', 'D']
-State: Left: ['O', 'O', 'O', 'O'] Front: ['B', 'B', 'B', 'B'] Right: ['R', 'R', 'R', 'R'] Back: ['G', 'G', 'G', 'G'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'U', 'U', 'U', 'D', 'U', 'D', 'U', 'D', 'U', 'U', 'D']
-State: Left: ['G', 'G', 'G', 'G'] Front: ['O', 'O', 'O', 'O'] Right: ['B', 'B', 'B', 'B'] Back: ['R', 'R', 'R', 'R'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'U', 'U', 'U', 'D', 'U', 'D', 'U', 'D', 'U', 'D', 'U', 'D']
-Solved by: ['U', 'U', 'U', 'U', 'D', 'U', 'U', 'U', 'U', 'U', 'D']
-State: Left: ['R', 'R', 'R', 'R'] Front: ['G', 'G', 'G', 'G'] Right: ['O', 'O', 'O', 'O'] Back: ['B', 'B', 'B', 'B'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'U', 'U', 'D', 'U', 'U', 'U', 'U', 'U', 'D']
-State: Left: ['B', 'B', 'B', 'B'] Front: ['R', 'R', 'R', 'R'] Right: ['G', 'G', 'G', 'G'] Back: ['O', 'O', 'O', 'O'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'U', 'U', 'D', 'U', 'U', 'U', 'U', 'D', 'U', 'D']
-State: Left: ['O', 'O', 'O', 'O'] Front: ['B', 'B', 'B', 'B'] Right: ['R', 'R', 'R', 'R'] Back: ['G', 'G', 'G', 'G'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'U', 'U', 'D', 'U', 'U', 'U', 'D', 'U', 'U', 'D']
-State: Left: ['G', 'G', 'G', 'G'] Front: ['O', 'O', 'O', 'O'] Right: ['B', 'B', 'B', 'B'] Back: ['R', 'R', 'R', 'R'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'U', 'U', 'D', 'U', 'U', 'U', 'D', 'U', 'D', 'U', 'D']
-Solved by: ['U', 'U', 'U', 'U', 'D', 'U', 'U', 'D', 'U', 'U', 'U', 'D']
-State: Left: ['R', 'R', 'R', 'R'] Front: ['G', 'G', 'G', 'G'] Right: ['O', 'O', 'O', 'O'] Back: ['B', 'B', 'B', 'B'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'U', 'U', 'D', 'U', 'U', 'D', 'U', 'U', 'U', 'D']
-State: Left: ['B', 'B', 'B', 'B'] Front: ['R', 'R', 'R', 'R'] Right: ['G', 'G', 'G', 'G'] Back: ['O', 'O', 'O', 'O'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'U', 'U', 'D', 'U', 'U', 'D', 'U', 'U', 'D', 'U', 'D']
-State: Left: ['O', 'O', 'O', 'O'] Front: ['B', 'B', 'B', 'B'] Right: ['R', 'R', 'R', 'R'] Back: ['G', 'G', 'G', 'G'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'U', 'U', 'D', 'U', 'U', 'D', 'U', 'D', 'U', 'U', 'D']
-State: Left: ['G', 'G', 'G', 'G'] Front: ['O', 'O', 'O', 'O'] Right: ['B', 'B', 'B', 'B'] Back: ['R', 'R', 'R', 'R'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'U', 'U', 'D', 'U', 'U', 'D', 'U', 'D', 'U', 'D', 'U', 'D']
-Solved by: ['U', 'U', 'U', 'U', 'D', 'U', 'D', 'U', 'U', 'U', 'U', 'D']
-State: Left: ['R', 'R', 'R', 'R'] Front: ['G', 'G', 'G', 'G'] Right: ['O', 'O', 'O', 'O'] Back: ['B', 'B', 'B', 'B'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'U', 'U', 'D', 'U', 'D', 'U', 'U', 'U', 'U', 'D']
-State: Left: ['B', 'B', 'B', 'B'] Front: ['R', 'R', 'R', 'R'] Right: ['G', 'G', 'G', 'G'] Back: ['O', 'O', 'O', 'O'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'U', 'U', 'D', 'U', 'D', 'U', 'U', 'U', 'D', 'U', 'D']
-State: Left: ['O', 'O', 'O', 'O'] Front: ['B', 'B', 'B', 'B'] Right: ['R', 'R', 'R', 'R'] Back: ['G', 'G', 'G', 'G'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'U', 'U', 'D', 'U', 'D', 'U', 'U', 'D', 'U', 'U', 'D']
-State: Left: ['G', 'G', 'G', 'G'] Front: ['O', 'O', 'O', 'O'] Right: ['B', 'B', 'B', 'B'] Back: ['R', 'R', 'R', 'R'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'U', 'U', 'D', 'U', 'D', 'U', 'U', 'D', 'U', 'D', 'U', 'D']
-Solved by: ['U', 'U', 'U', 'U', 'D', 'U', 'D', 'U', 'D', 'U', 'U', 'U', 'D']
-State: Left: ['R', 'R', 'R', 'R'] Front: ['G', 'G', 'G', 'G'] Right: ['O', 'O', 'O', 'O'] Back: ['B', 'B', 'B', 'B'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'U', 'U', 'D', 'U', 'D', 'U', 'D', 'U', 'U', 'U', 'D']
-State: Left: ['B', 'B', 'B', 'B'] Front: ['R', 'R', 'R', 'R'] Right: ['G', 'G', 'G', 'G'] Back: ['O', 'O', 'O', 'O'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'U', 'U', 'D', 'U', 'D', 'U', 'D', 'U', 'U', 'D', 'U', 'D']
-State: Left: ['O', 'O', 'O', 'O'] Front: ['B', 'B', 'B', 'B'] Right: ['R', 'R', 'R', 'R'] Back: ['G', 'G', 'G', 'G'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'U', 'U', 'D', 'U', 'D', 'U', 'D', 'U', 'D', 'U', 'U', 'D']
-State: Left: ['G', 'G', 'G', 'G'] Front: ['O', 'O', 'O', 'O'] Right: ['B', 'B', 'B', 'B'] Back: ['R', 'R', 'R', 'R'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'U', 'U', 'D', 'U', 'D', 'U', 'D', 'U', 'D', 'U', 'D', 'U', 'D']
-Solved by: ['U', 'U', 'U', 'D', 'U', 'U', 'U', 'U', 'U', 'U', 'D']
-State: Left: ['R', 'R', 'R', 'R'] Front: ['G', 'G', 'G', 'G'] Right: ['O', 'O', 'O', 'O'] Back: ['B', 'B', 'B', 'B'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'U', 'D', 'U', 'U', 'U', 'U', 'U', 'U', 'D']
-State: Left: ['B', 'B', 'B', 'B'] Front: ['R', 'R', 'R', 'R'] Right: ['G', 'G', 'G', 'G'] Back: ['O', 'O', 'O', 'O'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'U', 'D', 'U', 'U', 'U', 'U', 'U', 'D', 'U', 'D']
-State: Left: ['O', 'O', 'O', 'O'] Front: ['B', 'B', 'B', 'B'] Right: ['R', 'R', 'R', 'R'] Back: ['G', 'G', 'G', 'G'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'U', 'D', 'U', 'U', 'U', 'U', 'D', 'U', 'U', 'D']
-State: Left: ['G', 'G', 'G', 'G'] Front: ['O', 'O', 'O', 'O'] Right: ['B', 'B', 'B', 'B'] Back: ['R', 'R', 'R', 'R'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'U', 'D', 'U', 'U', 'U', 'U', 'D', 'U', 'D', 'U', 'D']
-Solved by: ['U', 'U', 'U', 'D', 'U', 'U', 'U', 'D', 'U', 'U', 'U', 'D']
-State: Left: ['R', 'R', 'R', 'R'] Front: ['G', 'G', 'G', 'G'] Right: ['O', 'O', 'O', 'O'] Back: ['B', 'B', 'B', 'B'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'U', 'D', 'U', 'U', 'U', 'D', 'U', 'U', 'U', 'D']
-State: Left: ['B', 'B', 'B', 'B'] Front: ['R', 'R', 'R', 'R'] Right: ['G', 'G', 'G', 'G'] Back: ['O', 'O', 'O', 'O'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'U', 'D', 'U', 'U', 'U', 'D', 'U', 'U', 'D', 'U', 'D']
-State: Left: ['O', 'O', 'O', 'O'] Front: ['B', 'B', 'B', 'B'] Right: ['R', 'R', 'R', 'R'] Back: ['G', 'G', 'G', 'G'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'U', 'D', 'U', 'U', 'U', 'D', 'U', 'D', 'U', 'U', 'D']
-State: Left: ['G', 'G', 'G', 'G'] Front: ['O', 'O', 'O', 'O'] Right: ['B', 'B', 'B', 'B'] Back: ['R', 'R', 'R', 'R'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'U', 'D', 'U', 'U', 'U', 'D', 'U', 'D', 'U', 'D', 'U', 'D']
-Solved by: ['U', 'U', 'U', 'D', 'U', 'U', 'D', 'U', 'U', 'U', 'U', 'D']
-State: Left: ['R', 'R', 'R', 'R'] Front: ['G', 'G', 'G', 'G'] Right: ['O', 'O', 'O', 'O'] Back: ['B', 'B', 'B', 'B'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'U', 'D', 'U', 'U', 'D', 'U', 'U', 'U', 'U', 'D']
-State: Left: ['B', 'B', 'B', 'B'] Front: ['R', 'R', 'R', 'R'] Right: ['G', 'G', 'G', 'G'] Back: ['O', 'O', 'O', 'O'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'U', 'D', 'U', 'U', 'D', 'U', 'U', 'U', 'D', 'U', 'D']
-State: Left: ['O', 'O', 'O', 'O'] Front: ['B', 'B', 'B', 'B'] Right: ['R', 'R', 'R', 'R'] Back: ['G', 'G', 'G', 'G'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'U', 'D', 'U', 'U', 'D', 'U', 'U', 'D', 'U', 'U', 'D']
-State: Left: ['G', 'G', 'G', 'G'] Front: ['O', 'O', 'O', 'O'] Right: ['B', 'B', 'B', 'B'] Back: ['R', 'R', 'R', 'R'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'U', 'D', 'U', 'U', 'D', 'U', 'U', 'D', 'U', 'D', 'U', 'D']
-Solved by: ['U', 'U', 'U', 'D', 'U', 'U', 'D', 'U', 'D', 'U', 'U', 'U', 'D']
-State: Left: ['R', 'R', 'R', 'R'] Front: ['G', 'G', 'G', 'G'] Right: ['O', 'O', 'O', 'O'] Back: ['B', 'B', 'B', 'B'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'U', 'D', 'U', 'U', 'D', 'U', 'D', 'U', 'U', 'U', 'D']
-State: Left: ['B', 'B', 'B', 'B'] Front: ['R', 'R', 'R', 'R'] Right: ['G', 'G', 'G', 'G'] Back: ['O', 'O', 'O', 'O'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'U', 'D', 'U', 'U', 'D', 'U', 'D', 'U', 'U', 'D', 'U', 'D']
-State: Left: ['O', 'O', 'O', 'O'] Front: ['B', 'B', 'B', 'B'] Right: ['R', 'R', 'R', 'R'] Back: ['G', 'G', 'G', 'G'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'U', 'D', 'U', 'U', 'D', 'U', 'D', 'U', 'D', 'U', 'U', 'D']
-State: Left: ['G', 'G', 'G', 'G'] Front: ['O', 'O', 'O', 'O'] Right: ['B', 'B', 'B', 'B'] Back: ['R', 'R', 'R', 'R'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'U', 'D', 'U', 'U', 'D', 'U', 'D', 'U', 'D', 'U', 'D', 'U', 'D']
-Solved by: ['U', 'U', 'U', 'D', 'U', 'D', 'U', 'U', 'U', 'U', 'U', 'D']
-State: Left: ['R', 'R', 'R', 'R'] Front: ['G', 'G', 'G', 'G'] Right: ['O', 'O', 'O', 'O'] Back: ['B', 'B', 'B', 'B'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'U', 'D', 'U', 'D', 'U', 'U', 'U', 'U', 'U', 'D']
-State: Left: ['B', 'B', 'B', 'B'] Front: ['R', 'R', 'R', 'R'] Right: ['G', 'G', 'G', 'G'] Back: ['O', 'O', 'O', 'O'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'U', 'D', 'U', 'D', 'U', 'U', 'U', 'U', 'D', 'U', 'D']
-State: Left: ['O', 'O', 'O', 'O'] Front: ['B', 'B', 'B', 'B'] Right: ['R', 'R', 'R', 'R'] Back: ['G', 'G', 'G', 'G'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'U', 'D', 'U', 'D', 'U', 'U', 'U', 'D', 'U', 'U', 'D']
-State: Left: ['G', 'G', 'G', 'G'] Front: ['O', 'O', 'O', 'O'] Right: ['B', 'B', 'B', 'B'] Back: ['R', 'R', 'R', 'R'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'U', 'D', 'U', 'D', 'U', 'U', 'U', 'D', 'U', 'D', 'U', 'D']
-Solved by: ['U', 'U', 'U', 'D', 'U', 'D', 'U', 'U', 'D', 'U', 'U', 'U', 'D']
-State: Left: ['R', 'R', 'R', 'R'] Front: ['G', 'G', 'G', 'G'] Right: ['O', 'O', 'O', 'O'] Back: ['B', 'B', 'B', 'B'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'U', 'D', 'U', 'D', 'U', 'U', 'D', 'U', 'U', 'U', 'D']
-State: Left: ['B', 'B', 'B', 'B'] Front: ['R', 'R', 'R', 'R'] Right: ['G', 'G', 'G', 'G'] Back: ['O', 'O', 'O', 'O'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'U', 'D', 'U', 'D', 'U', 'U', 'D', 'U', 'U', 'D', 'U', 'D']
-State: Left: ['O', 'O', 'O', 'O'] Front: ['B', 'B', 'B', 'B'] Right: ['R', 'R', 'R', 'R'] Back: ['G', 'G', 'G', 'G'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'U', 'D', 'U', 'D', 'U', 'U', 'D', 'U', 'D', 'U', 'U', 'D']
-State: Left: ['G', 'G', 'G', 'G'] Front: ['O', 'O', 'O', 'O'] Right: ['B', 'B', 'B', 'B'] Back: ['R', 'R', 'R', 'R'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'U', 'D', 'U', 'D', 'U', 'U', 'D', 'U', 'D', 'U', 'D', 'U', 'D']
-Solved by: ['U', 'U', 'U', 'D', 'U', 'D', 'U', 'D', 'U', 'U', 'U', 'U', 'D']
-State: Left: ['R', 'R', 'R', 'R'] Front: ['G', 'G', 'G', 'G'] Right: ['O', 'O', 'O', 'O'] Back: ['B', 'B', 'B', 'B'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'U', 'D', 'U', 'D', 'U', 'D', 'U', 'U', 'U', 'U', 'D']
-State: Left: ['B', 'B', 'B', 'B'] Front: ['R', 'R', 'R', 'R'] Right: ['G', 'G', 'G', 'G'] Back: ['O', 'O', 'O', 'O'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'U', 'D', 'U', 'D', 'U', 'D', 'U', 'U', 'U', 'D', 'U', 'D']
-State: Left: ['O', 'O', 'O', 'O'] Front: ['B', 'B', 'B', 'B'] Right: ['R', 'R', 'R', 'R'] Back: ['G', 'G', 'G', 'G'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'U', 'D', 'U', 'D', 'U', 'D', 'U', 'U', 'D', 'U', 'U', 'D']
-State: Left: ['G', 'G', 'G', 'G'] Front: ['O', 'O', 'O', 'O'] Right: ['B', 'B', 'B', 'B'] Back: ['R', 'R', 'R', 'R'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'U', 'D', 'U', 'D', 'U', 'D', 'U', 'U', 'D', 'U', 'D', 'U', 'D']
-Solved by: ['U', 'U', 'U', 'D', 'U', 'D', 'U', 'D', 'U', 'D', 'U', 'U', 'U', 'D']
-State: Left: ['R', 'R', 'R', 'R'] Front: ['G', 'G', 'G', 'G'] Right: ['O', 'O', 'O', 'O'] Back: ['B', 'B', 'B', 'B'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'U', 'D', 'U', 'D', 'U', 'D', 'U', 'D', 'U', 'U', 'U', 'D']
-State: Left: ['B', 'B', 'B', 'B'] Front: ['R', 'R', 'R', 'R'] Right: ['G', 'G', 'G', 'G'] Back: ['O', 'O', 'O', 'O'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'U', 'D', 'U', 'D', 'U', 'D', 'U', 'D', 'U', 'U', 'D', 'U', 'D']
-State: Left: ['O', 'O', 'O', 'O'] Front: ['B', 'B', 'B', 'B'] Right: ['R', 'R', 'R', 'R'] Back: ['G', 'G', 'G', 'G'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'U', 'D', 'U', 'D', 'U', 'D', 'U', 'D', 'U', 'D', 'U', 'U', 'D']
-State: Left: ['G', 'G', 'G', 'G'] Front: ['O', 'O', 'O', 'O'] Right: ['B', 'B', 'B', 'B'] Back: ['R', 'R', 'R', 'R'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'U', 'D', 'U', 'D', 'U', 'D', 'U', 'D', 'U', 'D', 'U', 'D', 'U', 'D']
-Solved by: ['U', 'U', 'D', 'U', 'U', 'U', 'U', 'U', 'U', 'U', 'D']
-State: Left: ['R', 'R', 'R', 'R'] Front: ['G', 'G', 'G', 'G'] Right: ['O', 'O', 'O', 'O'] Back: ['B', 'B', 'B', 'B'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'D', 'U', 'U', 'U', 'U', 'U', 'U', 'U', 'D']
-State: Left: ['B', 'B', 'B', 'B'] Front: ['R', 'R', 'R', 'R'] Right: ['G', 'G', 'G', 'G'] Back: ['O', 'O', 'O', 'O'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'D', 'U', 'U', 'U', 'U', 'U', 'U', 'D', 'U', 'D']
-State: Left: ['O', 'O', 'O', 'O'] Front: ['B', 'B', 'B', 'B'] Right: ['R', 'R', 'R', 'R'] Back: ['G', 'G', 'G', 'G'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'D', 'U', 'U', 'U', 'U', 'U', 'D', 'U', 'U', 'D']
-State: Left: ['G', 'G', 'G', 'G'] Front: ['O', 'O', 'O', 'O'] Right: ['B', 'B', 'B', 'B'] Back: ['R', 'R', 'R', 'R'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'D', 'U', 'U', 'U', 'U', 'U', 'D', 'U', 'D', 'U', 'D']
-Solved by: ['U', 'U', 'D', 'U', 'U', 'U', 'U', 'D', 'U', 'U', 'U', 'D']
-State: Left: ['R', 'R', 'R', 'R'] Front: ['G', 'G', 'G', 'G'] Right: ['O', 'O', 'O', 'O'] Back: ['B', 'B', 'B', 'B'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'D', 'U', 'U', 'U', 'U', 'D', 'U', 'U', 'U', 'D']
-State: Left: ['B', 'B', 'B', 'B'] Front: ['R', 'R', 'R', 'R'] Right: ['G', 'G', 'G', 'G'] Back: ['O', 'O', 'O', 'O'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['U', 'U', 'D', 'U', 'U', 'U', 'U', 'D', 'U', 'U', 'D', 'U', 'D']
-
-[Program finished]
-"""
 Charles_Rubiks()
 
 # Thank you Byron Bay Woolworths and Australia Post, could not have a sanitized home or meals on wheels without you
@@ -670,4 +228,4 @@ Charles_Rubiks()
 # Disability Pension and National Disability Insurance Scheme
 # I love my country Australia
 # I love you Dad Mark William Watters, big bro Tai Truscott
-# Almost finished my algorithm
+# Almost finished my algorithm ... major error can wait until tommorrow. all tL, tR, tF, tB, tU, tD, and so on need to be copies, updating the state, and a way to keep track of moves
