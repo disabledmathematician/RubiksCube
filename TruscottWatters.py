@@ -113,44 +113,27 @@ class Unsolved_Rubiks:
 		tD = self.state[5]
 	
 		prev_L = tL.copy()
-		prev_R = tR.copy
+		prev_R = tR.copy()
 		prev_F = tF.copy()
 		prev_B = tB.copy()
 		prev_U = tU.copy()
 		prev_D = tD.copy()
 		tB[0], tB[1], tB[2], tB[3] = prev_B[2], prev_B[0], prev_B[3], prev_B[1]
-		pass
+		tU[0], tU[1] = prev_L[2], prev_L[0]
+		tL[0], tL[2] = prev_D[2], prev_D[3]
+		tD[2], tD[3] = prev_R[3], prev_R[1]
+		tR[1], tR[3] = prev_U[0], prev_U[1]
+		self.moves.append("B")
+		new_state = Unsolved_Rubiks(self.state.copy(), self.moves.copy())
+		return new_state
 	def B_inv(self):
-		tL = self.state[0]
-		tF = self.state[1]
-		tR = self.state[2]
-		tB = self.state[3]
-		tU = self.state[4]
-		tD = self.state[5]
-		
-		prev_L = tL.copy()
-		prev_R = tR.copy
-		prev_F = tF.copy()
-		prev_B = tB.copy()
-		prev_U = tU.copy()
-		prev_D = tD.copy()
-
-		pass
+		for n in range(0, 3, 1):
+			new_state = self.B()
+		return new_state
 	def B2(self):
-		tL = self.state[0]
-		tF = self.state[1]
-		tR = self.state[2]
-		tB = self.state[3]
-		tU = self.state[4]
-		tD = self.state[5]
-		
-		prev_L = tL.copy()
-		prev_R = tR.copy
-		prev_F = tF.copy()
-		prev_B = tB.copy()
-		prev_U = tU.copy()
-		prev_D = tD.copy()
-		pass
+		for n in range(0, 2):
+			new_state = self.B()
+		return new_state
 	def U(self):
 		tL = self.state[0]
 		tF = self.state[1]
@@ -160,7 +143,7 @@ class Unsolved_Rubiks:
 		tD = self.state[5]
 		
 		prev_L = tL.copy()
-		prev_R = tR.copy
+		prev_R = tR.copy()
 		prev_F = tF.copy()
 		prev_B = tB.copy()
 		prev_U = tU.copy()
@@ -261,7 +244,8 @@ def Charles_Rubiks():
 #	for e in moved:
 #		print(e.state)
 	cube = Unsolved_Rubiks(unsolved_state, [])
-	yet_moves = [lambda cube: cube.F(), lambda cube: cube.F2(), lambda cube: cube.F(), lambda cube: cube.R(), lambda cube: cube.L()]
+#	yet_moves = [lambda cube: cube.F(), lambda cube: cube.F2(), lambda cube: cube.F(), lambda cube: cube.R(), lambda cube: cube.L()]
+	yet_moves = [lambda cube: cube.B(), lambda cube: cube.F()]
 	moved = []
 	moved.append(cube)
 	for l in yet_moves:
@@ -281,6 +265,10 @@ State: Left: ['R', 'Y', 'R', 'Y'] Front: ['G', 'G', 'G', 'G'] Right: ['W', 'O', 
 State: Left: ['R', 'R', 'R', 'R'] Front: ['G', 'G', 'G', 'G'] Right: ['O', 'O', 'O', 'O'] Back: ['B', 'B', 'B', 'B'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] Moves: ['F', 'F', 'F', 'F']
 State: Left: ['R', 'R', 'R', 'R'] Front: ['G', 'W', 'G', 'W'] Right: ['O', 'O', 'O', 'O'] Back: ['Y', 'B', 'Y', 'B'] Up: ['Y', 'G', 'Y', 'G'] Down: ['W', 'B', 'W', 'B'] Moves: ['F', 'F', 'F', 'F', 'R']
 State: Left: ['R', 'R', 'R', 'R'] Front: ['W', 'W', 'W', 'W'] Right: ['O', 'O', 'O', 'O'] Back: ['Y', 'Y', 'Y', 'Y'] Up: ['G', 'G', 'G', 'G'] Down: ['B', 'B', 'B', 'B'] Moves: ['F', 'F', 'F', 'F', 'R', 'L']
+
+[Program finished]
+State: Left: ['W', 'R', 'W', 'R'] Front: ['G', 'G', 'G', 'G'] Right: ['O', 'Y', 'O', 'Y'] Back: ['B', 'B', 'B', 'B'] Up: ['R', 'R', 'Y', 'Y'] Down: ['W', 'W', 'O', 'O'] Moves: ['B']
+State: Left: ['W', 'W', 'W', 'W'] Front: ['G', 'G', 'G', 'G'] Right: ['Y', 'Y', 'Y', 'Y'] Back: ['B', 'B', 'B', 'B'] Up: ['R', 'R', 'R', 'R'] Down: ['O', 'O', 'O', 'O'] Moves: ['B', 'F']
 
 [Program finished]
 """
