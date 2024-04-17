@@ -15,7 +15,9 @@ class Unsolved_Rubiks:
 		solved_state = [["R", "R", "R", "R"], ["G", "G", "G", "G"], ["O", "O", "O", "O"], ["B", "B", "B", "B"], ["Y", "Y", "Y", "Y"], ["W", "W", "W", "W"]]
 		if self.state == solved_state:
 			print("State: {} Solved by: {}".format(self.state, self.moves))
-			sys.exit()
+			return True
+		return False
+		sys.exit()
 			
 	def R(self):
 		tL = self.state[0].copy()
@@ -250,27 +252,19 @@ def Charles_Rubiks():
 		print(n, n.moves)
 		States.append(n)
 	print(States)
-	for x in range(1, len(States)):
-		f = States[x]
-		for l in yet_moves:
-			States.append(l(f))
-	for e in States:
-		print(e, e.moves)
-""" Back on track
-Left: ['R', 'R', 'R', 'R'] Front: ['W', 'W', 'W', 'W'] Right: ['O', 'O', 'O', 'O'] Back: ['Y', 'Y', 'Y', 'Y'] Up: ['G', 'G', 'G', 'G'] Down: ['B', 'B', 'B', 'B']
-Left: ['R', 'R', 'R', 'R'] Front: ['W', 'B', 'W', 'B'] Right: ['O', 'O', 'O', 'O'] Back: ['G', 'Y', 'G', 'Y'] Up: ['G', 'W', 'G', 'W'] Down: ['B', 'Y', 'B', 'Y'] Left: ['R', 'R', 'R', 'R'] Front: ['B', 'W', 'B', 'W'] Right: ['O', 'O', 'O', 'O'] Back: ['Y', 'G', 'Y', 'G'] Up: ['W', 'G', 'W', 'G'] Down: ['Y', 'B', 'Y', 'B']
-[['R', 'R', 'R', 'R'], ['G', 'G', 'G', 'G'], ['O', 'O', 'O', 'O'], ['B', 'B', 'B', 'B'], ['Y', 'Y', 'Y', 'Y'], ['W', 'W', 'W', 'W']] []
-Left: ['R', 'R', 'R', 'R'] Front: ['W', 'G', 'W', 'G'] Right: ['O', 'O', 'O', 'O'] Back: ['B', 'Y', 'B', 'Y'] Up: ['G', 'Y', 'G', 'Y'] Down: ['B', 'W', 'B', 'W'] ['L']
-Left: ['R', 'R', 'R', 'R'] Front: ['G', 'W', 'G', 'W'] Right: ['O', 'O', 'O', 'O'] Back: ['Y', 'B', 'Y', 'B'] Up: ['Y', 'G', 'Y', 'G'] Down: ['W', 'B', 'W', 'B'] ['R']
-Left: ['G', 'G', 'R', 'R'] Front: ['O', 'O', 'G', 'G'] Right: ['B', 'B', 'O', 'O'] Back: ['R', 'R', 'B', 'B'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] ['U']
-Left: ['R', 'R', 'B', 'B'] Front: ['G', 'G', 'R', 'R'] Right: ['O', 'O', 'G', 'G'] Back: ['B', 'B', 'O', 'O'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] ['D']
-Left: ['R', 'W', 'R', 'W'] Front: ['G', 'G', 'G', 'G'] Right: ['Y', 'O', 'Y', 'O'] Back: ['B', 'B', 'B', 'B'] Up: ['Y', 'Y', 'R', 'R'] Down: ['O', 'O', 'W', 'W'] ['F']
-Left: ['W', 'R', 'W', 'R'] Front: ['G', 'G', 'G', 'G'] Right: ['O', 'Y', 'O', 'Y'] Back: ['B', 'B', 'B', 'B'] Up: ['R', 'R', 'Y', 'Y'] Down: ['W', 'W', 'O', 'O'] ['B']
-[<__main__.Unsolved_Rubiks object at 0x72eb348ad0>, <__main__.Unsolved_Rubiks object at 0x72eb348a50>, <__main__.Unsolved_Rubiks object at 0x72eb3489d0>, <__main__.Unsolved_Rubiks object at 0x72eb348a90>, <__main__.Unsolved_Rubiks object at 0x72eb348d50>, <__main__.Unsolved_Rubiks object at 0x72eb348fd0>, <__main__.Unsolved_Rubiks object at 0x72eb349210>]
-
-[Program finished]
-
-Row column rotations
-
+	t = False
+	while t == False:
+		for x in range(1, len(States)):
+			f = States[x]
+			for l in yet_moves:
+				mov = l(f)
+				States.append(mov)
+				if mov.is_solved() == True:
+					print("Solved by {}".format(mov.moves))
+					t = True
+#	for e in States:
+#		print(e, e.moves)
+""" I love you, my precious Father Mark William Watters. I love you unconditionally
+All thr credit for Tai as our carer
 """
 Charles_Rubiks()
