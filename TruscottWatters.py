@@ -38,6 +38,7 @@ class Unsolved_Rubiks:
 		tB[0], tB[2] = prev_U[3], prev_U[1]
 		new_matrix = [tL, tF, tR, tB, tU, tD]
 		n = self.moves.copy()
+#		self.moves.append("R")
 		n.append("R")
 		new_state = Unsolved_Rubiks(new_matrix, n)
 		return new_state
@@ -69,7 +70,7 @@ class Unsolved_Rubiks:
 		n = self.moves.copy()
 		n.append("L")
 #		self.moves.append("L")
-		new_state = Unsolved_Rubiks(new_matrix, [])
+		new_state = Unsolved_Rubiks(new_matrix, n)
 		return new_state
 	def L_inv(self):
 		for n in range(0, 3, 1):
@@ -160,10 +161,10 @@ class Unsolved_Rubiks:
 		prev_U = tU.copy()
 		prev_D = tD.copy()
 		tU[0], tU[1], tU[2], tU[3] = prev_U[2], prev_U[0], prev_U[3], prev_U[1]
-		tL[0], tL[1] = prev_B[0], prev_B[1]
-		tB[0], tB[1] = prev_R[0], prev_R[1]
-		tR[0], tR[1] = prev_F[0], prev_F[1]
-		tF[0], tF[1] = prev_L[0], prev_L[1]
+		tL[0], tL[1] = prev_F[0], prev_F[1]
+		tB[0], tB[1] = prev_L[0], prev_L[1]
+		tR[0], tR[1] = prev_B[0], prev_B[1]
+		tF[0], tF[1] = prev_R[0], prev_R[1]
 		new_matrix = [tL, tF, tR, tB, tU, tD]
 		n = self.moves.copy()
 		n.append("U")
@@ -200,6 +201,7 @@ class Unsolved_Rubiks:
 		new_matrix = [tL, tF, tR, tB, tU, tD]
 		n = self.moves.copy()
 		n.append("D")
+#		self.moves.append("D")
 		new_state = Unsolved_Rubiks(new_matrix, n)
 		return new_state
 	def D_inv(self):
@@ -215,9 +217,31 @@ class Unsolved_Rubiks:
 
 def Charles_Rubiks():
 	solved_state = [["R", "R", "R", "R"], ["G", "G", "G", "G"], ["O", "O", "O", "O"], ["B", "B", "B", "B"], ["Y", "Y", "Y", "Y"], ["W", "W", "W", "W"]]
-	unsolved_state = [['R', "O", "R", "R"], ["Y", "B", "G", "G"], ["Y", "G", "O", "O"], ["Y", "B", "B", "B"], ["Y", "R", "G", "O"], ["W", "W", "W", "W"]]
-	state = Unsolved_Rubiks(unsolved_state, [])
+	ns = Unsolved_Rubiks(solved_state, [])
+	ns1 = ns.R()
+	ns2 = ns.L()
+	ns = ns.R()
+	ns = ns.L()
+	print("ns")
+	print(ns)
+	print(ns.R(), ns.L())
+	state = Unsolved_Rubiks(solved_state, [])
 	yet_moves =[lambda c: c.L(), lambda c: c.R(), lambda c: c.U(), lambda c: c.D(), lambda c: c.F(), lambda c: c.B()]
+#	eF = [lambda cube: cube.F() for n in range(3)]
+#	eR = [lambda cube: cube.R() for n in range(3)]
+#	eD = [lambda cube: cube.D() for n in range(3)]
+#	eU = [lambda cube: cube.U() for n in range(3)]
+#	for e in eU:
+#		ns = e(state)
+#	for e in eD:
+#		ns = e(ns)
+#	for e in eR:
+#		ns = e(ns)
+#	for e in eF:
+#		ns = e(ns)
+#	print("ns state: ")
+#	print(ns.state)
+#	ns.is_solved()
 	States = []
 	States.append(state)
 	print(state.state, state.moves)
@@ -225,19 +249,22 @@ def Charles_Rubiks():
 		n = l(state)
 		print(n, n.moves)
 		States.append(n)
-	c = 1
-	while c < 6 ** 3:
-		for l in yet_moves:
-			tS= l(States[c])
-			States.append(tS)
-			tS.is_solved()
-			if tS.state == solved_state:
-				print("{}".format(tS.state))
-				print("The moves to solve sequentially are {}".format(S.moves))
-				sys.exit()
-		c += 1
 	print(States)
-	for e in States:
-		print(e, e.moves)
-#	
+"" Back on track
+
+ns
+Left: ['R', 'R', 'R', 'R'] Front: ['W', 'W', 'W', 'W'] Right: ['O', 'O', 'O', 'O'] Back: ['Y', 'Y', 'Y', 'Y'] Up: ['G', 'G', 'G', 'G'] Down: ['B', 'B', 'B', 'B']
+Left: ['R', 'R', 'R', 'R'] Front: ['W', 'B', 'W', 'B'] Right: ['O', 'O', 'O', 'O'] Back: ['G', 'Y', 'G', 'Y'] Up: ['G', 'W', 'G', 'W'] Down: ['B', 'Y', 'B', 'Y'] Left: ['R', 'R', 'R', 'R'] Front: ['B', 'W', 'B', 'W'] Right: ['O', 'O', 'O', 'O'] Back: ['Y', 'G', 'Y', 'G'] Up: ['W', 'G', 'W', 'G'] Down: ['Y', 'B', 'Y', 'B']
+[['R', 'R', 'R', 'R'], ['G', 'G', 'G', 'G'], ['O', 'O', 'O', 'O'], ['B', 'B', 'B', 'B'], ['Y', 'Y', 'Y', 'Y'], ['W', 'W', 'W', 'W']] []
+Left: ['R', 'R', 'R', 'R'] Front: ['W', 'G', 'W', 'G'] Right: ['O', 'O', 'O', 'O'] Back: ['B', 'Y', 'B', 'Y'] Up: ['G', 'Y', 'G', 'Y'] Down: ['B', 'W', 'B', 'W'] ['L']
+Left: ['R', 'R', 'R', 'R'] Front: ['G', 'W', 'G', 'W'] Right: ['O', 'O', 'O', 'O'] Back: ['Y', 'B', 'Y', 'B'] Up: ['Y', 'G', 'Y', 'G'] Down: ['W', 'B', 'W', 'B'] ['R']
+Left: ['G', 'G', 'R', 'R'] Front: ['O', 'O', 'G', 'G'] Right: ['B', 'B', 'O', 'O'] Back: ['R', 'R', 'B', 'B'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] ['U']
+Left: ['R', 'R', 'B', 'B'] Front: ['G', 'G', 'R', 'R'] Right: ['O', 'O', 'G', 'G'] Back: ['B', 'B', 'O', 'O'] Up: ['Y', 'Y', 'Y', 'Y'] Down: ['W', 'W', 'W', 'W'] ['D']
+Left: ['R', 'W', 'R', 'W'] Front: ['G', 'G', 'G', 'G'] Right: ['Y', 'O', 'Y', 'O'] Back: ['B', 'B', 'B', 'B'] Up: ['Y', 'Y', 'R', 'R'] Down: ['O', 'O', 'W', 'W'] ['F']
+Left: ['W', 'R', 'W', 'R'] Front: ['G', 'G', 'G', 'G'] Right: ['O', 'Y', 'O', 'Y'] Back: ['B', 'B', 'B', 'B'] Up: ['R', 'R', 'Y', 'Y'] Down: ['W', 'W', 'O', 'O'] ['B']
+[<__main__.Unsolved_Rubiks object at 0x72eb348ad0>, <__main__.Unsolved_Rubiks object at 0x72eb348a50>, <__main__.Unsolved_Rubiks object at 0x72eb3489d0>, <__main__.Unsolved_Rubiks object at 0x72eb348a90>, <__main__.Unsolved_Rubiks object at 0x72eb348d50>, <__main__.Unsolved_Rubiks object at 0x72eb348fd0>, <__main__.Unsolved_Rubiks object at 0x72eb349210>]
+
+[Program finished]
+
+Row column rotations
 Charles_Rubiks()
