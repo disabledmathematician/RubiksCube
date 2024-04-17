@@ -1,7 +1,8 @@
-# I love you, My farher Mark William Watters
+# I love you, My father Mark William Watters
 # Thank you Harvard University and Massachusetts Institute of Technology
 # Charles Truscott Watters, Byron Bay Australia
 # Certified in Computational Thinking using Python from MITx
+# Certified in Data Science in Using Python for Research PH556 (Harvard Centre for Continuing Education, Harvard Extension School)
 # Love you high rollin Dad, Mark William Watters
 # Until tommorrow
 class Unsolved_Rubiks:
