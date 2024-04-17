@@ -51,7 +51,9 @@ class Unsolved_Rubiks:
 		prev_D = tD.copy()
 		pass
 	def R2(self):
-		pass
+		for n in range(0, 2, 1):
+			new_state = self.R()
+		return new_state
 	def L(self):
 		tL = self.state[0]
 		tF = self.state[1]
@@ -305,7 +307,7 @@ def Charles_Rubiks():
 #	for e in moved:
 #		print(e.state)
 	cube = Unsolved_Rubiks(unsolved_state, [])
-	print(cube.R())
+	print(cube.R2())
 	print(cube.moves)
 	
 Charles_Rubiks()
