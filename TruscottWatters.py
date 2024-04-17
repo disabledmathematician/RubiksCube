@@ -5,6 +5,7 @@
 # Certified in Computational Thinking using Python from MITx
 # Certified in Data Science in Using Python for Research PH556 (Harvard Centre for Continuing Education, Harvard Extension School)
 # Love you high rollin Dad, Mark William Watters
+# Not finished yet. Need to get off my phone, pesky stalkerware malware, Android c&C
 import sys
 class Unsolved_Rubiks:
 	def __init__(self, state, moves):
