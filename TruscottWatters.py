@@ -36,20 +36,9 @@ class Unsolved_Rubiks:
 		new_state = Unsolved_Rubiks(self.state.copy(), self.moves.copy())
 		return new_state
 	def R_inv(self):
-		tL = self.state[0]
-		tF = self.state[1]
-		tR = self.state[2]
-		tB = self.state[3]
-		tU = self.state[4]
-		tD = self.state[5]
-		
-		prev_L = tL.copy()
-		prev_R = tR.copy
-		prev_F = tF.copy()
-		prev_B = tB.copy()
-		prev_U = tU.copy()
-		prev_D = tD.copy()
-		pass
+		for n in range(0, 3, 1):
+			new_state = self.R()
+		return new_state
 	def R2(self):
 		for n in range(0, 2, 1):
 			new_state = self.R()
@@ -77,37 +66,13 @@ class Unsolved_Rubiks:
 		new_state = Unsolved_Rubiks(self.state.copy(), self.moves.copy())
 		return new_state
 	def L_inv(self):
-		tL = self.state[0]
-		tF = self.state[1]
-		tR = self.state[2]
-		tB = self.state[3]
-		tU = self.state[4]
-		tD = self.state[5]
-
-		prev_L = tL.copy()
-		prev_R = tR.copy
-		prev_F = tF.copy()
-		prev_B = tB.copy()
-		prev_U = tU.copy()
-		prev_D = tD.copy()
-
-		pass
+		for n in range(0, 3, 1):
+			new_state = self.L()
+		return new_state
 	def L2(self):
-		tL = self.state[0]
-		tF = self.state[1]
-		tR = self.state[2]
-		tB = self.state[3]
-		tU = self.state[4]
-		tD = self.state[5]
-		
-		prev_L = tL.copy()
-		prev_R = tR.copy
-		prev_F = tF.copy()
-		prev_B = tB.copy()
-		prev_U = tU.copy()
-		prev_D = tD.copy()
-
-		pass
+		for n in range(0, 2):
+			new_state = self.L()
+		return new_state
 	def F(self):
 		tL = self.state[0]
 		tF = self.state[1]
@@ -122,7 +87,7 @@ class Unsolved_Rubiks:
 		prev_B = tB.copy()
 		prev_U = tU.copy()
 		prev_D = tD.copy()
-
+		tF[0], tF[1], tF[2], tF[3] = prev_F[2], prev_F[0], prev_F[3], prev_F[1]
 		pass
 	def F_inv(self):
 		tL = self.state[0]
