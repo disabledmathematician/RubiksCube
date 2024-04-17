@@ -34,9 +34,13 @@ class Unsolved_Rubiks:
 		pass
 	def B_inv(self):
 		pass
+	def B2(self):
+		pass
 	def U(self):
 		pass
 	def U2(self):
+		pass
+	def U_inv(self):
 		pass
 	def D(self):
 		pass
@@ -48,6 +52,14 @@ class Unsolved_Rubiks:
 
 def Charles_Rubiks():
 	unsolved_state = [["R", "R", "R", "R"], ["G", "G", "G", "G"], ["O", "O", "O", "O"], ["B", "B", "B", "B"], ["Y", "Y", "Y", "Y"], ["W", "W", "W", "W"]]
-	pass
+	moves = [lambda C: C.R(), lambda C: C.R_inv(), lambda C: C.R2(), lambda C: C.L(), lambda C: C.L_inv(), lambda C: C.L2(), lambda C: C.F(), lambda C: C.F_inv(), lambda C: C.F2(), lambda C: C.B(), lambda C: C.B_inv(), lambda C: C.B2(), lambda C: C.U(), lambda C: C.U_inv(), lambda C: C.U2(), lambda C:C.D(), lambda C: C.D_inv(), lambda C: C.D2()]
+	moved = []
+	moved.append(Unsolved_Rubiks(unsolved_state, {}, 0))
+	for n in range(len(moves)):
+		moved.append(moves[n](moved[0]))
+	print(moved)
+	for e in moved:
+		print(e.state)
+		
 	
 Charles_Rubiks()
