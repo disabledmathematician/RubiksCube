@@ -29,8 +29,8 @@ class Unsolved_Rubiks:
 		tU[0], tU[2] = prev_F[0], prev_F[2]
 		tB[3], tB[1] = prev_U[0], prev_U[1]
 		tD[0], tD[2] = prev_B[1], prev_B[3]
-		# Correction: Up and down faces mixed up
-		tF[0], tF[1] = prev_D[0], prev_D[1]
+		# Correction
+		tF[0], tF[2] = prev_D[0], prev_D[1]
 		print(tR, prev_R)
 		tR[0], tR[1], tR[2], tR[3] = prev_R[1], prev_R[3], prev_R[0], prev_R[2]
 		self.moves.append("R")
@@ -327,7 +327,7 @@ def Charles_Rubiks():
 Charles_Rubiks()
 
 """ ['O', 'O', 'O', 'O'] ['O', 'O', 'O', 'O']
-[['R', 'R', 'R', 'R'], ['Y', 'Y', 'G', 'G'], ['O', 'O', 'O', 'O'], ['B', 'W', 'B', 'W'], ['B', 'Y', 'B', 'Y'], ['G', 'W', 'G', 'W']]
+[['R', 'R', 'R', 'R'], ['Y', 'G', 'Y', 'G'], ['O', 'O', 'O', 'O'], ['B', 'W', 'B', 'W'], ['B', 'Y', 'B', 'Y'], ['G', 'W', 'G', 'W']]
 ['R']
 
 [Program finished] """
