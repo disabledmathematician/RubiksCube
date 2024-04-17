@@ -182,7 +182,7 @@ class Unsolved_Rubiks:
 		prev_B = tB.copy()
 		prev_U = tU.copy()
 		prev_D = tD.copy()
-
+		tU[0], tU[1], tU[2], tU[3] = prev_U[2], prev_U[0], prev_U[3], prev_U[1]
 		pass
 	def U2(self):
 		tL = self.state[0]
@@ -230,7 +230,7 @@ class Unsolved_Rubiks:
 		prev_B = tB.copy()
 		prev_U = tU.copy()
 		prev_D = tD.copy()
-
+		tD[0], tD[1], tD[2], tD[3] = prev_D[2], prev_D[0], prev_D[3], prev_D[1]
 		pass
 	def D_inv(self):
 		tL = self.state[0]
@@ -265,7 +265,7 @@ class Unsolved_Rubiks:
 
 		pass
 	def __str__(self):
-		return str(self.state)
+		return str("Left: {} Front: {} Right: {} Back: {} Up: {} Down: {}".format(self.state[0], self.state[1], self.state[2], self.state[3], self.state[4], self.state[5]))
 
 def Charles_Rubiks():
 	unsolved_state = [["R", "R", "R", "R"], ["G", "G", "G", "G"], ["O", "O", "O", "O"], ["B", "B", "B", "B"], ["Y", "Y", "Y", "Y"], ["W", "W", "W", "W"]]
@@ -283,10 +283,11 @@ def Charles_Rubiks():
 	moved.append(cube)
 	for l in yet_moves:
 		n = l(moved[0])
-		print("State: {} Moves: {}".format(n.state, n.moves))
+		
+		print("State: {} Moves: {}".format(n, n.moves))
 """
-State: [['R', 'R', 'R', 'R'], ['G', 'W', 'G', 'W'], ['O', 'O', 'O', 'O'], ['Y', 'B', 'Y', 'B'], ['Y', 'G', 'Y', 'G'], ['W', 'B', 'W', 'B']] Moves: ['R']
-State: [['R', 'R', 'R', 'R'], ['W', 'W', 'W', 'W'], ['O', 'O', 'O', 'O'], ['Y', 'Y', 'Y', 'Y'], ['G', 'G', 'G', 'G'], ['B', 'B', 'B', 'B']] Moves: ['R', 'L']
+State: Left: ['R', 'R', 'R', 'R'] Front: ['G', 'W', 'G', 'W'] Right: ['O', 'O', 'O', 'O'] Back: ['Y', 'B', 'Y', 'B'] Up: ['Y', 'G', 'Y', 'G'] Down: ['W', 'B', 'W', 'B'] Moves: ['R']
+State: Left: ['R', 'R', 'R', 'R'] Front: ['W', 'W', 'W', 'W'] Right: ['O', 'O', 'O', 'O'] Back: ['Y', 'Y', 'Y', 'Y'] Up: ['G', 'G', 'G', 'G'] Down: ['B', 'B', 'B', 'B'] Moves: ['R', 'L']
 
 [Program finished]
 """
