@@ -68,8 +68,14 @@ class Unsolved_Rubiks:
 		prev_B = tB.copy()
 		prev_U = tU.copy()
 		prev_D = tD.copy()
-
-		pass
+		tL[0], tL[1], tL[2], tL[3] = prev_L[1], prev_L[3], prev_L[0], prev_L[2]
+		tF[0], tF[2] = prev_D[0], prev_D[2]
+		tB[1], tB[3] = prev_U[2], prev_U[0]
+		tU[0], tU[2] = prev_F[0], prev_F[2]
+		tD[0], tD[2] = prev_B[3], prev_B[1]
+		self.moves.append("L")
+		new_state = Unsolved_Rubiks(self.state.copy(), self.moves.copy())
+		return new_state
 	def L_inv(self):
 		tL = self.state[0]
 		tF = self.state[1]
@@ -307,7 +313,7 @@ def Charles_Rubiks():
 #	for e in moved:
 #		print(e.state)
 	cube = Unsolved_Rubiks(unsolved_state, [])
-	print(cube.R2())
+	print(cube.L())
 	print(cube.moves)
 	
 Charles_Rubiks()
