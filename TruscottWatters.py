@@ -135,7 +135,7 @@ class Unsolved_Rubiks:
 		prev_B = tB.copy()
 		prev_U = tU.copy()
 		prev_D = tD.copy()
-
+		tB[0], tB[1], tB[2], tB[3] = prev_B[2], prev_B[0], prev_B[3], prev_B[1]
 		pass
 	def B_inv(self):
 		tL = self.state[0]
