@@ -582,7 +582,7 @@ def CharlesTruscottRubiks():
 #		for s in state:
 #			print(s, s.moves, move(s).moves)
 
-	while c < 18:
+	while c < 18 ** 5:
 		elem = state.popleft()
 		for move in moves:
 			state.append(move(elem))
