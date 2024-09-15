@@ -1,12 +1,6 @@
 #pylint:disable=W0613
 from queue import deque
 
-""" Charles Truscott Watters, developing my own algorithm to solve the Rubik's cube 2 x 2 Byron Bay NSW 2481. Thank you John Flynn Hospital and Byron Bay Hospital. Thank you MITx, MIT OCW and Harvard CCE """
-
-""" Thank you Byron Central Hospital Tuckeroo. Thank you Eric Grimson, John Guttag and Ana Bell and all at MITx """
-
-
-
 # August 30, International Day of the Disappeared
 
 
@@ -344,6 +338,14 @@ from queue import deque
 
 """
 
+""" Charles Truscott Watters, developing my own algorithm to solve the Rubik's cube 2 x 2 Byron Bay NSW 2481. Thank you John Flynn Hospital and Byron Bay Hospital. Thank you MITx, MIT OCW and Harvard CCE """
+
+""" Thank you Byron Central Hospital Tuckeroo. Thank you Eric Grimson, John Guttag and Ana Bell and all at MITx """
+
+
+
+#  theta c to the n (18 ^ n) complexity, exponential computational complexity
+
 class RubiksState(object):
 	def __init__(self, moves):
 #	def __init__(self, left_face, front_face, right_face, back_face, top_face, down_face, moves):
@@ -486,7 +488,7 @@ class RubiksState(object):
 		pass
 		
 	def is_solved(self):
-		if self.left_face == [] and self.front_face == [] and self.right_face == [] and self.back_face == [] and self.top_face == [] and self.down_face == []:
+		if self.left_face == ["R", "R", "R", "R"] and self.front_face == ["G", "G", "G", "G"] and self.right_face == ["O", "O", "O", "O"] and self.back_face == ["B", "B", "B", "B"] and self.top_face == ["W", "W", "W", "W"] and self.down_face == ["Y", "Y" , "Y" , "Y"]:
 				return True
 		else:
 				return False
@@ -578,11 +580,13 @@ def CharlesTruscottRubiks():
 		state.append(e)
 	state.popleft()
 	c = 0
+	print(state)
 #	for move in moves:
 #		for s in state:
 #			print(s, s.moves, move(s).moves)
-
-	while c < 18 ** 5:
+	# 18 = 3 x 6 moves, eighteen to the n combinatorially sound moves.
+	# 18 ^ 3 = all possible 18 moves 3 times over
+	while c < 18 ** 3:
 		elem = state.popleft()
 		for move in moves:
 			state.append(move(elem))
