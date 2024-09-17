@@ -963,7 +963,7 @@ def CharlesTruscottRubiks():
 			print(move(elem), move(elem).moves)
 			print("Left Face: {} Front Face: {} Right Face: {} Back Face: {} Top Face: {} Down Face: {}".format(elem.left_face, elem.front_face, elem.right_face, elem.back_face, elem.top_face, elem.down_face))
 			print("Authored by Charles Truscott Watters. Rubik's algorithm")
-			sleep(0.2)
+	#		sleep(0.2)
 			if elem.is_solved() == True:
 				print("Answer: ")
 				print(elem.moves)
