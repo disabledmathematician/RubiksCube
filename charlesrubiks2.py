@@ -12,17 +12,18 @@ from queue import deque
 
 #  theta c to the n (18 ^ n) complexity, exponential computational complexity
 
+""" Top Left Front, Top Right Front, Bottom Left Front, Bottom Right Front, Top Left Back, Top Right Back, Bottom Right Back, Bottom Left Back """
 class RubiksState(object):
-	def __init__(self, moves):
+	def __init__(self, tlf, trf, blf, brf, tlb, blb, trb, brb, moves):
 #	def __init__(self, left_face, front_face, right_face, back_face, top_face, down_face, moves):
-#		self.ulb = [0] * 3
-#		self.urb = [0] * 3
-#		self.ulf = [0] * 3
-#		self.urf = [0] * 3
-#		self.dlb = [0] * 3
-#		self.drb = [0] * 3
-#		self.drf = [0] * 3
-#		self.dlf = [0] * 3
+#		self.tlf = [0] * 3
+#		self.trf= [0] * 3
+#		self.blf = [0] * 3
+#		self.brf= [0] * 3
+#		self.tlb = [0] * 3
+#		self.trb= [0] * 3
+#		self.brb = [0] * 3
+#		self.blb= [0] * 3
 #		
 
 #		self.left_face = left_face
@@ -34,42 +35,71 @@ class RubiksState(object):
 		self.moves = moves
 
 	def L(self):
-		""" Down left front becomes up left front. Down left back becomes down left front. Up left back becomes down left back, up left front becomes up left back """
+	# Indices 0, 1, 2 to 2, 1, 0 (mapping)
+""" Top Left Front to Bottom Left Front.
+Bottom Left Front to Bottom Left Back
+Bottom Left Back to Top Left Back
+Top Left Back to Top Right Front """
+		ttlf = self.tlf.copy()
+		tblf = self.blf.copy()
+		ttrf = self.trf.copy()
+		tbrf = self.brf.copy()
+		ttlb = self.tlb.copy()
+		tblb = self.blb.copy()
+		ttrb = self.trb.copy()
+		tbrb = self.brb.copy()
 		elcopy = self.moves.copy()
 		elcopy.append("L")
 		return RubiksState(elcopy)
 #		return RubiksState(left_face, front_face, right_face, back_face, top_face, down_face, elcopy)
 	def L2(self):
-		""" Up left back becomes down left front, down left back becomes up left front. Down left front becomes up left back. Down left back becomes up left front """
 		elcopy = self.moves.copy()
 		elcopy.append("L2")
-		return RubiksState(elcopy)
 		pass
 	def Linv(self):
-		""" Down left front becomes down left back. Down left back becomes up left back. Up left back becomes up left front. Up left front becomes down left front """
 		elcopy = self.moves.copy()
 		elcopy.append("L inverse")
-		return RubiksState(elcopy)
 		pass
 	def R(self):
-		""" Up right front becomes up right back. Up right back becomes Down right back, Down right back befomes Down Right Front, Down Right Front becomes Up Right Front """
+		# Indices 0, 1, 2 to 2, 1, 0 (mapping)
+	""" Top Right Front to Bottom Right Front.
+	Bottom Right Front to Bottom Right Back
+	Bottom Right Back to Top Right Back
+	Top Right Back to Top Right Front """
+		ttlf = self.tlf.copy()
+		tblf = self.blf.copy()
+		ttrf = self.trf.copy()
+		tbrf = self.brf.copy()
+		ttlb = self.tlb.copy()
+		tblb = self.blb.copy()
+		ttrb = self.trb.copy()
+		tbrb = self.brb.copy()
 		elcopy = self.moves.copy()
 		elcopy.append("R")
 		return RubiksState(elcopy)
 		pass
 	def R2(self):
-		""" Up right front becomes down right back. Down right back becomes up right front. Down right front becomes up right back. Up.right back becomes down right front """
 		elcopy = self.moves.copy()
 		elcopy.append("R2")
 		return RubiksState(elcopy)
 		pass
 	def Rinv(self):
-		""" Up right front becomes down right front. Down right front becomes down right back. Down right back becomes up right back. Up right back becomes up right front """
 		elcopy = self.moves.copy()
 		elcopy.append("R inverse")
 		return RubiksState(elcopy)
 		pass
 	def U(self):
+		# Indices 0, 1, 2 to 0, 2, 1 (mapping)
+	""" Top Left Front to Top Left Back
+	Top Left Back to Top Right Back. Top Right Back to Top Right Front. Top Right Front to Top Left Front """
+		ttlf = self.tlf.copy()
+		tblf = self.blf.copy()
+		ttrf = self.trf.copy()
+		tbrf = self.brf.copy()
+		ttlb = self.tlb.copy()
+		tblb = self.blb.copy()
+		ttrb = self.trb.copy()
+		tbrb = self.brb.copy()
 		elcopy = self.moves.copy()
 		elcopy.append("U")
 		return RubiksState(elcopy)
@@ -85,6 +115,18 @@ class RubiksState(object):
 		return RubiksState(elcopy)
 		pass
 	def D(self):
+		# Indices 0, 1, 2 to 0, 2, 1 (mapping)
+		""" Bottom Left Front to Bottom Left Back
+		Bottom Left Back to Bottom Right Back. Bottom Right Back to Bottom Right Front
+		Bottom Right Front to Bottom Left Front """
+		ttlf = self.tlf.copy()
+		tblf = self.blf.copy()
+		ttrf = self.trf.copy()
+		tbrf = self.brf.copy()
+		ttlb = self.tlb.copy()
+		tblb = self.blb.copy()
+		ttrb = self.trb.copy()
+		tbrb = self.brb.copy()
 		elcopy = self.moves.copy()
 		elcopy.append("D")
 		return RubiksState(elcopy)
@@ -100,6 +142,16 @@ class RubiksState(object):
 		return RubiksState(elcopy)
 		pass
 	def F(self):
+		# Indices 0, 1, 2 to 1, 0, 2 (mapping)
+		""" Bottom Left Front to Top Left Front. Top Left Front to Top Right Front. Top Right Front to Bottom Right Front. Bottom Right Front to Bottom Left Front """
+		ttlf = self.tlf.copy()
+		tblf = self.blf.copy()
+		ttrf = self.trf.copy()
+		tbrf = self.brf.copy()
+		ttlb = self.tlb.copy()
+		tblb = self.blb.copy()
+		ttrb = self.trb.copy()
+		tbrb = self.brb.copy()
 		elcopy = self.moves.copy()
 		elcopy.append("F")
 		return RubiksState(elcopy)
@@ -115,6 +167,16 @@ class RubiksState(object):
 		return RubiksState(elcopy)
 		pass
 	def B(self):
+		# Indices 0, 1, 2 to 1, 0, 2 (mapping)
+		""" Bottom Left Back to Top Left Back. Top Left Back to Top Right Back. Top Right Back to Bottom Right Back. Bottom Right Back to Bottom Left Back """
+		ttlf = self.tlf.copy()
+		tblf = self.blf.copy()
+		ttrf = self.trf.copy()
+		tbrf = self.brf.copy()
+		ttlb = self.tlb.copy()
+		tblb = self.blb.copy()
+		ttrb = self.trb.copy()
+		tbrb = self.brb.copy()
 		elcopy = self.moves.copy()
 		elcopy.append("B")
 		return RubiksState(elcopy)
@@ -141,8 +203,8 @@ def CharlesTruscottRubiks():
 	item = RubiksState([])
 	state = deque([])
 	state.append(item)
-
-	moves = [lambda s: s.L(), lambda s: s.L2(), lambda s: s.Linv(), lambda s: s.R(), lambda s: s.R2(), lambda s: s.Rinv(), lambda s: s.U(), lambda s: s.U2(), lambda s: s.Uinv(), lambda s: s.D(), lambda s: s.D2(), lambda s: s.Dinv(), lambda s: s.F(), lambda s: s.F2(), lambda s: s.Finv(), lambda s: s.B(), lambda s: s.B2(), lambda s: s.Binv()]
+	moves = [lambda s: s.L(), lambda s: s.R(), lambda s: s.U(), lambda s: s.D(), lambda s: s.F(),  lambda s: s.B() ]
+#	moves = [lambda s: s.L(), lambda s: s.L2(), lambda s: s.Linv(), lambda s: s.R(), lambda s: s.R2(), lambda s: s.Rinv(), lambda s: s.U(), lambda s: s.U2(), lambda s: s.Uinv(), lambda s: s.D(), lambda s: s.D2(), lambda s: s.Dinv(), lambda s: s.F(), lambda s: s.F2(), lambda s: s.Finv(), lambda s: s.B(), lambda s: s.B2(), lambda s: s.Binv()]
 	print(state[0].moves)
 	for move in moves:
 		e = move(RubiksState([]))
@@ -155,16 +217,19 @@ def CharlesTruscottRubiks():
 #			print(s, s.moves, move(s).moves)
 	# 18 = 3 x 6 moves, eighteen to the n combinatorially sound moves.
 	# 18 ^ 3 = all possible 18 moves 3 times over
+	print("Charles Truscott Watters. My Rubik's cube solution Python algorithm.")
+	from time import sleep
 	while c < 18 ** 3:
 		elem = state.popleft()
 		for move in moves:
 			state.append(move(elem))
 			print(move(elem), move(elem).moves)
+			sleep(0.2)
 		c += 1
 
 
 def CharlesTruscottSim():
-#	left_face, front_face, right_face, back_face, top_face, down_face, moves
+#	left_face, front_face, right_face, back_face, top_face, do)wn_face, moves
 	left = ["G", "R", "B", "O"]
 	front = ["B", "G", "G", "G"]
 	right = ["R", "B", "R", "B"]
