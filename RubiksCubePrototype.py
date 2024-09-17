@@ -25,6 +25,14 @@ class RubiksState(object):
 #		self.brb = [0] * 3
 #		self.blb= [0] * 3
 #		
+		self.tlf = tlf
+		self.trf = trf
+		self.blf = blf
+		self.brf = brf
+		self.tlb = tlb
+		self.blb = blb
+		self.trb = trb
+		self.brb = brb
 
 		self.left_face = [self.tlf[1], self.blf[1], self.tlb[1], self.blb[1]]
 		self.front_face = [self.tlf[2], self.blf[2], self.trf[2], self.brf[2]]
@@ -49,25 +57,27 @@ Top Left Back to Top Left Front """
 		tblb = self.blb.copy()
 		ttrb = self.trb.copy()
 		tbrb = self.brb.copy()
-		new_blf = [0] * 3
-		new_blb = [0] * 3
-		new_tlb = [0] * 3
-		new_tlf = [0] * 3
-		new_blf[0], new_blf[1], new_blf[2] = ttlf[2], ttlf[1], ttlf[0] # Bottom Left Front becomes Top Left Front
-		new_blb[0], new_blb[1], new_blb[2] = tblf[2], tblf[1], tblf[0] # Bottom Left Back becomes Bottom Left Front
-		new_tlb[0], new_tlb[1], new_tlb[2] = tblb[2], tblb[1], tblb[0] #  Top Left Back becomes Bottom Left Back
-		new_tlf[0], new_tlf[1], new_tlf[2] = ttlb[2], ttlb[1], ttlb[0] # Top Left Front becomes Top Left Back
+		nblf = [0] * 3
+		nblb = [0] * 3
+		ntlb = [0] * 3
+		ntlf = [0] * 3
+		nblf[0], nblf[1], nblf[2] = ttlf[2], ttlf[1], ttlf[0] # Bottom Left Front becomes Top Left Front
+		nblb[0], nblb[1], nblb[2] = tblf[2], tblf[1], tblf[0] # Bottom Left Back becomes Bottom Left Front
+		ntlb[0], ntlb[1], ntlb[2] = tblb[2], tblb[1], tblb[0] #  Top Left Back becomes Bottom Left Back
+		ntlf[0], ntlf[1], ntlf[2] = ttlb[2], ttlb[1], ttlb[0] # Top Left Front becomes Top Left Back
 		elcopy = self.moves.copy()
 		elcopy.append("L")
-		return RubiksState(elcopy)
+		# return RubiksState
+		return RubiksState(ntlf, ttrf, nblf, tbrf, ntlb, nblb, ttrb, tbrb, elcopy)
+			# here
 #		return RubiksState(left_face, front_face, right_face, back_face, top_face, down_face, elcopy)
-	def L2(self):
-		elcopy = self.moves.copy()
-		elcopy.append("L2")
-		pass
-	def Linv(self):
-		elcopy = self.moves.copy()
-		elcopy.append("L inverse")
+#	def L2(self):
+#		elcopy = self.moves.copy()
+#		elcopy.append("L2")
+#		pass
+#	def Linv(self):
+#		elcopy = self.moves.copy()
+#		elcopy.append("L inverse")
 		pass
 	def R(self):
 		# Indices 0, 1, 2 to 2, 1, 0 (mapping)
@@ -90,17 +100,16 @@ Top Left Back to Top Left Front """
 		ntrf[0], ntrf[1], ntrf[2] = ttrb[2], ttrb[1], ttrb[0]
 		elcopy = self.moves.copy()
 		elcopy.append("R")
-		return RubiksState(elcopy)
-		pass
-	def R2(self):
-		elcopy = self.moves.copy()
-		elcopy.append("R2")
-		return RubiksState(elcopy)
-		pass
-	def Rinv(self):
-		elcopy = self.moves.copy()
-		elcopy.append("R inverse")
-		return RubiksState(elcopy)
+		return RubiksState(ttlf, ntrf, tblf, nbrf, ttlb, tblb, ntrb, nbrb, elcopy)
+#	def R2(self):
+#		elcopy = self.moves.copy()
+#		elcopy.append("R2")
+#		return RubiksState(elcopy)
+#		pass
+#	def Rinv(self):
+#		elcopy = self.moves.copy()
+#		elcopy.append("R inverse")
+#		return RubiksState(elcopy)
 		pass
 	def U(self):
 		# Indices 0, 1, 2 to 0, 2, 1 (mapping)
@@ -125,18 +134,20 @@ Top Left Back to Top Left Front """
 		
 		elcopy = self.moves.copy()
 		elcopy.append("U")
-		return RubiksState(elcopy)
+	# :
+		# return RubiksState
+		return RubiksState(ntlf, ntrf, tblf, tbrf, ntlb, tblb, ntrb, tbrb, elcopy)
 		pass
-	def U2(self):
-		elcopy = self.moves.copy()
-		elcopy.append("U2")
-		return RubiksState(elcopy)
-		pass
-	def Uinv(self):
-		elcopy = self.moves.copy()
-		elcopy.append("Up inverse")
-		return RubiksState(elcopy)
-		pass
+#	def U2(self):
+#		elcopy = self.moves.copy()
+#		elcopy.append("U2")
+#		return RubiksState(elcopy)
+#		pass
+#	def Uinv(self):
+#		elcopy = self.moves.copy()
+#		elcopy.append("Up inverse")
+#		return RubiksState(elcopy)
+#		pass
 	def D(self):
 		# Indices 0, 1, 2 to 0, 2, 1 (mapping)
 		""" Bottom Left Front to Bottom Left Back
@@ -157,17 +168,18 @@ Top Left Back to Top Left Front """
 		nblf[0], nblf[1], nblf[2] = tbrf[0], tbrf[2], tbrf[1]
 		elcopy = self.moves.copy()
 		elcopy.append("D")
-		return RubiksState(elcopy)
-		pass
-	def D2(self):
-		elcopy = self.moves.copy()
-		elcopy.append("D2")
-		return RubiksState(elcopy)
-		pass
-	def Dinv(self):
-		elcopy = self.moves.copy()
-		elcopy.append("Down inverse")
-		return RubiksState(elcopy)
+		return RubiksState(ttlf, ttrf, nblf, nbrf, ttlb, nblb, ttrb, nbrb, elcopy)
+		# return RubiksState
+ # 
+#	def D2(self):
+#		elcopy = self.moves.copy()
+#		elcopy.append("D2")
+#		return RubiksState(elcopy)
+#		pass
+#	def Dinv(self):
+#		elcopy = self.moves.copy()
+#		elcopy.append("Down inverse")
+#		return RubiksState(elcopy)
 		pass
 	def F(self):
 		# Indices 0, 1, 2 to 1, 0, 2 (mapping)
@@ -187,17 +199,17 @@ Top Left Back to Top Left Front """
 		nblf[0], nblf[1], nblf[2] = tbrf[1], tbrf[0], tbrf[2]
 		elcopy = self.moves.copy()
 		elcopy.append("F")
-		return RubiksState(elcopy)
+		return RubiksState(ntlf, ntrf, nblf, nbrf, ttlb, tblb, ttrb, tbrb, elcopy)
 		pass
-	def F2(self):
-		elcopy = self.moves.copy()
-		elcopy.append("F2")
-		return RubiksState(elcopy)
-		pass
-	def Finv(self):
-		elcopy = self.moves.copy()
-		elcopy.append("F inverse")
-		return RubiksState(elcopy)
+#	def F2(self):
+#		elcopy = self.moves.copy()
+#		elcopy.append("F2")
+#		return RubiksState(elcopy)
+#		pass
+#	def Finv(self):
+#		elcopy = self.moves.copy()
+#		elcopy.append("F inverse")
+#		return RubiksState(elcopy)
 		pass
 	def B(self):
 		# Indices 0, 1, 2 to 1, 0, 2 (mapping)
@@ -217,18 +229,18 @@ Top Left Back to Top Left Front """
 		nblb[0], nblb[1], nblb[2] = tbrb[1], tbrb[0], tbrb[2]
 		elcopy = self.moves.copy()
 		elcopy.append("B")
-		return RubiksState(elcopy)
-		pass
-	def B2(self):
-		elcopy = self.moves.copy()
-		elcopy.append("B2")
-		return RubiksState(elcopy)
-		pass
-	def Binv(self):
-		elcopy = self.moves.copy()
-		elcopy.append("B inverse")
-		return RubiksState(elcopy)
-		pass
+		return RubiksState(ttlf, ttrf, tblf, tbrf, ntlb, nblb, ntrb, nbrb, elcopy)
+#		return RubiksState(elcopy)
+#	def B2(self):
+#		elcopy = self.moves.copy()
+#		elcopy.append("B2")
+#		return RubiksState(elcopy)
+#		pass
+#	def Binv(self):
+#		elcopy = self.moves.copy()
+#		elcopy.append("B inverse")
+#		return RubiksState(elcopy)
+#		pass
 		
 	def is_solved(self):
 		if self.left_face == ["R", "R", "R", "R"] and self.front_face == ["G", "G", "G", "G"] and self.right_face == ["O", "O", "O", "O"] and self.back_face == ["B", "B", "B", "B"] and self.top_face == ["W", "W", "W", "W"] and self.down_face == ["Y", "Y" , "Y" , "Y"]:
@@ -238,14 +250,15 @@ Top Left Back to Top Left Front """
 
 
 def CharlesTruscottRubiks():
-	item = RubiksState([])
+#	item = RubiksState([])
+	item = RubiksState(["W", "B", "O"], ["W", "R", "G"], ["B", "Y", "R"], ["G", "O", "Y"], ["W", "G", "O"], ["B", "Y", "O"], ["W", "G", "R"], ["G", "Y", "O"], [])
 	state = deque([])
 	state.append(item)
 	moves = [lambda s: s.L(), lambda s: s.R(), lambda s: s.U(), lambda s: s.D(), lambda s: s.F(),  lambda s: s.B() ]
 #	moves = [lambda s: s.L(), lambda s: s.L2(), lambda s: s.Linv(), lambda s: s.R(), lambda s: s.R2(), lambda s: s.Rinv(), lambda s: s.U(), lambda s: s.U2(), lambda s: s.Uinv(), lambda s: s.D(), lambda s: s.D2(), lambda s: s.Dinv(), lambda s: s.F(), lambda s: s.F2(), lambda s: s.Finv(), lambda s: s.B(), lambda s: s.B2(), lambda s: s.Binv()]
 	print(state[0].moves)
 	for move in moves:
-		e = move(RubiksState([]))
+		e = move(item)
 		state.append(e)
 	state.popleft()
 	c = 0
