@@ -26,20 +26,20 @@ class RubiksState(object):
 #		self.blb= [0] * 3
 #		
 
-#		self.left_face = left_face
-#		self.front_face = front_face
-#		self.right_face = right_face
-#		self.back_face = back_face
-#		self.top_face = top_face
-#		self.down_face = down_face
+		self.left_face = [self.tlf[1], self.blf[1], self.tlb[1], self.blb[1]]
+		self.front_face = [self.tlf[2], self.blf[2], self.trf[2], self.brf[2]]
+		self.right_face = [self.trf[1], self.brf[1], self.trb[1], self.blb[1]]
+		self.back_face = [self.tlb[2], self.trb[2], self.blb[2], self.brb[2]]
+		self.top_face = [self.tlb[0], self.tlf[0], self.trf[0], self.trb[0]]
+		self.down_face = [self.blb[0], self.blf[0], self.brb[0], self.brf[0]]
 		self.moves = moves
 
 	def L(self):
-	# Indices 0, 1, 2 to 2, 1, 0 (mapping)
-""" Top Left Front to Bottom Left Front.
+		""" Top Left Front to Bottom Left Front.
 Bottom Left Front to Bottom Left Back
 Bottom Left Back to Top Left Back
 Top Left Back to Top Right Front """
+	# Indices 0, 1, 2 to 2, 1, 0 (mapping)
 		ttlf = self.tlf.copy()
 		tblf = self.blf.copy()
 		ttrf = self.trf.copy()
@@ -62,7 +62,7 @@ Top Left Back to Top Right Front """
 		pass
 	def R(self):
 		# Indices 0, 1, 2 to 2, 1, 0 (mapping)
-	""" Top Right Front to Bottom Right Front.
+		""" Top Right Front to Bottom Right Front.
 	Bottom Right Front to Bottom Right Back
 	Bottom Right Back to Top Right Back
 	Top Right Back to Top Right Front """
@@ -90,7 +90,7 @@ Top Left Back to Top Right Front """
 		pass
 	def U(self):
 		# Indices 0, 1, 2 to 0, 2, 1 (mapping)
-	""" Top Left Front to Top Left Back
+		""" Top Left Front to Top Left Back
 	Top Left Back to Top Right Back. Top Right Back to Top Right Front. Top Right Front to Top Left Front """
 		ttlf = self.tlf.copy()
 		tblf = self.blf.copy()
