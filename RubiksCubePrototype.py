@@ -83,6 +83,11 @@ Top Left Back to Top Left Front """
 		tblb = self.blb.copy()
 		ttrb = self.trb.copy()
 		tbrb = self.brb.copy()
+		nbrf, nbrb, ntrb, ntrf = [0] * 3, [0] * 3, [0] * 3,[0] * 3
+		nbrf[0], nbrf[1], nbrf[2] = ttrf[2], ttrf[1], ttrf[0]
+		nbrb[0], nbrb[1], nbrb[2] = tbrf[2], tbrf[1], tbrf[0]
+		ntrb[0], ntrb[1], ntrb[2] = tbrb[2], tbrb[1], tbrb[0]
+		ntrf[0], ntrf[1], ntrf[2] = ttrb[2], ttrb[1], ttrb[0]
 		elcopy = self.moves.copy()
 		elcopy.append("R")
 		return RubiksState(elcopy)
@@ -109,6 +114,15 @@ Top Left Back to Top Left Front """
 		tblb = self.blb.copy()
 		ttrb = self.trb.copy()
 		tbrb = self.brb.copy()
+		ntlb = [0] * 3
+		ntrb = [0] * 3
+		ntrf = [0] * 3
+		ntlf = [0] * 3
+		ntlb[0], ntlb[1], ntlb[2] = ttlf[0], ttlf[2], ttlf[1]
+		ntrb[0], ntrb[1], ntrb[2] = ttlb[0], ttlb[2], ttlb[1]
+		ntrf[0], ntrf[1], ntrf[2] = ttrb[0], ttrb[2], ttrb[1]
+		ntlf[0], ntlf[1], ntlf[2] = ttrf[0], ttrf[2], ttrf[1]
+		
 		elcopy = self.moves.copy()
 		elcopy.append("U")
 		return RubiksState(elcopy)
@@ -136,6 +150,11 @@ Top Left Back to Top Left Front """
 		tblb = self.blb.copy()
 		ttrb = self.trb.copy()
 		tbrb = self.brb.copy()
+		nblb, nbrb, nbrf, nblf= [0] * 3, [0] * 3, [0] * 3, [0] * 3
+		nblb[0], nblb[1], nblb[2] = tblf[0], tblf[2], tblf[1]
+		nbrb[0], nbrb[1], nbrb[2] = tblb[0], tblb[2], tblb[1]
+		nbrf[0], nbrf[1], nbrf[2] = tbrb[0], tbrb[2], tbrb[1]
+		nblf[0], nblf[1], nblf[2] = tbrf[0], tbrf[2], tbrf[1]
 		elcopy = self.moves.copy()
 		elcopy.append("D")
 		return RubiksState(elcopy)
@@ -161,6 +180,11 @@ Top Left Back to Top Left Front """
 		tblb = self.blb.copy()
 		ttrb = self.trb.copy()
 		tbrb = self.brb.copy()
+		ntlf, ntrf, nbrf, nblf = [0] * 3, [0] * 3, [0] * 3, [0] * 3
+		ntlf[0], ntlf[1], ntlf[2] = tblf[1], tblf[0], tblf[2]
+		ntrf[0], ntrf[1], ntrf[2] = ttlf[1], ttlf[0], ttlf[2]
+		nbrf[0], nbrf[1], nbrf[2] = ttrf[1], ttrf[0], ttrf[2]
+		nblf[0], nblf[1], nblf[2] = tbrf[1], tbrf[0], tbrf[2]
 		elcopy = self.moves.copy()
 		elcopy.append("F")
 		return RubiksState(elcopy)
@@ -186,6 +210,7 @@ Top Left Back to Top Left Front """
 		tblb = self.blb.copy()
 		ttrb = self.trb.copy()
 		tbrb = self.brb.copy()
+		
 		elcopy = self.moves.copy()
 		elcopy.append("B")
 		return RubiksState(elcopy)
