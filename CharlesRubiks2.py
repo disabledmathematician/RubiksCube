@@ -38,7 +38,8 @@ class RubiksState(object):
 		""" Top Left Front to Bottom Left Front.
 Bottom Left Front to Bottom Left Back
 Bottom Left Back to Top Left Back
-Top Left Back to Top Right Front """
+Top Left Back to Top Left Front """
+# Aaaah, Erroneous decision 
 	# Indices 0, 1, 2 to 2, 1, 0 (mapping)
 		ttlf = self.tlf.copy()
 		tblf = self.blf.copy()
@@ -48,6 +49,14 @@ Top Left Back to Top Right Front """
 		tblb = self.blb.copy()
 		ttrb = self.trb.copy()
 		tbrb = self.brb.copy()
+		new_blf = [0] * 3
+		new_blb = [0] * 3
+		new_tlb = [0] * 3
+		new_tlf = [0] * 3
+		new_blf[0], new_blf[1], new_blf[2] = ttlf[2], ttlf[1], ttlf[0] # Bottom Left Front becomes Top Left Front
+		new_blb[0], new_blb[1], new_blb[2] = tblf[2], tblf[1], tblf[0] # Bottom Left Back becomes Bottom Left Front
+		new_tlb[0], new_tlb[1], new_tlb[2] = tblb[2], tblb[1], tblb[0] #  Top Left Back becomes Bottom Left Back
+		new_tlf[0], new_tlf[1], new_tlf[2] = ttlb[2], ttlb[1], ttlb[0] # Top Left Front becomes Top Left Back
 		elcopy = self.moves.copy()
 		elcopy.append("L")
 		return RubiksState(elcopy)
