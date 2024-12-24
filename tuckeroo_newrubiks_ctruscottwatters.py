@@ -9,6 +9,9 @@ Copyright Charles Truscott, 2024 December
 
 Byron Bay, NSW 2481
 
+
+runfile('/home/charles/Desktop/tuckeroo_newrubiks_ctruscottwatters.py', wdir='/home/charles/Desktop')
+
 n = RubiksState(['W', 'O', 'G'], ['Y', 'O', 'G'], ['W', 'R', 'G'], ['Y', 'R', 'G'], ['W', 'O', 'B'], ['Y', 'O', 'B'], ['W', 'R', 'B'], ['Y','R', 'B'], [])
 Front face: ['G', 'G', 'G', 'G']
 Left Face: ['O', 'O', 'O', 'O']
@@ -17,14 +20,30 @@ Back Face: ['B', 'B', 'B', 'B']
 Up face: ['W', 'W', 'W', 'W']
 Down face:['Y', 'Y', 'Y', 'Y']
 
-n.Rinv()
-Front face: ['G', 'W', 'G', 'W']
+n.Uinv()
+Front face: ['R', 'R', 'G', 'G']
+Left Face: ['G', 'G', 'O', 'O']
+Right Face: ['B', 'B', 'R', 'R']
+Back Face: ['O', 'O', 'B', 'B']
+Up face: ['W', 'W', 'W', 'W']
+Down face:['Y', 'Y', 'Y', 'Y']
+Out[3]: <__main__.RubiksState at 0x7fc920f452b0>
+
+n = n.Uinv()
+Front face: ['R', 'R', 'G', 'G']
+Left Face: ['G', 'G', 'O', 'O']
+Right Face: ['B', 'B', 'R', 'R']
+Back Face: ['O', 'O', 'B', 'B']
+Up face: ['W', 'W', 'W', 'W']
+Down face:['Y', 'Y', 'Y', 'Y']
+
+n = n.U()
+Front face: ['G', 'G', 'G', 'G']
 Left Face: ['O', 'O', 'O', 'O']
 Right Face: ['R', 'R', 'R', 'R']
-Back Face: ['Y', 'B', 'Y', 'B']
-Up face: ['W', 'B', 'W', 'B']
-Down face:['Y', 'G', 'Y', 'G']
-Out[29]: <__main__.RubiksState at 0x7f8e3aed32b0>
+Back Face: ['B', 'B', 'B', 'B']
+Up face: ['W', 'W', 'W', 'W']
+Down face:['Y', 'Y', 'Y', 'Y']
 
 """
 import itertools
@@ -138,7 +157,17 @@ class RubiksState(object):
         pass
     def Uinv(self):
         """ TLF to TLB, TLB to TRB, TRB to TRF, TRF to TLF """
-        pass
+        ntlf, ntlb, ntrf, ntrb = [0] * 3, [0] * 3, [0] * 3, [0] * 3
+        ttlf, ttrf, ttlb, ttrb = self.tlf, self.trf, self.tlb, self.trb
+        ntlb[0], ntlb[1], ntlb[2] = ttlf[0], ttlf[2], ttlf[1]
+        ntrb[0], ntrb[1], ntrb[2] = ttlb[0], ttlb[2], ttlb[1]
+        ntrf[0], ntrf[1], ntrf[2] = ttrb[0], ttrb[2], ttrb[1]
+        ntlf[0], ntlf[1], ntlf[2] = ttrf[0], ttrf[2], ttrf[1]
+        moves = self.moves.copy()
+        moves.append('U inverse')
+        n = RubiksState(ntlf, self.blf, ntrf, self.brf, ntlb, self.blb, ntrb, self.brb, moves)
+        return n
+    
     def D(self):
         """ BLF to BRF, BRF to BRB, BRB to BLB, BLB to BLF """
         nblf, nblb, nbrf, nbrb = [0] * 3, [0] * 3, [0] * 3, [0] * 3
