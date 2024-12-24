@@ -111,6 +111,7 @@ class RubiksState(object):
         #tlf, blf, trf, brf, tlb, blb, trb, brb, moves
         return n
     def D2(self):
+        """ BLF to BRB, BRB to BLF, BRF to BLB, BLB to BRF """
         pass
     def Dinv(self):
         """ BLF to BLB, BLB to BRB, BRB to BRF, BRF to BLF """
