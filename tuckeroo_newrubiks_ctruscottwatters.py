@@ -89,7 +89,7 @@ class RubiksState(object):
         ntrf, nbrf, ntrb, nbrb = [0] * 3, [0] * 3, [0] * 3, [0] * 3
         pass
     def Rinv(self):
-        """ TRF to BRB, BRB to TRF, TRB to BRF, BRF to TRB """
+        """ TRF to BRF, BRF to BRB, BRB to TRB, TRB to TRF """
         pass
     def U(self):
         """ TLF to TRF, TRF to TRB, TRB to TLB, TLB to TLF """
