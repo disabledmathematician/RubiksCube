@@ -9,6 +9,31 @@ Copyright Charles Truscott, 2024 December
 
 Byron Bay, NSW 2481
 
+n = RubiksState(['W', 'O', 'G'], ['Y', 'O', 'G'], ['W', 'R', 'G'], ['Y', 'R', 'G'], ['W', 'O', 'B'], ['Y', 'O', 'B'], ['W', 'R', 'B'], ['Y','R', 'B'], [])
+Front face: ['G', 'G', 'G', 'G']
+Left Face: ['O', 'O', 'O', 'O']
+Right Face: ['R', 'R', 'R', 'R']
+Back Face: ['B', 'B', 'B', 'B']
+Up face: ['W', 'W', 'W', 'W']
+Down face:['Y', 'Y', 'Y', 'Y']
+
+n = n.Dinv()
+Front face: ['G', 'G', 'R', 'R']
+Left Face: ['O', 'O', 'G', 'G']
+Right Face: ['R', 'R', 'B', 'B']
+Back Face: ['B', 'B', 'O', 'O']
+Up face: ['W', 'W', 'W', 'W']
+Down face:['Y', 'Y', 'Y', 'Y']
+
+n = n.D()
+Front face: ['G', 'G', 'G', 'G']
+Left Face: ['O', 'O', 'O', 'O']
+Right Face: ['R', 'R', 'R', 'R']
+Back Face: ['B', 'B', 'B', 'B']
+Up face: ['W', 'W', 'W', 'W']
+Down face:['Y', 'Y', 'Y', 'Y']
+
+
 
 
 n = RubiksState(['W', 'O', 'G'], ['Y', 'O', 'G'], ['W', 'R', 'G'], ['Y', 'R', 'G'], ['W', 'O', 'B'], ['Y', 'O', 'B'], ['W', 'R', 'B'], ['Y','R', 'B'], [])
@@ -197,6 +222,17 @@ class RubiksState(object):
         pass
     def Dinv(self):
         """ BLF to BLB, BLB to BRB, BRB to BRF, BRF to BLF """
+        nblf, nblb, nbrf, nbrb = [0] * 3, [0] * 3, [0] * 3, [0] * 3
+        tblf, tbrf, tbrb, tblb = self.blf, self.brf, self.brb, self.blb
+        nblb[0], nblb[1], nblb[2] = tblf[0], tblf[2], tblf[1]
+        nbrb[0], nbrb[1], nbrb[2] = tblb[0], tblb[2], tblb[1]
+        nbrf[0], nbrf[1], nbrf[2] = tbrb[0], tbrb[2], tbrb[1]
+        nblf[0], nblf[1], nblf[2] = tbrf[0], tbrf[2], tbrf[1]
+        moves = self.moves.copy()
+        moves.append('D inverse')
+        n = RubiksState(self.tlf, nblf, self.trf, nbrf, self.tlb, nblb, self.trb, nbrb, moves)
+        #tlf, blf, trf, brf, tlb, blb, trb, brb, moves
+        return n
         pass
     def F(self):
         """ TLF to BLF, BLF to BRF, BRF to TRF, TRF to TLF """
