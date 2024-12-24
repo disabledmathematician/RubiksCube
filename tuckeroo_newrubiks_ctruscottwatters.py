@@ -55,6 +55,8 @@ class RubiksState(object):
         ntlf, nblf, ntlb, nblb = [0] * 3, [0] * 3, [0] * 3, [0] * 3
         ttlf, tblf, ttlb, tblb = self.tlf, self.blf, self.tlb, self.blb
         pass
+    def Linv(self):
+        pass
     def R(self):
         """ TRF to TRB, TRB to BRB, BRB to BRF, BRF to TRF """
         ttrf, tbrf, ttrb, tbrb = self.trf, self.brf, self.trb, self.brb
@@ -72,6 +74,8 @@ class RubiksState(object):
         """ TRF to BRB, BRB to TRF, BRF to TRB, TRB to BRF """
         ntrf, nbrf, ntrb, nbrb = [0] * 3, [0] * 3, [0] * 3, [0] * 3
         pass
+    def Rinv(self):
+        pass
     def U(self):
         """ TLF to TRF, TRF to TRB, TRB to TLB, TLB to TLF """
         ntlf, ntlb, ntrf, ntrb = [0] * 3, [0] * 3, [0] * 3, [0] * 3
@@ -88,6 +92,8 @@ class RubiksState(object):
         """ TLF to TRB, TRB to TLF, TRF to TLB, TLB to TRF """
         ntlf, ntlb, ntrf, ntrb = [0] * 3, [0] * 3, [0] * 3, [0] * 3
         pass
+    def Uinv(self):
+        pass
     def D(self):
         """ BLF to BRF, BRF to BRB, BRB to BLB, BLB to BLF """
         nblf, nblb, nbrf, nbrb = [0] * 3, [0] * 3, [0] * 3, [0] * 3
@@ -101,6 +107,10 @@ class RubiksState(object):
         n = RubiksState(self.tlf, nblf, self.trf, nbrf, self.tlb, nblb, self.trb, nbrb, moves)
         #tlf, blf, trf, brf, tlb, blb, trb, brb, moves
         return n
+    def D2(self):
+        pass
+    def Dinv(self):
+        pass
     def F(self):
         """ TLF to BLF, BLF to BRF, BRF to TRF, TRF to TLF """
         ntlf, nblf, ntrf, nbrf = [0] * 3, [0] * 3, [0] * 3, [0] * 3
@@ -118,6 +128,8 @@ class RubiksState(object):
         """ TLF to BRF, BRF to TLF, TRF to BLF, BLF to TRF """
         ntlf, nblf, ntrf, nbrf = [0] * 3, [0] * 3, [0] * 3, [0] * 3
         pass
+    def Finv(self):
+        pass
     def B(self):
         """ TLB to BLB, BLB to BRB, BRB to TRB, TRB to TLB """
         ntlb, nblb, ntrb, nbrb = [0] * 3, [0] * 3, [0] * 3, [0] * 3
@@ -134,6 +146,8 @@ class RubiksState(object):
     def B2(self):
         """ TLB to BLB, BLB to TLB, TRB to BLB, BLB to TRB """
         ntlb, nblb, ntrb, nbrb = [0] * 3, [0] * 3, [0] * 3, [0] * 3
+        pass
+    def Binv(self):
         pass
     def is_solved(self):
         if self.blb == ['Y', 'O', 'B'] and self.tlb == ['W', 'O', 'B'] and self.brb == ['Y', 'R', 'B'] and self.trb == ['W', 'R', 'B'] and self.blf == ['Y', 'O', 'G'] and self.tlf == ['W', 'O', 'G'] and self.brf == ['Y', 'R', 'G'] and self.trf == ['W', 'R', 'G']:
