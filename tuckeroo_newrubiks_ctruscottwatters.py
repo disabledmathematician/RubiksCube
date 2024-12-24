@@ -30,12 +30,12 @@ class RubiksState(object):
         self.up_face  = [self.tlb[0], self.trb[0], self.tlf[0], self.trf[0]]
         self.down_face = [self.blf[0], self.brf[0], self.blb[0], self.brb[0]]
         self.orientation = [self.front_face, self.left_face, self.right_face, self.back_face, self.up_face, self.down_face]
-        print("Front face: {}".format(self.front_face))
-        print("Left Face: {}".format(self.left_face))
-        print("Right Face: {}".format(self.right_face))
-        print("Back Face: {}".format(self.back_face))
-        print("Up face: {}".format(self.up_face))
-        print("Down face:{}".format(self.down_face))
+#        print("Front face: {}".format(self.front_face))
+#        print("Left Face: {}".format(self.left_face))
+#        print("Right Face: {}".format(self.right_face))
+#        print("Back Face: {}".format(self.back_face))
+#        print("Up face: {}".format(self.up_face))
+#        print("Down face:{}".format(self.down_face))
         self.moves = moves
     def L(self):
         """ TLF to TLB, TLB to BLB, BLB to BLF, BLF to TLF """
@@ -138,7 +138,7 @@ class RubiksState(object):
     def is_solved(self):
         if self.blb == ['Y', 'O', 'B'] and self.tlb == ['W', 'O', 'B'] and self.brb == ['Y', 'R', 'B'] and self.trb == ['W', 'R', 'B'] and self.blf == ['Y', 'O', 'G'] and self.tlf == ['W', 'O', 'G'] and self.brf == ['Y', 'R', 'G'] and self.trf == ['W', 'R', 'G']:
             print('Solved: {}'.format(self.moves))
-            exit(1)
+#            exit(1)
         if self.front_face == ['G', 'G', 'G', 'G'] and self.back_face == ['B', 'B', 'B', 'B'] and self.left_face == ['O', 'O', 'O', 'O'] and self.right_face == ['R', 'R', 'R', 'R'] and self.up_face == ['W', 'W', 'W', 'W'] and self.down_face == ['Y', 'Y', 'Y', 'Y']:
             return True
         else:
@@ -148,6 +148,8 @@ import sys
 def Charles():
     States = deque([])
     n = RubiksState(['W', 'O', 'G'], ['Y', 'O', 'G'], ['W', 'R', 'G'], ['Y', 'R', 'G'], ['W', 'O', 'B'], ['Y', 'B', 'R'], ['W', 'R', 'B'], ['Y','B', 'O'], [])
+    n = RubiksState(['W', 'O', 'G'], ['Y', 'O', 'G'], ['W', 'R', 'G'], ['Y', 'R', 'G'], ['W', 'O', 'B'], ['Y', 'O', 'B'], ['W', 'R', 'B'], ['Y','R', 'B'], [])
+    n = RubiksState(['O', 'B', 'Y'], ['R', 'B', 'Y', ], ['O', 'G', 'Y'], ['R', 'G', 'Y'], ['O', 'B', 'W'], ['R', 'B', 'W'], ['O', 'G', 'W'], ['R', 'G', 'W'], [])
     all_states = [n for n in itertools.permutations([['G', 'G', 'G', 'G'], ['B', 'B', 'B', 'B'], ['O', 'O', 'O', 'O'], ['R', 'R', 'R', 'R'], ['W', 'W', 'W', 'W'], ['Y', 'Y', 'Y', 'Y']])]
 #    print(all_states)
 #    sys.exit(1)
@@ -156,22 +158,50 @@ def Charles():
     States.append(n)
     c = 0
     solved = False
+    print(States)
+    for move in moves:
+        print(move(States[0]))
+    for move in moves:
+        States.append(move(States[0]))
+    c = 0
     while solved != True:
-        state = States.popleft()
+        cm = States[c]
         for move in moves:
-            t = move(state)
-            print(t.moves)
-            States.append(t)
-            if t.front_face == ['G', 'G', 'G', 'G'] and t.back_face == ['B', 'B', 'B', 'B'] and t.left_face == ['O', 'O', 'O', 'O'] and t.right_face == ['R', 'R', 'R', 'R'] and t.up_face == ['W', 'W', 'W', 'W'] and t.down_face == ['Y', 'Y', 'Y', 'Y']:
-                print('Solved, {}'.format(t.moves))
-                sys.exit(1)
-            if t.is_solved() == True:
-                print('Solved, {}'.format(t.moves))
-                sys.exit(1)
-            if t.orientation in all_states:
-                print('Solved: {}'.format(t.moves))
-        if state.is_solved() == True:
-            solved = True
+            print(move(cm).moves)
+            States.append(move(cm))
+        if cm.is_solved() == True:
+            break
         c += 1
+#    while n < 8 ** 6:
+#        state = States.popleft()
+#        for move in moves:
+#            new_move = move(state)
+#            print(new_move.moves)
+#            States.append(new_move)
+#            if new_move.front_face == ['G', 'G', 'G', 'G'] and new_move.back_face == ['B', 'B', 'B', 'B'] and new_move.left_face == ['O', 'O', 'O', 'O'] and new_move.right_face == ['R', 'R', 'R', 'R'] and new_move.up_face == ['W', 'W', 'W', 'W'] and new_move.down_face == ['Y', 'Y', 'Y', 'Y']:
+#                print('Solved, {}'.format(new_move.moves))
+#                break
+#        n += 1
+#    while solved != True:
+#        state = States.popleft()
+#        for move in moves:
+#            t = move(state)
+#            print(t.moves)
+#            States.append(t)
+#            if t.front_face == ['G', 'G', 'G', 'G'] and t.back_face == ['B', 'B', 'B', 'B'] and t.left_face == ['O', 'O', 'O', 'O'] and t.right_face == ['R', 'R', 'R', 'R'] and t.up_face == ['W', 'W', 'W', 'W'] and t.down_face == ['Y', 'Y', 'Y', 'Y']:
+#                print('Solved, {}'.format(t.moves))
+#                break
+# #               sys.exit(1)
+#            if t.is_solved() == True:
+#                print('Solved, {}'.format(t.moves))
+#                break
+##                sys.exit(1)
+#            if t.orientation in all_states:
+#                print('Solved: {}'.format(t.moves))
+#                break
+#        if state.is_solved() == True:
+#            solved = True
+#            break
+#        c += 1
 
 Charles()
