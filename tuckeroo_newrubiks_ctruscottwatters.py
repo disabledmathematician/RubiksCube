@@ -10,7 +10,6 @@ Copyright Charles Truscott, 2024 December
 Byron Bay, NSW 2481
 
 
-runfile('/home/charles/Desktop/tuckeroo_newrubiks_ctruscottwatters.py', wdir='/home/charles/Desktop')
 
 n = RubiksState(['W', 'O', 'G'], ['Y', 'O', 'G'], ['W', 'R', 'G'], ['Y', 'R', 'G'], ['W', 'O', 'B'], ['Y', 'O', 'B'], ['W', 'R', 'B'], ['Y','R', 'B'], [])
 Front face: ['G', 'G', 'G', 'G']
@@ -20,30 +19,42 @@ Back Face: ['B', 'B', 'B', 'B']
 Up face: ['W', 'W', 'W', 'W']
 Down face:['Y', 'Y', 'Y', 'Y']
 
-n.Uinv()
-Front face: ['R', 'R', 'G', 'G']
-Left Face: ['G', 'G', 'O', 'O']
-Right Face: ['B', 'B', 'R', 'R']
-Back Face: ['O', 'O', 'B', 'B']
-Up face: ['W', 'W', 'W', 'W']
-Down face:['Y', 'Y', 'Y', 'Y']
-Out[3]: <__main__.RubiksState at 0x7fc920f452b0>
+n = n.L()
+Front face: ['Y', 'G', 'Y', 'G']
+Left Face: ['O', 'O', 'O', 'O']
+Right Face: ['R', 'R', 'R', 'R']
+Back Face: ['B', 'W', 'B', 'W']
+Up face: ['G', 'W', 'G', 'W']
+Down face:['B', 'Y', 'B', 'Y']
 
-n = n.Uinv()
-Front face: ['R', 'R', 'G', 'G']
-Left Face: ['G', 'G', 'O', 'O']
-Right Face: ['B', 'B', 'R', 'R']
-Back Face: ['O', 'O', 'B', 'B']
-Up face: ['W', 'W', 'W', 'W']
-Down face:['Y', 'Y', 'Y', 'Y']
+n = n.R()
+Front face: ['Y', 'Y', 'Y', 'Y']
+Left Face: ['O', 'O', 'O', 'O']
+Right Face: ['R', 'R', 'R', 'R']
+Back Face: ['W', 'W', 'W', 'W']
+Up face: ['G', 'G', 'G', 'G']
+Down face:['B', 'B', 'B', 'B']
 
-n = n.U()
+n = n.Rinv()
+Front face: ['Y', 'G', 'Y', 'G']
+Left Face: ['O', 'O', 'O', 'O']
+Right Face: ['R', 'R', 'R', 'R']
+Back Face: ['B', 'W', 'B', 'W']
+Up face: ['G', 'W', 'G', 'W']
+Down face:['B', 'Y', 'B', 'Y']
+
+n = n.Linv()
 Front face: ['G', 'G', 'G', 'G']
 Left Face: ['O', 'O', 'O', 'O']
 Right Face: ['R', 'R', 'R', 'R']
 Back Face: ['B', 'B', 'B', 'B']
 Up face: ['W', 'W', 'W', 'W']
 Down face:['Y', 'Y', 'Y', 'Y']
+
+n.is_solved()
+Solved: ['L', 'R', 'R inverse', 'L inverse']
+Out[11]: True
+
 
 """
 import itertools
