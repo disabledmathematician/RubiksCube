@@ -56,6 +56,7 @@ class RubiksState(object):
         ttlf, tblf, ttlb, tblb = self.tlf, self.blf, self.tlb, self.blb
         pass
     def Linv(self):
+        """ TLF to BLB, BLB to TLF, TLB to BLF, BLF to TLB """
         pass
     def R(self):
         """ TRF to TRB, TRB to BRB, BRB to BRF, BRF to TRF """
@@ -75,6 +76,7 @@ class RubiksState(object):
         ntrf, nbrf, ntrb, nbrb = [0] * 3, [0] * 3, [0] * 3, [0] * 3
         pass
     def Rinv(self):
+        """ TRF to BRB, BRB to TRF, TRB to BRF, BRF to TRB """
         pass
     def U(self):
         """ TLF to TRF, TRF to TRB, TRB to TLB, TLB to TLF """
@@ -93,6 +95,7 @@ class RubiksState(object):
         ntlf, ntlb, ntrf, ntrb = [0] * 3, [0] * 3, [0] * 3, [0] * 3
         pass
     def Uinv(self):
+        """ TLF to TLB, TLB to TRB, TRB to TRF, TRF to TLF """
         pass
     def D(self):
         """ BLF to BRF, BRF to BRB, BRB to BLB, BLB to BLF """
@@ -110,6 +113,7 @@ class RubiksState(object):
     def D2(self):
         pass
     def Dinv(self):
+        """ BLF to BLB, BLB to BRB, BRB to BRF, BRF to BLF """
         pass
     def F(self):
         """ TLF to BLF, BLF to BRF, BRF to TRF, TRF to TLF """
@@ -129,6 +133,7 @@ class RubiksState(object):
         ntlf, nblf, ntrf, nbrf = [0] * 3, [0] * 3, [0] * 3, [0] * 3
         pass
     def Finv(self):
+        """ TLF to TRF, TRF to BRF, BRF to BLF, BLF to TLF """
         pass
     def B(self):
         """ TLB to BLB, BLB to BRB, BRB to TRB, TRB to TLB """
@@ -148,6 +153,7 @@ class RubiksState(object):
         ntlb, nblb, ntrb, nbrb = [0] * 3, [0] * 3, [0] * 3, [0] * 3
         pass
     def Binv(self):
+        """ BLB to TLB, TLB to TRB, TRB to BRB, BRB to BLB """
         pass
     def is_solved(self):
         if self.blb == ['Y', 'O', 'B'] and self.tlb == ['W', 'O', 'B'] and self.brb == ['Y', 'R', 'B'] and self.trb == ['W', 'R', 'B'] and self.blf == ['Y', 'O', 'G'] and self.tlf == ['W', 'O', 'G'] and self.brf == ['Y', 'R', 'G'] and self.trf == ['W', 'R', 'G']:
