@@ -8,6 +8,24 @@ Thank you Byron Central Hospital, edX, HarvardX and MITx
 Copyright Charles Truscott, 2024 December
 
 Byron Bay, NSW 2481
+
+n = RubiksState(['W', 'O', 'G'], ['Y', 'O', 'G'], ['W', 'R', 'G'], ['Y', 'R', 'G'], ['W', 'O', 'B'], ['Y', 'O', 'B'], ['W', 'R', 'B'], ['Y','R', 'B'], [])
+Front face: ['G', 'G', 'G', 'G']
+Left Face: ['O', 'O', 'O', 'O']
+Right Face: ['R', 'R', 'R', 'R']
+Back Face: ['B', 'B', 'B', 'B']
+Up face: ['W', 'W', 'W', 'W']
+Down face:['Y', 'Y', 'Y', 'Y']
+
+n.Rinv()
+Front face: ['G', 'W', 'G', 'W']
+Left Face: ['O', 'O', 'O', 'O']
+Right Face: ['R', 'R', 'R', 'R']
+Back Face: ['Y', 'B', 'Y', 'B']
+Up face: ['W', 'B', 'W', 'B']
+Down face:['Y', 'G', 'Y', 'G']
+Out[29]: <__main__.RubiksState at 0x7f8e3aed32b0>
+
 """
 import itertools
 # n = RubiksState([], [], [], [], [], [], [], [])
@@ -30,12 +48,12 @@ class RubiksState(object):
         self.up_face  = [self.tlb[0], self.trb[0], self.tlf[0], self.trf[0]]
         self.down_face = [self.blf[0], self.brf[0], self.blb[0], self.brb[0]]
         self.orientation = [self.front_face, self.left_face, self.right_face, self.back_face, self.up_face, self.down_face]
-#        print("Front face: {}".format(self.front_face))
-#        print("Left Face: {}".format(self.left_face))
-#        print("Right Face: {}".format(self.right_face))
-#        print("Back Face: {}".format(self.back_face))
-#        print("Up face: {}".format(self.up_face))
-#        print("Down face:{}".format(self.down_face))
+        print("Front face: {}".format(self.front_face))
+        print("Left Face: {}".format(self.left_face))
+        print("Right Face: {}".format(self.right_face))
+        print("Back Face: {}".format(self.back_face))
+        print("Up face: {}".format(self.up_face))
+        print("Down face:{}".format(self.down_face))
         self.moves = moves
     def L(self):
         """ TLF to TLB, TLB to BLB, BLB to BLF, BLF to TLF """
@@ -90,6 +108,17 @@ class RubiksState(object):
         pass
     def Rinv(self):
         """ TRF to BRF, BRF to BRB, BRB to TRB, TRB to TRF """
+        ttrf, tbrf, ttrb, tbrb = self.trf, self.brf, self.trb, self.brb
+        ntrf, nbrf, ntrb, nbrb = [0] * 3, [0] * 3, [0] * 3, [0] * 3
+        nbrf[0], nbrf[1], nbrf[2] = ttrf[2], ttrf[1], ttrf[0]
+        nbrb[0], nbrb[1], nbrb[2] = tbrf[2], tbrf[1], tbrf[0]
+        ntrb[0], ntrb[1], ntrb[2] = tbrb[2], tbrb[1], tbrb[0]
+        ntrf[0], ntrf[1], ntrf[2] = ttrb[2], ttrb[1], ttrb[0]
+        moves = self.moves.copy()
+        moves.append('R inverse')
+        n = RubiksState(self.tlf.copy(), self.blf.copy(), ntrf, nbrf, self.tlb.copy(), self.blb.copy(), ntrb, nbrb, moves)
+        #tlf, blf, trf, brf, tlb, blb, trb, brb, moves
+        return n
         pass
     def U(self):
         """ TLF to TRF, TRF to TRB, TRB to TLB, TLB to TLF """
