@@ -9,6 +9,7 @@ Copyright Charles Truscott, 2024 December
 
 Byron Bay, NSW 2481
 """
+import itertools
 # n = RubiksState([], [], [], [], [], [], [], [])
 # n = RubiksState(['W', 'O', 'G'], ['B', 'O', 'Y'], ['W', 'R', 'G'], ['O', 'Y', 'G'], ['W', 'O', 'B'], ['B', 'R', 'Y'], ['W', 'R', 'B'], ['R', 'Y', 'G'], [])
 class RubiksState(object):
@@ -28,7 +29,7 @@ class RubiksState(object):
         self.back_face = [self.trb[2], self.tlb[2], self.brb[2], self.blb[2]]
         self.up_face  = [self.tlb[0], self.trb[0], self.tlf[0], self.trf[0]]
         self.down_face = [self.blf[0], self.brf[0], self.blb[0], self.brb[0]]
-        
+        self.orientation = [self.front_face, self.left_face, self.right_face, self.back_face, self.up_face, self.down_face]
         print("Front face: {}".format(self.front_face))
         print("Left Face: {}".format(self.left_face))
         print("Right Face: {}".format(self.right_face))
@@ -143,10 +144,14 @@ class RubiksState(object):
         else:
             return False
 from queue import deque
+import sys
 def Charles():
     States = deque([])
     n = RubiksState(['W', 'O', 'G'], ['Y', 'O', 'G'], ['W', 'R', 'G'], ['Y', 'R', 'G'], ['W', 'O', 'B'], ['Y', 'B', 'R'], ['W', 'R', 'B'], ['Y','B', 'O'], [])
- #tlf, blf, trf, brf, tlb, blb, trb, brb, moves
+    all_states = [n for n in itertools.permutations([['G', 'G', 'G', 'G'], ['B', 'B', 'B', 'B'], ['O', 'O', 'O', 'O'], ['R', 'R', 'R', 'R'], ['W', 'W', 'W', 'W'], ['Y', 'Y', 'Y', 'Y']])]
+#    print(all_states)
+#    sys.exit(1)
+    #tlf, blf, trf, brf, tlb, blb, trb, brb, moves
     moves = [lambda s: s.L(), lambda s: s.R(), lambda s: s.U(), lambda s: s.D(), lambda s: s.F(), lambda s: s.B()]
     States.append(n)
     c = 0
@@ -159,10 +164,12 @@ def Charles():
             States.append(t)
             if t.front_face == ['G', 'G', 'G', 'G'] and t.back_face == ['B', 'B', 'B', 'B'] and t.left_face == ['O', 'O', 'O', 'O'] and t.right_face == ['R', 'R', 'R', 'R'] and t.up_face == ['W', 'W', 'W', 'W'] and t.down_face == ['Y', 'Y', 'Y', 'Y']:
                 print('Solved, {}'.format(t.moves))
-                exit(1)
+                sys.exit(1)
             if t.is_solved() == True:
                 print('Solved, {}'.format(t.moves))
-                exit(1)
+                sys.exit(1)
+            if t.orientation in all_states:
+                print('Solved: {}'.format(t.moves))
         if state.is_solved() == True:
             solved = True
         c += 1
