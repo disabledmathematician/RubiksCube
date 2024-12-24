@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
 Charles Truscott Watters
-New paradigm Rubik's Cube Solving algoritthm
+New paradigm Rubik's Cube Solving algorithm
 
 Thank you Byron Central Hospital, edX, HarvardX and MITx
 
