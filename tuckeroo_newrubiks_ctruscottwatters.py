@@ -9,6 +9,8 @@ Copyright Charles Truscott, 2024 December
 
 Byron Bay, NSW 2481
 
+runfile('/home/charles/Desktop/tuckeroo_newrubiks_ctruscottwatters.py', wdir='/home/charles/Desktop')
+
 n = RubiksState(['W', 'O', 'G'], ['Y', 'O', 'G'], ['W', 'R', 'G'], ['Y', 'R', 'G'], ['W', 'O', 'B'], ['Y', 'O', 'B'], ['W', 'R', 'B'], ['Y','R', 'B'], [])
 Front face: ['G', 'G', 'G', 'G']
 Left Face: ['O', 'O', 'O', 'O']
@@ -17,15 +19,18 @@ Back Face: ['B', 'B', 'B', 'B']
 Up face: ['W', 'W', 'W', 'W']
 Down face:['Y', 'Y', 'Y', 'Y']
 
-n = n.Dinv()
-Front face: ['G', 'G', 'R', 'R']
-Left Face: ['O', 'O', 'G', 'G']
-Right Face: ['R', 'R', 'B', 'B']
-Back Face: ['B', 'B', 'O', 'O']
+n = n.D()
+Front face: ['G', 'G', 'O', 'O']
+Left Face: ['O', 'O', 'B', 'B']
+Right Face: ['R', 'R', 'G', 'G']
+Back Face: ['B', 'B', 'R', 'R']
 Up face: ['W', 'W', 'W', 'W']
 Down face:['Y', 'Y', 'Y', 'Y']
 
-n = n.D()
+n.is_solved()
+Out[8]: False
+
+n = n.Dinv()
 Front face: ['G', 'G', 'G', 'G']
 Left Face: ['O', 'O', 'O', 'O']
 Right Face: ['R', 'R', 'R', 'R']
@@ -33,6 +38,9 @@ Back Face: ['B', 'B', 'B', 'B']
 Up face: ['W', 'W', 'W', 'W']
 Down face:['Y', 'Y', 'Y', 'Y']
 
+n.is_solved()
+Solved: ['D inv', 'D inverse']
+Out[10]: True
 
 
 
@@ -213,7 +221,7 @@ class RubiksState(object):
         nblb[0], nblb[1], nblb[2] = tbrb[0], tbrb[2], tbrb[1]
         nblf[0], nblf[1], nblf[2] = tblb[0], tblb[2], tblb[1]
         moves = self.moves.copy()
-        moves.append('D')
+        moves.append('D inv')
         n = RubiksState(self.tlf, nblf, self.trf, nbrf, self.tlb, nblb, self.trb, nbrb, moves)
         #tlf, blf, trf, brf, tlb, blb, trb, brb, moves
         return n
