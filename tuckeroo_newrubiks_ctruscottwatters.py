@@ -56,7 +56,20 @@ class RubiksState(object):
         ttlf, tblf, ttlb, tblb = self.tlf, self.blf, self.tlb, self.blb
         pass
     def Linv(self):
-        """ TLF to BLB, BLB to TLF, TLB to BLF, BLF to TLB """
+        """ TLF to BLF, BLF to BLB, BLB to TLB, TLB to TLF """
+        
+        ntlf, nblf, ntlb, nblb = [0] * 3, [0] * 3, [0] * 3, [0] * 3
+        ttlf, tblf, ttlb, tblb = self.tlf, self.blf, self.tlb, self.blb
+        nblf[0], nblf[1], nblf[2] = ttlf[2], ttlf[1], ttlf[0]
+        nblb[0], nblb[1], nblb[2] = tblf[2], tblf[1], tblf[0]
+        ntlb[0], ntlb[1], ntlb[2] = tblb[2], tblb[1], tblb[0]
+        ntlf[0], ntlf[1], ntlf[2] = ttlb[2], ttlb[1], ttlb[0]
+        moves = self.moves.copy()
+        moves.append('L inverse')
+        n = RubiksState(ntlf, nblf, self.trf.copy(), self.brf.copy(), ntlb, nblb, self.trb.copy(), self.brb.copy(), moves)
+        #tlf, blf, trf, brf, tlb, blb, trb, brb, moves
+        return n
+        
         pass
     def R(self):
         """ TRF to TRB, TRB to BRB, BRB to BRF, BRF to TRF """
@@ -225,4 +238,4 @@ def Charles():
 #            break
 #        c += 1
 
-Charles()
+#Charles()
